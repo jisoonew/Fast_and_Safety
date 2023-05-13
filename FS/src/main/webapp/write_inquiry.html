@@ -6,11 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
+        <title>FS</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
@@ -71,86 +72,51 @@
                 </li>
             </ul>
         </nav>
-    </head>
-    <body>
-        <form><br>
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col-3"><h2> 예약 배송 신청</h2></div>
-            </div><br><br>
 
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1"><h4>수령인</h4></div>
-                <div class="col-2"><input type="text"></div>
-                <div class="col-1"></div>
-                <div class="col-1"><h4>연락처</h4></div>
-                <div class="col-2"> <input type="text" oninput="hypenTel(this)" maxlength="13"></div>
-            </div><br><br><br>
-
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1"><h4>출고 물품</h4></div>
-                <div class="col-2">
-                    <select name="d_product" id="d_product">
-                    <option value="">물품선택</option>
-                    <option value="학생">아이스크림</option>
-                    <option value="회사원">우유</option>
-                    <option value="기타">두유</option>
-                    </select>
-                </div>
-                <div class="col-1"></div>
-                <div class="col-1"><h4>출고 물량</h4></div>
-                <div class="col-2"><input type="text"> PLT</div>
-            </div><br><br>
-
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1" for="postcode"><h5>배송 날짜 </h5></div>
-                <div class="col-5"> <input type="text" id="datepicker" placeholder="날짜 선택"></div>
-            </div><br><br>
-
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1" for="postcode"><h4>우편번호 </h4></div>
-                <div class="col-2"><input type="text" id="postcode" name="postcode" readonly></div>
-                <div class="col-2"><button type="button" onclick="execDaumPostcode()">우편번호 검색</button><br></div>
+        <div class="container p-5">
+          <h1 class="text-center mt-5">문의하기</h1>
+          <form>
+            <div class="d-grid gap-5">
+            <div class="form-group">
+              <label for="subject">제목</label>
+              <input type="text" class="form-control mt-2" id="subject" placeholder="제목을 입력하세요">
             </div>
-        
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1" for="postcode"><h5>주소 </h5></div>
-                <div class="col-6"><input type="text" id="address" name="address" readonly><br></div>
+            <div class="form-group">
+                <label for="subject">유형</label>
+                <div class="dropdown mt-2">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      유형 선택
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">배송</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item" href="#">재고</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item" href="#">회원</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item" href="#">기타</a></li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="form-group">
+              <label for="message">문의 내용</label>
+              <textarea class="form-control mt-2" id="message" rows="20" placeholder="문의 내용을 입력하세요"></textarea>
             </div>
+          </div>
+            <button type="submit" class="btn btn-primary mt-3" onclick="location.href='inquiry.html'">문의하기</button>
+          </form>
+        </div>
 
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1" for="postcode"><h5>상세주소 </h5></div>
-                <div class="col-5"><input type="text" id="detailAddress" name="detailAddress"><br></div>
-            </div><br><br>
-
-            <div class="row">
-                <div class="col-4"></div>
-                <div class="col-1" for="postcode"><h5>예상 배송비 </h5></div>
-                <div class="col-1"></div>
-                <div class="col-4"><h5><label>-----원</label></h5></div>
-            </div><br><br>
-
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1"></div>
-                <div class="col-2"><button type="submit" class="d_btn">신청하기</button></div>
-                <div class="col-1"></div>
-                <div class="col-1"></div>
-                <div class="col-2"><button class="d_btn">취소</button></div>
-            </div>
-        </form>
-
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-        <script src="js/syh.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+            
+        </div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/chart-area-demo.js"></script>

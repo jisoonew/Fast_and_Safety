@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+
+<head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
+        <title>FS</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+</head>
+
+<body class="sb-nav-fixed">
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Brand-->
@@ -71,85 +74,114 @@
                 </li>
             </ul>
         </nav>
-    </head>
-    <body>
-        <form><br>
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col-3"><h2> 예약 배송 신청</h2></div>
-            </div><br><br>
-
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1"><h4>수령인</h4></div>
-                <div class="col-2"><input type="text"></div>
-                <div class="col-1"></div>
-                <div class="col-1"><h4>연락처</h4></div>
-                <div class="col-2"> <input type="text" oninput="hypenTel(this)" maxlength="13"></div>
-            </div><br><br><br>
-
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1"><h4>출고 물품</h4></div>
-                <div class="col-2">
-                    <select name="d_product" id="d_product">
-                    <option value="">물품선택</option>
-                    <option value="학생">아이스크림</option>
-                    <option value="회사원">우유</option>
-                    <option value="기타">두유</option>
-                    </select>
-                </div>
-                <div class="col-1"></div>
-                <div class="col-1"><h4>출고 물량</h4></div>
-                <div class="col-2"><input type="text"> PLT</div>
-            </div><br><br>
-
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1" for="postcode"><h5>배송 날짜 </h5></div>
-                <div class="col-5"> <input type="text" id="datepicker" placeholder="날짜 선택"></div>
-            </div><br><br>
-
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1" for="postcode"><h4>우편번호 </h4></div>
-                <div class="col-2"><input type="text" id="postcode" name="postcode" readonly></div>
-                <div class="col-2"><button type="button" onclick="execDaumPostcode()">우편번호 검색</button><br></div>
-            </div>
         
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1" for="postcode"><h5>주소 </h5></div>
-                <div class="col-6"><input type="text" id="address" name="address" readonly><br></div>
-            </div>
+        
 
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1" for="postcode"><h5>상세주소 </h5></div>
-                <div class="col-5"><input type="text" id="detailAddress" name="detailAddress"><br></div>
-            </div><br><br>
+  <div class="container text-center align-items-center p-5 mt-5">
+    <h2>문의</h2>
 
-            <div class="row">
-                <div class="col-4"></div>
-                <div class="col-1" for="postcode"><h5>예상 배송비 </h5></div>
-                <div class="col-1"></div>
-                <div class="col-4"><h5><label>-----원</label></h5></div>
-            </div><br><br>
-
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1"></div>
-                <div class="col-2"><button type="submit" class="d_btn">신청하기</button></div>
-                <div class="col-1"></div>
-                <div class="col-1"></div>
-                <div class="col-2"><button class="d_btn">취소</button></div>
-            </div>
+    <div class="row justify-content-between p-3 mb-5">
+      <div class="col-1">
+        <div class="dropdown">
+          <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            유형 선택
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">배송</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">재고</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">회원</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">기타</a></li>
+          </ul>
+          </ul>
+        </div>
+      </div>
+      <div class="col-4 ">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+      </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-        <script src="js/syh.js"></script>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>유형</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>작성일</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>배송</td>
+          <td><a href="#">첫 번째 게시글입니다</a></td>
+          <td>홍길동</td>
+          <td>2022-05-01</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>재고</td>
+          <td><a href="#">두 번째 게시글입니다</a></td>
+          <td>김철수</td>
+          <td>2022-05-02</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>배송</td>
+          <td><a href="#">세 번째 게시글입니다</a></td>
+          <td>이영희</td>
+          <td>2022-05-03</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>회원</td>
+          <td><a href="#">네 번째 게시글입니다</a></td>
+          <td>김땡땡</td>
+          <td>2022-05-04</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>회원</td>
+          <td><a href="#">다섯 번째 게시글입니다</a></td>
+          <td>김띵띵</td>
+          <td>2022-05-05</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row justify-content-end text-end align-content-end align-items-end">
+      <div class="col">
+        <button type="submit" onclick="location.href='write_inquiry.html'"
+        class="btn btn-success mt-3 justify-content-end text-end align-content-end align-items-end">문의하기</button>
+      </div>
+    </div>
+
+    <ul class="pagination justify-content-center p-3">
+      <li class="disabled"><a href="#">«</a></li>
+      <li class="disabled"><a href="#">‹</a></li>
+      <li class="active"><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li><a href="#">›</a></li>
+      <li><a href="#">»</a></li>
+    </ul>
+  </div>
+  
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -157,5 +189,6 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
-    </body>
+</body>
+
 </html>

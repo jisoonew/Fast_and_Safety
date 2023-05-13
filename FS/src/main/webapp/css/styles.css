@@ -11370,6 +11370,134 @@ width: 100px;
 margin-left: 1270px;
 }
 
+/* 메인 페이지 */
+.main_img1 {
+	width: 1200px;
+	height: 550px;
+	opacity: 0.8;
+}
+
+#container_main_img1 {
+	text-align : center;
+}
+
+#Company_Overview {
+	text-align : center;
+	margin-top: 60px;
+}
+
+#container_Slogan {
+	height: 100px;
+	width: 1200px;
+	background-color: #add8e6;
+	margin-top: 60px;
+	text-align : center;
+	margin-left: 240px;
+	font-size: 22px;
+	padding : 10px 0;
+}
+
+#main_delivery_text, #main_storage_text {
+	padding : 10px 0;
+	font-size: 22px;
+}
+
+#delivery, #storage {
+		margin-top : 10px;
+    height: 300px;
+	width: 300px;
+	text-align : center;
+	border: 1px solid black;
+}
+
+.main_delivery_img, .main_storage_img {
+		height: 160px;
+	width: 160px;
+}
+
+#container_delivery, #container_storage {
+		margin-top: 30px;
+		height: 300px;
+		width: 300px;
+		text-align : center;
+		float:left;
+		margin-left : 230px;
+}
+
+#main_delivery_btn, #main_storage_btn {
+	margin-top: 10px;
+	border: none;
+	font-weight: bold;
+}
+
+#container_all {
+	height: 420px;
+	margin-left : 190px;
+}
+
+#container_join {
+	display: inline-block; 
+	width:100%;
+	margin-top: 100px;
+	height:100px;
+	text-align : center;
+}
+
+#main_join{
+	height: 130px;
+	width:1200px;
+margin-left : 230px;
+	background-color: #91B9F5;
+	font-size: 20px;
+	line-height: 100px;
+	font-weight: bold;
+}
+
+#main_join_btn {
+	margin-top : -110px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#main_qa_text {
+		text-align : center;
+}
+
+#accordionFlushExample {
+	width:1000px;
+	margin: 0 auto;
+	margin-top: 50px;
+	border: 1px solid #a1a1a1;
+}
+
+#layoutAuthentication_footer {
+	margin-top:  20px;
+	background-color: #808080;
+}
+
+.main_logo_img {
+		width:80px;
+		height:80px;
+		float: left;
+		margin-left : 15px;
+		margin-right : 15px;
+}
+
+#main_bottom_text {
+	width:800px;
+	margin-top : 15px;
+}
+
+.main_image_text {
+	position: absolute;
+    top: 30%;
+    left: 50%;
+    backgroun-color: black;
+    transform: translate( -50%, -50% );
+    font-weight: bold;
+    text-shadow:3px 3px #ffffff;
+    font-size : 50px;
+}
 
 /*신예희*/
 #detailAddress, #address {
@@ -11392,3 +11520,33 @@ margin-left: 1270px;
 .rd_num {
   width: 50%;
 }
+
+.txt_middle {
+  text-align: center;
+}
+
+.service_img_product {
+  width: 750px;
+  height: 150px;
+  margin-left: 20%;
+}
+.service_img_info {
+  width: 750px;
+  height: 300px;
+  margin-left: 20%;
+}
+.service_img_in {
+  width: 750px;
+  height: 130px;
+  margin-left: 20%;
+}
+.service_img_out {
+  width: 750px;
+  height: 450px;
+  margin-left: 20%;
+}
+
+#layoutSidenav_content {
+	margin-top: 50px;
+}
+

@@ -6,7 +6,7 @@
 
 <!-- 첫 화면 전환 시 필요 -->
 <welcome-file-list>
-	<welcome-file>product_storage.html</welcome-file>
+	<welcome-file>not_login_home.html</welcome-file>
 </welcome-file-list>
   
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->

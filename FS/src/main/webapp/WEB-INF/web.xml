@@ -32,7 +32,7 @@
 	</servlet>
 
 	<!-- 추가 부분 시작 : HTML 설정 부분 -->
-<!-- 	<servlet>
+<!--  	<servlet>
 		<servlet-name>htmlServlet</servlet-name>
 		<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
 		<load-on-startup>2</load-on-startup>
@@ -43,9 +43,9 @@
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping> -->
 <!-- 	추가 부분 끝 : HTML 설정 부분 -->
-	<servlet-mapping>
+ 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>*.pcm</url-pattern>
+		<url-pattern>/input</url-pattern>
 	</servlet-mapping>
 
 </web-app>

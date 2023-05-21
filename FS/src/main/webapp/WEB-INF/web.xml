@@ -45,7 +45,7 @@
 <!-- 	추가 부분 끝 : HTML 설정 부분 -->
  	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/input</url-pattern>
+		<url-pattern>/today_delivery</url-pattern>
 	</servlet-mapping>
 
 </web-app>

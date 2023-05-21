@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -72,7 +74,7 @@
         </nav>
     </head>
     <body>
-        <form><br>
+        <form role="form" method="post" action="/today_delivery"><br>
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col-3"><h2> 당일 배송 신청</h2></div>
@@ -81,10 +83,10 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-1"><h4>수령인</h4></div>
-                <div class="col-2"><input type="text"></div>
+                <div class="col-2"><input type="text" name="td_name"></div>
                 <div class="col-1"></div>
                 <div class="col-1"><h4>연락처</h4></div>
-                <div class="col-2"> <input type="text" oninput="hypenTel(this)" maxlength="13"></div>
+                <div class="col-2"> <input type="text" oninput="hypenTel(this)" name="td_phone" maxlength="13"></div>
             </div><br><br><br>
 
             <div class="row">
@@ -100,7 +102,7 @@
                 </div>
                 <div class="col-1"></div>
                 <div class="col-1"><h4>출고 물량</h4></div>
-                <div class="col-2"><input type="text"> PLT</div>
+                <div class="col-2"><input type="text" name="td_volume"> PLT</div>
             </div><br><br><br>
 
             <div class="row">

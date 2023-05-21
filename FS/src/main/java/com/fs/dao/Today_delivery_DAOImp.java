@@ -18,7 +18,7 @@ public class Today_delivery_DAOImp implements Today_delivery_DAO {
                                             //memberMapper.xml의 namespace값
    
     @Override
-    public void insert_today_delivery(Today_delivery_VO vo) {
+    public void write(Today_delivery_VO vo) {
         sqlSession.insert(namespace+".insert_today_delivery", vo);
     }
    

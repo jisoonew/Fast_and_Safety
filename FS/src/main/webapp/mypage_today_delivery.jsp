@@ -1,6 +1,9 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-    <head>
+<html>
+<head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -63,9 +66,9 @@
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="mypage_same_day_delivery.html" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="mypage_same_day_delivery.jsp" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="mypage_same_day_delivery.html">My Page</a></li>
+                        <li><a class="dropdown-item" href="mypage_same_day_delivery.jsp">My Page</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="not_login_home.html">Logout</a></li>
                     </ul>
@@ -185,10 +188,21 @@
 					<th scope="col" style="width: 10%">배송비</th>
 				</tr>
 			</thead>
-			<tbody id="table_tbody">
+			
+			<tbody>
+			<c:forEach items="${list}" var="list">
+ 			<tr>
+ 				<td><c:out value="${list.td_name}" /></td>
+  				<td>${list.td_phone}</td>
+				 <td>${list.td_volume}</td>
+ 				 <td>${list.u_id}</td>
+ 				 <td>${list.td_address}</td>
+ 				 <td>${list.td_address}</td>
+ 				 <td>${list.td_address}</td>
+			</tr>
+			</c:forEach>
 			</tbody>
 		</table>
-		
 		
 		
 				<table class="table table-bordered">

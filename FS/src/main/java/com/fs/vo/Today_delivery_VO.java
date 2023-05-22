@@ -1,5 +1,8 @@
 package com.fs.vo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Today_delivery_VO {
 	private String u_id;
 	private String td_name;

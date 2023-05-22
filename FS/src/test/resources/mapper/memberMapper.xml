@@ -7,10 +7,9 @@
  
 <mapper namespace="org.hello.mapper.memberMapper">
 
-    <insert id="insert_today_delivery">
+    <insert id="insert_today_delivery" parameterType="Board">
         insert into today_delivery (u_id, td_name, td_phone, td_volume, td_address) values
                           (#{u_id}, #{td_name}, #{td_phone}, #{td_volume}, #{td_address})
     </insert>
-
 
 </mapper>

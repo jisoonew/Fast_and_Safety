@@ -16,12 +16,9 @@ public class Today_delivery_DAOImp implements Today_delivery_DAO {
 
 	@Inject // 의존관계를 자동으로 연결(JAVA에서 제공) ==@autowired (Spring에서 제공)
     private SqlSession sqlSession;
-	
-	@Autowired
-	private SqlSession SqlSession;
    
    
-    private static String namespace = "org.hello.mapper.memberMapper";
+    private static String namespace = "memberMapper";
                                             //memberMapper.xml의 namespace값
    // 데이터 삽입
     @Override
@@ -29,6 +26,9 @@ public class Today_delivery_DAOImp implements Today_delivery_DAO {
         sqlSession.insert(namespace+".insert_today_delivery", vo);
     }
     
-
+    @Override
+    public List<Today_delivery_VO> list() throws Exception {
+        return sqlSession.selectList(namespace + ".list_today_delivery");
+    }
 
 }

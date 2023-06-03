@@ -25,23 +25,20 @@ public class Today_delivery_Controller {
 	@Inject
     private Today_delivery_service service;
 	
-	@Autowired
-	Today_delivery_service list_service;
-	
 	/*
 	 * private static final Logger logger =
 	 * LoggerFactory.getLogger(Today_delivery_Controller.class);
 	 */
    
-    @RequestMapping(value = "today_delivery", method = RequestMethod.GET)
+    @RequestMapping(value = "/today_delivery", method = RequestMethod.GET)
     public void writeView() throws Exception{
     }
     
     
-    @RequestMapping(value = "today_delivery", method = RequestMethod.POST)
+    @RequestMapping(value = "/today_delivery", method = RequestMethod.POST)
     public String write(Today_delivery_VO vo) throws Exception{
     	service.write(vo);
-    	return "/today_delivery";
+    	return "today_delivery";
     }
     
 

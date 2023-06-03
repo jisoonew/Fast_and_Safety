@@ -28,5 +28,10 @@ public class Today_delivery_serviceImp implements Today_delivery_service {
 		dao.write(vo);
 	}
 	
+	// 게시글 작성
+	@Override
+	public List<Today_delivery_VO> list() throws Exception {
+		return dao.list();
+	}
 
 }

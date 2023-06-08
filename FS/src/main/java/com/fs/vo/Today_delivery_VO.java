@@ -9,6 +9,17 @@ public class Today_delivery_VO {
 	private String td_phone;
 	private int td_volume;
 	private String td_address;
+	private String postcode;
+	private String u_detail_address;
+	private String kind_release;
+	private int delivery_fee;
+	
+	
+	
+	private String kind;
+	private String container_type;
+	private String container_num;
+	private String delivery_sum;
 	
 	public String getU_id() {
 		return u_id;
@@ -40,7 +51,61 @@ public class Today_delivery_VO {
 	public void setTd_address(String td_address) {
 		this.td_address = td_address;
 	}
-    @Override
+    public String getPostcode() {
+		return postcode;
+	}
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+	public String getU_detail_address() {
+		return u_detail_address;
+	}
+	public void setU_detail_address(String u_detail_address) {
+		this.u_detail_address = u_detail_address;
+	}
+	public String getKind_release() {
+		return kind_release;
+	}
+	public void setKind_release(String kind_release) {
+		this.kind_release = kind_release;
+	}
+	public int getDelivery_fee() {
+		return delivery_fee;
+	}
+	public void setDelivery_fee(int delivery_fee) {
+		this.delivery_fee = delivery_fee;
+	}
+	
+	
+	
+	
+	
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	public String getContainer_type() {
+		return container_type;
+	}
+	public void setContainer_type(String container_type) {
+		this.container_type = container_type;
+	}
+	public String getContainer_num() {
+		return container_num;
+	}
+	public void setContainer_num(String container_num) {
+		this.container_num = container_num;
+	}
+
+	public String getDelivery_sum() {
+		return delivery_sum;
+	}
+	public void setDelivery_sum(String delivery_sum) {
+		this.delivery_sum = delivery_sum;
+	}
+	@Override
     public String toString() {
         return "Today_delivery_VO [u_id=" + u_id + ", td_name=" + td_name + ", td_phone=" + td_phone + ", td_volume=" + td_volume + " , td_address=" + td_address + "]";
     }

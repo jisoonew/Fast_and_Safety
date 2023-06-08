@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,7 +11,7 @@
         <meta name="author" content="" />
         <title>FS_Mypage</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="css/mypage_information_details.css" rel="stylesheet" />
+        <link href="resources/css/mypage_information_details.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -143,7 +146,10 @@
         <h1 class="mt-4" id="content_title">회원 정보</h1>
         
         <div id="container_content_details">
-        <div id="name_content"><a id="name_details">이름</a><a id="result_name">박지수</a></div>
+
+        <c:forEach items="${u_name}" var="u_name">
+        <div id="grade_content"><a id="grade_details">이름</a><a id="result_grade"><c:out value="${u_name.u_name}" /></a></div>
+        </c:forEach>
         <hr>
         <div id="grade_content"><a id="grade_details">등급</a><a id="result_grade">회원</a></div>
         <hr>

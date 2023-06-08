@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>FS_Mypage</title>
+        <title>Mypage_today_delivery</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="resources/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -40,12 +40,12 @@
 
             <!--delivery Dropdown-->
                 <li class="nav-item dropdown2">
-                    <a class="nav-link dropdown-toggle" href="today_delivery.html" id="deliveryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="today_delivery" id="deliveryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         배송
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="deliveryDropdown">
-                        <li><a class="dropdown-item" href="today_delivery.html">당일 배송</a></li>
-                        <li><a class="dropdown-item" href="routine_delivery.html">정기 배송</a></li>
+                        <li><a class="dropdown-item" href="today_delivery">당일 배송</a></li>
+                        <li><a class="dropdown-item" href="routine_delivery">정기 배송</a></li>
                         <li><a class="dropdown-item" href="reserve_delivery.html">예약 배송</a></li>
                     </ul>
                 </li>
@@ -87,14 +87,14 @@
                             <div class="sb-sidenav-menu-heading">
                                 <h3>MY PAGE</h3>
                             </div>
-                            <a class="nav-link collapsed" href="mypage_same_day_delivery.html" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                            <a class="nav-link collapsed" href="mypage_today_delivery" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
                                 <div class="sb-nav-link-icon"></div>
                                 이용내역
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapse1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="mypage_same_day_delivery.html">당일 배송</a>
+                                    <a class="nav-link" href="mypage_today_delivery">당일 배송</a>
                                     <a class="nav-link" href="mypage_regular_delivery.html">정기 배송</a>
                                     <a class="nav-link" href="mypage_reservation_delivery.html">예약 배송</a>
                                 </nav>
@@ -176,29 +176,33 @@
         </div>
 
 	<div id="container_table">
-		<table class="table table-bordered">
+		<table class="table table-bordered" style="font-size:15px;">
 			<thead>
 				<tr>
-					<th scope="col" style="width: 10%">송장 번호</th>
-					<th scope="col" style="width: 20%">물품명</th>
-					<th scope="col" style="width: 10%">출고 물량</th>
-					<th scope="col" style="width: 10%">물품 종류</th>
-					<th scope="col" style="width: 10%">컨테이너</th>
+					<th scope="col" style="width: 5%">NO</th>
+					<th scope="col" style="width: 16%">물품명</th>
+					<th scope="col" style="width: 8%">출고 물량</th>
+					<th scope="col" style="width: 8%">컨테이너</th>
+					<th scope="col" style="width: 8%">컨테이너 번호</th>
+					<th scope="col" style="width: 8%">수령인</th>
+					<th scope="col" style="width: 20%">주소</th>
 					<th scope="col" style="width: 10%">배송 상태</th>
 					<th scope="col" style="width: 10%">배송비</th>
 				</tr>
 			</thead>
 			
 			<tbody>
-			<c:forEach items="${list}" var="list">
+			<c:forEach items="${list}" var="list" varStatus="status">
  			<tr>
- 				<td><c:out value="${list.td_name}"/></td>
-  				<td><c:out value="${list.td_phone}"/></td>
-				 <td><c:out value="${list.td_volume}"/></td>
- 				 <td><c:out value="${list.u_id}"/></td>
- 				 <td><c:out value="${list.td_address}"/></td>
- 				 <td><c:out value="${list.td_address}"/></td>
- 				 <td><c:out value="${list.td_address}"/></td>
+ 			<td><c:out value="${status.count}"/></td><!-- 테이블 순서 -->
+ 				<td><c:out value="${list.kind_release}"/></td><!-- 물품명 -->
+  				<td><c:out value="${list.td_volume}"/></td><!-- 물량 -->
+                 <td><c:out value="${list.container_type}"/></td><!-- 컨테이너 타입 -->
+ 				 <td><c:out value="${list.container_num}"/></td><!-- 컨테이너 번호 -->
+ 				 <td><c:out value="${list.td_name}"/></td><!-- 수령인 -->
+ 				 <td><c:out value="(${list.postcode}) ${list.td_address} ${list.u_detail_address}"/></td><!-- 주소 -->
+ 				 <td><c:out value="처리"/></td><!-- 배송 상태 -->
+ 				 <td><c:out value="${list.delivery_fee}"/></td><!-- 배송비 -->
 			</tr>
 			</c:forEach>
 			</tbody>
@@ -209,12 +213,10 @@
 			<thead>
 				<tr>
 					<th scope="col" style="width: 10%">배송 합계</th>
-					<th scope="col" style="width: 20%"></th>
-					<th scope="col" style="width: 10%"></th>
-					<th scope="col" style="width: 10%"></th>
-					<th scope="col" style="width: 10%"></th>
-					<th scope="col" style="width: 10%"></th>
-					<th scope="col" style="width: 10%">1,000,000원</th>
+					<th scope="col" style="width: 73%"></th>
+					<c:forEach items="${delivery_sum}" var="delivery_sum" varStatus="status">
+					<th scope="col" style="width: 10%"><c:out value="${delivery_sum.delivery_sum}"/>원</th>
+					</c:forEach>
 				</tr>
 		</table>
 	</div>
@@ -228,7 +230,22 @@
   </div>
   </div>
    
-  
+  <script>
+        
+		/* 배송비 계산 */
+        function calculation(){
+			first = parseInt(table.td_volume.value);
+ 			second = 1000;
+ 			
+ 			table.delivery_fee.value = first*second;
+ 			
+        	if (isNaN(table.total.value)) { // 값이 없어서 NaN값이 나올 경우
+
+        		table.total.value = 0;
+
+        		}
+        }
+        </script>
   
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>

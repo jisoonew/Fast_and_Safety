@@ -9,19 +9,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fs.service.Login_home_service;
 import com.fs.service.Today_delivery_service;
+import com.fs.vo.Login_home_VO;
 import com.fs.vo.Today_delivery_VO;
 
 @Controller
-public class Mypage_today_delivery {
-	
+public class Login_home_Cotroller {
 	@Inject
-    private Today_delivery_service service;
+    private Login_home_service service;
 	
-    @RequestMapping(value = "/mypage_today_delivery", method = RequestMethod.GET)
-    public void list(Model model) throws Exception{
-    	List<Today_delivery_VO> list = null;
-    	list = service.list();
-    	model.addAttribute("list", list);
+    @RequestMapping(value = "/mypage_information_details", method = RequestMethod.GET)
+    public void user(Model model) throws Exception{
+    	List<Login_home_VO> user = null;
+    	user = service.user();
+    	model.addAttribute("u_name", user);
     }
 }

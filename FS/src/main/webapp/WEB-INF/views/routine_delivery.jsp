@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,10 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <title>Mypage_routine_delivery</title>
+                <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="resources/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Sidebar Toggle-->
@@ -36,12 +38,12 @@
 
             <!--delivery Dropdown-->
                 <li class="nav-item dropdown2">
-                    <a class="nav-link dropdown-toggle" href="today_delivery.html" id="deliveryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="today_delivery" id="deliveryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         배송
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="deliveryDropdown">
-                        <li><a class="dropdown-item" href="today_delivery.html">당일 배송</a></li>
-                        <li><a class="dropdown-item" href="routine_delivery.html">정기 배송</a></li>
+                        <li><a class="dropdown-item" href="today_delivery">당일 배송</a></li>
+                        <li><a class="dropdown-item" href="routine_delivery">정기 배송</a></li>
                         <li><a class="dropdown-item" href="reserve_delivery.html">예약 배송</a></li>
                     </ul>
                 </li>
@@ -62,9 +64,9 @@
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="mypage_same_day_delivery.html" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="mypage_today_delivery" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="mypage_same_day_delivery.html">My Page</a></li>
+                        <li><a class="dropdown-item" href="mypage_today_delivery">My Page</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="not_login_home.html">Logout</a></li>
                     </ul>
@@ -76,7 +78,7 @@
         <form><br>
             <div class="row">
                 <div class="col-1"></div>
-                <div class="col-3"><h2> 예약 배송 신청</h2></div>
+                <div class="col-3"><h2> 정기 배송 신청</h2></div>
             </div><br><br>
 
             <div class="row">

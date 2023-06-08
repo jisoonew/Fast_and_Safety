@@ -7,13 +7,29 @@
  
 <mapper namespace="memberMapper">
 
+
     <insert id="insert_today_delivery">
-        insert into today_delivery (u_id, td_name, td_phone, td_volume, td_address) values
-                          (#{u_id}, #{td_name}, #{td_phone}, #{td_volume}, #{td_address})
+        insert into today_delivery (u_id, td_name, td_phone, td_volume, td_address, postcode, u_detail_address, kind_release, delivery_fee) values
+                          ('km1', #{td_name}, #{td_phone}, #{td_volume}, #{td_address}, #{postcode}, #{u_detail_address}, #{kind_release}, #{delivery_fee})
     </insert>
 
 	<select id="list_today_delivery" resultType="com.fs.vo.Today_delivery_VO">
-	 	select u_id, td_name, td_phone, td_volume, td_address from today_delivery
+select * from today_delivery a join kind_release b
+on a.u_id=b.u_id and a.u_id='km1' and a.kind_release=b.kind
+	</select>
+	
+	<select id="delivery_sum" resultType="com.fs.vo.Today_delivery_VO">
+	select sum(delivery_fee) as 'delivery_sum' from today_delivery a join kind_release b
+on a.u_id=b.u_id and a.u_id='km1' and a.kind_release=b.kind
+	</select>
+	
+	
+	<select id="user" resultType="com.fs.vo.Login_home_VO">
+	select * from user where u_id = 'km1'
+	</select>
+	
+		<select id="kind_release" resultType="com.fs.vo.kind_release_VO">
+	select u_id,kind,container_type,container_num from kind_release where u_id = 'km1'
 	</select>
 
 </mapper>

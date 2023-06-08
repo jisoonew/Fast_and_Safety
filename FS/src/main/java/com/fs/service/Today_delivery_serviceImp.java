@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fs.dao.Today_delivery_DAO;
+import com.fs.vo.Login_home_VO;
 import com.fs.vo.Today_delivery_VO;
+import com.fs.vo.kind_release_VO;
 
 @Service
 public class Today_delivery_serviceImp implements Today_delivery_service {
@@ -22,16 +24,33 @@ public class Today_delivery_serviceImp implements Today_delivery_service {
 	private Today_delivery_DAO dao;
 	
 	
-	// 게시글 작성
+	// today_delivery DB 삽입
 	@Override
 	public void write(Today_delivery_VO vo) throws Exception {
 		dao.write(vo);
 	}
 	
-	// 게시글 작성
+	// 게시글 출력
 	@Override
 	public List<Today_delivery_VO> list() throws Exception {
 		return dao.list();
 	}
 
+	@Override
+	public List<Login_home_VO> user() throws Exception {
+		return dao.user();
+	}
+	
+	
+	// 당일 배송의 출고 물품 출력
+	@Override
+	public List<kind_release_VO> kind_release() throws Exception {
+		return dao.kind_release();
+	}
+	
+	// 당일 배송의 총 배송비 출력
+	@Override
+	public List<Today_delivery_VO> delivery_sum() throws Exception {
+		return dao.delivery_sum();
+	}
 }

@@ -11,7 +11,7 @@
         <meta name="author" content="" />
         <title>FS</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="resources/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -78,7 +78,7 @@
         
         
         <div id="container_main_img1">
-        <img src="./img/main_img1.png" class="main_img1">
+        <img src="resources/img/main_img1.png" class="main_img1">
         <h1 class="main_image_text">Fast and safety<br>
         빠르고 안전한 물류 창고</h1>
         </div>
@@ -98,7 +98,7 @@
         <a id="main_delivery_text">배송</a>
         <div id="delivery">
         <br>
-        <img src="./img/main_delivery.png" class="main_delivery_img">
+        <img src="resources/img/main_delivery.png" class="main_delivery_img">
         <br>
         <a>FS만의 특별한 멤버십 운영으로 <br>
         효율적인 배송을 지원합니다.</a>
@@ -111,7 +111,7 @@
                 <a id="main_storage_text">창고</a>
         <div id="storage">
         <br>
-        <img src="./img/main_storage.png" class="main_storage_img">
+        <img src="resources/img/main_storage.png" class="main_storage_img">
         <br>
         <a>고객의 물류 특성에 맞는<br>
         	맞춤 창고 서비스를 제공합니다.</a>
@@ -172,7 +172,7 @@
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div>
-                            	        <img src="./img/로고.png" class="main_logo_img">
+                            	        <img src="resources/img/로고.png" class="main_logo_img">
                             	        <div id="main_bottom_text">
                                 <a>FS(주) 사업자 등록 번호 : 110-00-01011 대표자 : 박지수</a><br>
                                 <a>주소 : 경기도 의정부시 서부로 545 고객 센터 : 1588-0000</a>

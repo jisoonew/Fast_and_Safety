@@ -12,6 +12,14 @@
         insert into today_delivery (u_id, td_name, td_phone, td_volume, td_address, postcode, u_detail_address, kind_release, delivery_fee) values
                           ('km1', #{td_name}, #{td_phone}, #{td_volume}, #{td_address}, #{postcode}, #{u_detail_address}, #{kind_release}, #{delivery_fee})
     </insert>
+    
+    <insert id="insert_routine_delivery">
+        insert into routine_delivery 
+        (u_id, rd_name, rd_phone, rd_kind_release, rd_volume, rd_start, rd_cycle1, 
+        rd_cycle2, rd_delivery_fee, rd_postcode, rd_address, rd_detail_address) values
+        ('km1', #{rd_name}, #{rd_phone}, #{rd_kind_release}, #{rd_volume}, #{rd_start}, 
+        #{rd_cycle1}, #{rd_cycle2}, #{rd_delivery_fee}, #{rd_postcode}, #{rd_address}, #{rd_detail_address})
+    </insert>
 
 	<select id="list_today_delivery" resultType="com.fs.vo.Today_delivery_VO">
 select * from today_delivery a join kind_release b

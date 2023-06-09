@@ -3,6 +3,7 @@ package com.fs.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,5 +25,11 @@ public class Login_home_Cotroller {
     	List<Login_home_VO> user = null;
     	user = service.user();
     	model.addAttribute("u_name", user);
+    }
+    
+    
+    @RequestMapping(value = "/login_home")
+    public String get_home(Model model) throws Exception{
+    	return "/login_home";
     }
 }

@@ -161,17 +161,15 @@
 
         <div id="container_delivery_state">
         <select class="form-select" aria-label="Default select example" id="delivery_state_select">
-          <option value="배송 상태" selected="selected">배송 상태</option>
-        <option value="송장 번호">송장 번호</option>
-  <option value="물품명">물품명</option>
-          <option value="물품 종류">물품 종류</option>
-  <option value="배송 상태">배송 상태</option>
-    <option value="배송 합계">배송 합계</option>
+          <option value="물품명" selected="selected">물품명</option>
+        <option value="컨테이너 번호">컨테이너 번호</option>
+  <option value="수령인">수령인</option>
+          <option value="주소">주소</option>
 </select>
 
-<input class="form-control" id="delivery_state_search" type="text" placeholder="검색" aria-label="검색창">
+<input class="form-control" id="delivery_state_search" name="mypage_delivery_search" type="text" placeholder="검색" aria-label="검색창">
 
-<button type="button" id="search_dtn" class="btn btn-outline-dark">검색</button>
+<button type="submit" id="search_dtn" class="btn btn-outline-dark">검색</button>
         </div>
         </div>
 

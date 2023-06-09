@@ -170,9 +170,9 @@
  			
  			table.delivery_fee.value = first*second;
  			
-        	if (isNaN(table.total.value)) { // 값이 없어서 NaN값이 나올 경우
+        	if (isNaN(table.delivery_fee.value)) { // 값이 없어서 NaN값이 나올 경우
 
-        		table.total.value = 0;
+        		table.delivery_fee.value = 0;
 
         		}
         }

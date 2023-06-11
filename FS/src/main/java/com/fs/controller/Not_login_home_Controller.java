@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class Not_login_home_Controller {
-	@RequestMapping(value = "/not_login_home")
+	@RequestMapping(value = "/")
 public String get_home(Model model) throws Exception{
 	return "/not_login_home";
 }

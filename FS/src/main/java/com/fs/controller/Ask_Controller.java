@@ -1,0 +1,13 @@
+package com.fs.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class Ask_Controller {
+    @RequestMapping(value = "/ask")
+    public String get_home(Model model) throws Exception{
+    	return "/ask";
+    }
+}

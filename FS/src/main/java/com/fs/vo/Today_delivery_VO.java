@@ -21,6 +21,9 @@ public class Today_delivery_VO {
 	private String container_num;
 	private String delivery_sum;
 	
+	// 검색 키워드
+	private String keyword;
+	
 	public String getU_id() {
 		return u_id;
 	}
@@ -105,8 +108,17 @@ public class Today_delivery_VO {
 	public void setDelivery_sum(String delivery_sum) {
 		this.delivery_sum = delivery_sum;
 	}
+	
+	
+	
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	@Override
     public String toString() {
-        return "Today_delivery_VO [u_id=" + u_id + ", td_name=" + td_name + ", td_phone=" + td_phone + ", td_volume=" + td_volume + " , td_address=" + td_address + "]";
+        return "Today_delivery_VO [u_id=" + u_id + ", td_name=" + td_name + ", td_phone=" + td_phone + ", td_volume=" + td_volume + " , td_address=" + td_address +  " , keyword" + keyword +"]";
     }
 }

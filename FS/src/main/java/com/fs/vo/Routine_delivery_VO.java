@@ -20,6 +20,11 @@ public class Routine_delivery_VO {
 	String rd_address;
 	String rd_detail_address;
 	
+
+	String kind;
+	String container_type;
+	String container_num;
+	
 	public String getU_id() {
 		return u_id;
 	}
@@ -92,6 +97,27 @@ public class Routine_delivery_VO {
 	public void setRd_detail_address(String rd_detail_address) {
 		this.rd_detail_address = rd_detail_address;
 	}
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	public String getContainer_type() {
+		return container_type;
+	}
+	public void setContainer_type(String container_type) {
+		this.container_type = container_type;
+	}
+	public String getContainer_num() {
+		return container_num;
+	}
+	public void setContainer_num(String container_num) {
+		this.container_num = container_num;
+	}
+	
+	
+	
 	
 	
 }

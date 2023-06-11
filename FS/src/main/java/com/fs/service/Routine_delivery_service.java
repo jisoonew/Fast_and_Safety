@@ -12,6 +12,9 @@ public interface Routine_delivery_service {
 	// 삽입
 	public void routine_delivery(Routine_delivery_VO vo) throws Exception;
 	
-	// 출력
+	// 사용자 등록된 물품 출력
 	List<kind_release_VO> kind_release() throws Exception;
+	
+	// 
+	List<Routine_delivery_VO> routine_delivery_print() throws Exception;
 }

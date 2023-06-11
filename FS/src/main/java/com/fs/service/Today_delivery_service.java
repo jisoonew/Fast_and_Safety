@@ -5,6 +5,7 @@ import java.util.List;
 import com.fs.vo.Login_home_VO;
 import com.fs.vo.Today_delivery_VO;
 import com.fs.vo.kind_release_VO;
+import com.fs.vo.review_VO;
 
 public interface Today_delivery_service {
 	
@@ -20,4 +21,7 @@ public interface Today_delivery_service {
 	
 	// 당일 배송의 총 배송비 출력
 	List<Today_delivery_VO> delivery_sum() throws Exception;
+
+	List<review_VO> selectsearch(review_VO reviewvo) throws Exception;
+
 }

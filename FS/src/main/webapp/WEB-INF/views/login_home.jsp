@@ -19,39 +19,39 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="login_home.html">
+            <a class="navbar-brand ps-3" href="login_home">
                 <h1>FS</h1>
             </a>
             <!-- Company Introduction Dropdown -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <a class="navbar-brand ps-3" href="introduce.html">
+                <a class="navbar-brand ps-3" href="introduce">
                     회사 소개
                 </a>
            
             <!-- Services Dropdown -->
-                <a class="navbar-brand ps-3" href="product_storage.html">
+                <a class="navbar-brand ps-3" href="product_storage">
                     서비스
                 </a>
     
             <!-- Warehouses Dropdown -->
-                <a class="navbar-brand ps-3" href="storage_reserve.html">
+                <a class="navbar-brand ps-3" href="storage_reserve">
                     창고
                 </a>
 
             <!--delivery Dropdown-->
                 <li class="nav-item dropdown2">
-                    <a class="nav-link dropdown-toggle" href="today_delivery.html" id="deliveryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="today_delivery" id="deliveryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         배송
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="deliveryDropdown">
-                        <li><a class="dropdown-item" href="today_delivery.html">당일 배송</a></li>
-                        <li><a class="dropdown-item" href="routine_delivery.html">정기 배송</a></li>
-                        <li><a class="dropdown-item" href="reserve_delivery.html">예약 배송</a></li>
+                        <li><a class="dropdown-item" href="today_delivery">당일 배송</a></li>
+                        <li><a class="dropdown-item" href="routine_delivery">정기 배송</a></li>
+                        <li><a class="dropdown-item" href="reserve_delivery">예약 배송</a></li>
                     </ul>
                 </li>
 
             <!-- ask Dropdown -->
-                <a class="navbar-brand ps-3" href="inquiry.html">
+                <a class="navbar-brand ps-3" href="inquiry">
                     문의
                 </a>
             </ul>
@@ -66,11 +66,11 @@
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="mypage_today_delivery.jsp" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="mypage_today_delivery" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="mypage_today_delivery.jsp">My Page</a></li>
+                        <li><a class="dropdown-item" href="mypage_today_delivery">My Page</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="not_login_home.html">Logout</a></li>
+                        <li><a class="dropdown-item" href="not_login_home">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -103,7 +103,7 @@
         <a>FS만의 특별한 멤버십 운영으로 <br>
         효율적인 배송을 지원합니다.</a>
         <br>
-        <button type="button" id="main_delivery_btn" class="btn btn-outline-white" onclick="location.href='today_delivery.html'">배송하러 가기 -></button>
+        <button type="button" id="main_delivery_btn" class="btn btn-outline-white" onclick="location.href='today_delivery'">배송하러 가기 -></button>
         </div>
         </div>
         
@@ -115,7 +115,7 @@
         <br>
         <a>고객의 물류 특성에 맞는<br>
         	맞춤 창고 서비스를 제공합니다.</a>
-        <button type="button" id="main_storage_btn" class="btn btn-outline-white" onclick="location.href='storage_reserve.html'">창고보러 가기 -></button>
+        <button type="button" id="main_storage_btn" class="btn btn-outline-white" onclick="location.href='storage_reserve'">창고보러 가기 -></button>
         </div></div>
         </div>
        
@@ -124,7 +124,7 @@
         <div id="main_join">
         FS의 회원이 된다면 더 많은 서비스를 경험할 수 있습니다.
         <br>
-       	<button type="button" id="main_join_btn" class="btn btn-outline-white" onclick="location.href='register.html'">회원가입하기 -></button>
+       	<button type="button" id="main_join_btn" class="btn btn-outline-white" onclick="location.href='register'">회원가입하기 -></button>
        	</div>
         </div>
         

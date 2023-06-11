@@ -20,14 +20,6 @@ public class Login_home_Cotroller {
 	@Inject
     private Login_home_service service;
 	
-    @RequestMapping(value = "/mypage_information_details", method = RequestMethod.GET)
-    public void user(Model model) throws Exception{
-    	List<Login_home_VO> user = null;
-    	user = service.user();
-    	model.addAttribute("u_name", user);
-    }
-    
-    
     @RequestMapping(value = "/login_home")
     public String get_home(Model model) throws Exception{
     	return "/login_home";

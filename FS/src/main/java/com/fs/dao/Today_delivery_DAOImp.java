@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.fs.vo.Login_home_VO;
 import com.fs.vo.Today_delivery_VO;
 import com.fs.vo.kind_release_VO;
+import com.fs.vo.review_VO;
 
 @Repository
 public class Today_delivery_DAOImp implements Today_delivery_DAO {
@@ -51,5 +52,11 @@ public class Today_delivery_DAOImp implements Today_delivery_DAO {
     public List<Today_delivery_VO> delivery_sum() throws Exception {
         return sqlSession.selectList(namespace + ".delivery_sum");
     }
+
+	@Override
+	public List<review_VO> selectsearch(review_VO reviewvo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace + ".selectsearch");
+	}
 
 }

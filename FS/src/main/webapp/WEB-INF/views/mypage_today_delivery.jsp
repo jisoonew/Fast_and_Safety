@@ -19,22 +19,22 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="login_home.html">
+            <a class="navbar-brand ps-3" href="login_home">
                 <h1>FS</h1>
             </a>
             <!-- Company Introduction Dropdown -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <a class="navbar-brand ps-3" href="introduce.html">
+                <a class="navbar-brand ps-3" href="introduce">
                     회사 소개
                 </a>
            
             <!-- Services Dropdown -->
-                <a class="navbar-brand ps-3" href="product_storage.html">
+                <a class="navbar-brand ps-3" href="product_storage">
                     서비스
                 </a>
     
             <!-- Warehouses Dropdown -->
-                <a class="navbar-brand ps-3" href="storage_reserve.html">
+                <a class="navbar-brand ps-3" href="storage_reserve">
                     창고
                 </a>
 
@@ -46,12 +46,12 @@
                     <ul class="dropdown-menu" aria-labelledby="deliveryDropdown">
                         <li><a class="dropdown-item" href="today_delivery">당일 배송</a></li>
                         <li><a class="dropdown-item" href="routine_delivery">정기 배송</a></li>
-                        <li><a class="dropdown-item" href="reserve_delivery.html">예약 배송</a></li>
+                        <li><a class="dropdown-item" href="reserve_delivery">예약 배송</a></li>
                     </ul>
                 </li>
 
             <!-- ask Dropdown -->
-                <a class="navbar-brand ps-3" href="inquiry.html">
+                <a class="navbar-brand ps-3" href="inquiry">
                     문의
                 </a>
             </ul>
@@ -70,7 +70,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="mypage_today_delivery">My Page</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="not_login_home.html">Logout</a></li>
+                        <li><a class="dropdown-item" href="not_login_home">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -95,42 +95,42 @@
                             <div class="collapse" id="collapse1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="mypage_today_delivery">당일 배송</a>
-                                    <a class="nav-link" href="mypage_regular_delivery.html">정기 배송</a>
-                                    <a class="nav-link" href="mypage_reservation_delivery.html">예약 배송</a>
+                                    <a class="nav-link" href="mypage_regular_delivery">정기 배송</a>
+                                    <a class="nav-link" href="mypage_reserve_delivery">예약 배송</a>
                                 </nav>
                             </div>
                             
-                            <a class="nav-link" href="mypage_storage.html">
+                            <a class="nav-link" href="mypage_storage">
                                 <div class="sb-nav-link-icon"></div>
                                 MY 창고
                             </a>
                         
-                            <a class="nav-link collapsed" href="mypage_information_details.html" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                            <a class="nav-link collapsed" href="mypage_information_details" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
                                 <div class="sb-nav-link-icon"></div>
                                 회원 정보
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapse2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="mypage_information_details.html">회원 정보 상세</a>
-                                    <a class="nav-link" href="pay.html">결제 방법</a>
+                                    <a class="nav-link" href="mypage_information_details">회원 정보 상세</a>
+                                    <a class="nav-link" href="pay">결제 방법</a>
                                     
                                 </nav>
                             </div>
 
-                            <a class="nav-link collapsed" href="ask.html" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                            <a class="nav-link collapsed" href="ask" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
                                 <div class="sb-nav-link-icon"></div>
                                 Q & A
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapse3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="ask.html">1:1 문의 하기</a>
-                                    <a class="nav-link" href="ask_answer.html">문의 내역</a>
+                                    <a class="nav-link" href="ask">1:1 문의 하기</a>
+                                    <a class="nav-link" href="ask_answer">문의 내역</a>
                                 </nav>
                             </div>    
 
-                            <a class="nav-link" href="delete.html">
+                            <a class="nav-link" href="delete">
                                 <div class="sb-nav-link-icon"></div>
                                 회원 탈퇴
                             </a>
@@ -160,14 +160,14 @@
 </div>
 
         <div id="container_delivery_state">
-        <select class="form-select" aria-label="Default select example" id="delivery_state_select">
-          <option value="물품명" selected="selected">물품명</option>
-        <option value="컨테이너 번호">컨테이너 번호</option>
-  <option value="수령인">수령인</option>
-          <option value="주소">주소</option>
+        <select class="form-select" aria-label="Default select example" id="delivery_state_select" name="searchName">
+          <option value="kind_release" selected="selected">물품명</option>
+        <option value="container_num">컨테이너 번호</option>
+  <option value="td_name">수령인</option>
+          <option value="td_address">주소</option>
 </select>
 
-<input class="form-control" id="delivery_state_search" name="mypage_delivery_search" type="text" placeholder="검색" aria-label="검색창">
+<input class="form-control" id="delivery_state_search" name="searchValue" type="text" placeholder="검색" aria-label="검색창">
 
 <button type="submit" id="search_dtn" class="btn btn-outline-dark">검색</button>
         </div>

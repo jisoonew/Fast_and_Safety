@@ -17,6 +17,7 @@ import com.fs.dao.Today_delivery_DAO;
 import com.fs.vo.Login_home_VO;
 import com.fs.vo.Today_delivery_VO;
 import com.fs.vo.kind_release_VO;
+import com.fs.vo.review_VO;
 
 @Service
 public class Today_delivery_serviceImp implements Today_delivery_service {
@@ -53,4 +54,10 @@ public class Today_delivery_serviceImp implements Today_delivery_service {
 	public List<Today_delivery_VO> delivery_sum() throws Exception {
 		return dao.delivery_sum();
 	}
+	
+	// 게시글 제목 또는 작성자로 검색하기
+	@Override
+		public List<review_VO> selectsearch(review_VO reviewvo) throws Exception {
+			return dao.selectsearch(reviewvo);
+		}
 }

@@ -31,4 +31,10 @@ public class Routine_delivery_serviceImp implements Routine_delivery_service {
 	public List<kind_release_VO> kind_release() throws Exception {
 		return dao.kind_release();
 	}
+	
+	// 게시글 출력
+	@Override
+	public List<Routine_delivery_VO> routine_delivery_print() throws Exception {
+		return dao.routine_delivery_print();
+	}
 }

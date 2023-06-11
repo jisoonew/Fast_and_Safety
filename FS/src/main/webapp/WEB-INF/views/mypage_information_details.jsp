@@ -19,39 +19,39 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="login_home.html">
+            <a class="navbar-brand ps-3" href="login_home">
                 <h1>FS</h1>
             </a>
             <!-- Company Introduction Dropdown -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <a class="navbar-brand ps-3" href="introduce.html">
+                <a class="navbar-brand ps-3" href="introduce">
                     회사 소개
                 </a>
            
             <!-- Services Dropdown -->
-                <a class="navbar-brand ps-3" href="product_storage.html">
+                <a class="navbar-brand ps-3" href="product_storage">
                     서비스
                 </a>
     
             <!-- Warehouses Dropdown -->
-                <a class="navbar-brand ps-3" href="storage_reserve.html">
+                <a class="navbar-brand ps-3" href="storage_reserve">
                     창고
                 </a>
 
             <!--delivery Dropdown-->
                 <li class="nav-item dropdown2">
-                    <a class="nav-link dropdown-toggle" href="today_delivery.html" id="deliveryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="today_delivery" id="deliveryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         배송
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="deliveryDropdown">
-                        <li><a class="dropdown-item" href="today_delivery.html">당일 배송</a></li>
-                        <li><a class="dropdown-item" href="routine_delivery.html">정기 배송</a></li>
-                        <li><a class="dropdown-item" href="reserve_delivery.html">예약 배송</a></li>
+                        <li><a class="dropdown-item" href="today_delivery">당일 배송</a></li>
+                        <li><a class="dropdown-item" href="routine_delivery">정기 배송</a></li>
+                        <li><a class="dropdown-item" href="reserve_delivery">예약 배송</a></li>
                     </ul>
                 </li>
 
             <!-- ask Dropdown -->
-                <a class="navbar-brand ps-3" href="inquiry.html">
+                <a class="navbar-brand ps-3" href="inquiry">
                     문의
                 </a>
             </ul>
@@ -66,11 +66,11 @@
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="mypage_same_day_delivery.html" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="mypage_today_delivery" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="mypage_same_day_delivery.html">My Page</a></li>
+                        <li><a class="dropdown-item" href="mypage_today_delivery">My Page</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="not_login_home.html">Logout</a></li>
+                        <li><a class="dropdown-item" href="not_login_home">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -86,50 +86,50 @@
                             <div class="sb-sidenav-menu-heading">
                                 <h3>MY PAGE</h3>
                             </div>
-                            <a class="nav-link collapsed" href="mypage_same_day_delivery.html" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                            <a class="nav-link collapsed" href="mypage_today_delivery" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
                                 <div class="sb-nav-link-icon"></div>
                                 이용내역
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapse1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="mypage_same_day_delivery.html">당일 배송</a>
-                                    <a class="nav-link" href="mypage_regular_delivery.html">정기 배송</a>
-                                    <a class="nav-link" href="mypage_reservation_delivery.html">예약 배송</a>
+                                    <a class="nav-link" href="mypage_today_delivery">당일 배송</a>
+                                    <a class="nav-link" href="mypage_regular_delivery">정기 배송</a>
+                                    <a class="nav-link" href="mypage_reserve_delivery">예약 배송</a>
                                 </nav>
                             </div>
                             
-                            <a class="nav-link" href="mypage_storage.html">
+                            <a class="nav-link" href="mypage_storage">
                                 <div class="sb-nav-link-icon"></div>
                                 MY 창고
                             </a>
                         
-                            <a class="nav-link collapsed" href="mypage_information_details.html" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                            <a class="nav-link collapsed" href="mypage_information_details" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
                                 <div class="sb-nav-link-icon"></div>
                                 회원 정보
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapse2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="mypage_information_details.html">회원 정보 상세</a>
-                                    <a class="nav-link" href="pay.html">결제 방법</a>
+                                    <a class="nav-link" href="mypage_information_details">회원 정보 상세</a>
+                                    <a class="nav-link" href="pay">결제 방법</a>
                                     
                                 </nav>
                             </div>
 
-                            <a class="nav-link collapsed" href="ask.html" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                            <a class="nav-link collapsed" href="ask" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
                                 <div class="sb-nav-link-icon"></div>
                                 Q & A
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapse3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="ask.html">1:1 문의 하기</a>
-                                    <a class="nav-link" href="ask_answer.html">문의 내역</a>
+                                    <a class="nav-link" href="ask">1:1 문의 하기</a>
+                                    <a class="nav-link" href="ask_answer">문의 내역</a>
                                 </nav>
                             </div>    
 
-                            <a class="nav-link" href="tables.html">
+                            <a class="nav-link" href="tables">
                                 <div class="sb-nav-link-icon"></div>
                                 회원 탈퇴
                             </a>
@@ -140,33 +140,34 @@
         </div>
         <!-- 여기까지 사이드바 -->
         
-        
+        <form>
         <div id="container_content">
         
         <h1 class="mt-4" id="content_title">회원 정보</h1>
         
         <div id="container_content_details">
 
-        <c:forEach items="${u_name}" var="u_name">
-        <div id="grade_content"><a id="grade_details">이름</a><a id="result_grade"><c:out value="${u_name.u_name}" /></a></div>
-        </c:forEach>
+        <c:forEach items="${user}" var="user">
+        <div id="grade_content"><a id="grade_details">이름</a><a id="result_grade"><c:out value="${user.u_name}" /></a></div>
+        
         <hr>
-        <div id="grade_content"><a id="grade_details">등급</a><a id="result_grade">회원</a></div>
+        <div id="grade_content"><a id="grade_details">등급</a><a id="result_grade"><c:out value="${user.u_member}" /></a></div>
         <hr>
-        <div id="company_content"><a id="company_details">회사명</a><a id="result_company">하늘 어린이집</a><button type="button" id="result_btn1" class="btn btn-outline-dark">수정</button></div>
+        <div id="company_content"><a id="company_details">회사명</a><a id="result_company"><c:out value="${user.u_company_name}" /></a><button type="button" id="result_btn1" class="btn btn-outline-dark">수정</button></div>
         <hr>
-        <div id="address_content"><a id="address_details">주소</a><a id="result_address">서울시 광진구</a><button type="button" id="result_btn2" class="btn btn-outline-dark">수정</button></div>
+        <div id="address_content"><a id="address_details">주소</a><a id="result_address"><c:out value="${user.u_company_address}" /></a><button type="button" id="result_btn2" class="btn btn-outline-dark">수정</button></div>
         <hr>
-        <div id="id_content"><a id="id_details">아이디</a><a id="result_id">jisoo123</a><button type="button" id="result_btn3" class="btn btn-outline-dark">수정</button></div>
+        <div id="id_content"><a id="id_details">아이디</a><a id="result_id"><c:out value="${user.u_id}" /></a><button type="button" id="result_btn3" class="btn btn-outline-dark">수정</button></div>
         <hr>
-        <div id="num_content"><a id="num_details">전화번호</a><a id="result_num">010-1234-1235</a><button type="button" id="result_btn4" class="btn btn-outline-dark">수정</button></div>
+        <div id="num_content"><a id="num_details">전화번호</a><a id="result_num"><c:out value="${user.u_phone}" /></a><button type="button" id="result_btn4" class="btn btn-outline-dark">수정</button></div>
         <hr>
-        <div id="email_content"><a id="email_details">이메일</a><a id="result_email">pjsu200@naver.com</a></div>
+        <div id="email_content"><a id="email_details">이메일</a><a id="result_email"><c:out value="${user.u_email}" /></a></div>
         <div id="pw_btn"><button type="button" id="pw_btn_details" class="btn btn-outline-dark"><a href="mypage_pw_change.html" >비밀번호 변경</a></button></div>
+        </c:forEach>
         </div>
         </div>
         
-
+</form>
 
 
 

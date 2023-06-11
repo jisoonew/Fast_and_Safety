@@ -20,10 +20,21 @@
         ('km1', #{rd_name}, #{rd_phone}, #{rd_kind_release}, #{rd_volume}, #{rd_start}, 
         #{rd_cycle1}, #{rd_cycle2}, #{rd_delivery_fee}, #{rd_postcode}, #{rd_address}, #{rd_detail_address})
     </insert>
+    
+    <select id="list_routine_delivery" resultType="com.fs.vo.Routine_delivery_VO">
+    select * from routine_delivery a join kind_release b
+    on a.u_id=b.u_id and a.u_id='km1' and a.rd_kind_release=b.kind
+    </select>
 
 	<select id="list_today_delivery" resultType="com.fs.vo.Today_delivery_VO">
 select * from today_delivery a join kind_release b
 on a.u_id=b.u_id and a.u_id='km1' and a.kind_release=b.kind
+	</select>
+	
+	<!-- 당일 배송 검색 기능 -->
+		<select id="selectsearch" resultType="com.fs.vo.review_VO">
+select * from today_delivery a join kind_release b
+on a.u_id=b.u_id and a.u_id='km1' and a.kind_release=b.kind where ${searchName} like concat('%',#{searchValue},'%') <!-- #은 데이터값 -->
 	</select>
 	
 	<select id="delivery_sum" resultType="com.fs.vo.Today_delivery_VO">

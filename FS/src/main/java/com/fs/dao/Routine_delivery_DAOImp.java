@@ -32,4 +32,10 @@ public class Routine_delivery_DAOImp implements Routine_delivery_DAO {
     public List<kind_release_VO> kind_release() throws Exception {
         return sqlSession.selectList(namespace + ".kind_release");
     }
+    
+    // 데이터 출력
+    @Override
+    public List<Routine_delivery_VO> routine_delivery_print() throws Exception {
+        return sqlSession.selectList(namespace + ".list_routine_delivery");
+    }
 }

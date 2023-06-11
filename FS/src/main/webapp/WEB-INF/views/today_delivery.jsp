@@ -23,22 +23,22 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="login_home.html">
+            <a class="navbar-brand ps-3" href="login_home">
                 <h1>FS</h1>
             </a>
             <!-- Company Introduction Dropdown -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <a class="navbar-brand ps-3" href="introduce.html">
+                <a class="navbar-brand ps-3" href="introduce">
                     회사 소개
                 </a>
            
             <!-- Services Dropdown -->
-                <a class="navbar-brand ps-3" href="product_storage.html">
+                <a class="navbar-brand ps-3" href="product_storage">
                     서비스
                 </a>
     
             <!-- Warehouses Dropdown -->
-                <a class="navbar-brand ps-3" href="storage_reserve.html">
+                <a class="navbar-brand ps-3" href="storage_reserve">
                     창고
                 </a>
 
@@ -50,12 +50,12 @@
                     <ul class="dropdown-menu" aria-labelledby="deliveryDropdown">
                         <li><a class="dropdown-item" href="today_delivery">당일 배송</a></li>
                         <li><a class="dropdown-item" href="routine_delivery">정기 배송</a></li>
-                        <li><a class="dropdown-item" href="reserve_delivery.html">예약 배송</a></li>
+                        <li><a class="dropdown-item" href="reserve_delivery">예약 배송</a></li>
                     </ul>
                 </li>
 
             <!-- ask Dropdown -->
-                <a class="navbar-brand ps-3" href="inquiry.html">
+                <a class="navbar-brand ps-3" href="inquiry">
                     문의
                 </a>
             </ul>
@@ -74,7 +74,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="mypage_today_delivery">My Page</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="not_login_home.html">Logout</a></li>
+                        <li><a class="dropdown-item" href="not_login_home">Logout</a></li>
                     </ul>
                 </li>
             </ul>

@@ -1,0 +1,72 @@
+@charset "EUC-KR";
+
+#form {
+  margin-left: 320px;
+  margin-top: 110px;
+}
+
+#form {
+  float: left;
+  margin-top: 50px;
+  height: 500px;
+}
+
+
+
+#pw_text1 {
+
+  color: blue;
+  font-size: 16px;
+}
+
+#pw_text2 {
+  color: red;
+  font-size: 16px;
+}
+
+#pw_text3 {
+  color: red;
+  font-size: 16px;
+}
+
+#pw_text4 {
+  font-size: 16px;
+}
+
+#pw_text5 {
+  font-size: 16px;
+}
+
+#pw_change1 {
+  margin-bottom: 10px;
+}
+
+#pw_change2 {
+  margin-top: 10px;
+}
+
+#container_pw_text {
+  margin-top: 20px;
+  width: 360px;
+}
+
+#pw_text_input1 {
+  margin-top: 30px;
+}
+
+#pw_text_input2 {
+  margin-top: 5px;
+}
+
+#container_pw_btn {
+  margin-top: 30px;
+}
+
+#check_dtn {
+  margin-left: 120px;
+  float: left;
+}
+
+#cencle_dtn {
+  float: left;
+}

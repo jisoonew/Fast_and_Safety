@@ -112,7 +112,9 @@ public class NavController {
     	model.addAttribute("user", user);
     	HttpSession session = request.getSession();
     	session.getAttribute("session_ID");
+    	session.getAttribute("session_phone");
     	System.out.println("수령인"+session.getAttribute("session_ID"));
+    	System.out.println("수령인 번호"+session.getAttribute("session_phone"));
     	
     	List<kind_release_VO> kind_release = null;
     	kind_release = TDservice.kind_release();

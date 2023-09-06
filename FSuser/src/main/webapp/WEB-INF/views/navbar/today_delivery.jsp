@@ -99,9 +99,9 @@
             <div class="col-1">
                 <h4>연락처</h4>
             </div>
-            <c:forEach items="${user}" var="user">
+            <c:forEach items="${session_phone}" var="session_phone">
                 <div class="col-2"> <input type="text" oninput="hypenTel(this)" name="td_phone" maxlength="13"
-                        value="${user.u_phone}"></div>
+                        value="${session_phone}"></div>
             </c:forEach>
         </div><br><br><br>
 

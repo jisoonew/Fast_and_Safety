@@ -131,10 +131,10 @@ public class UserController {
                 lvo.setU_pw("");                    // 인코딩된 비밀번호 정보 지움
                 session.setAttribute("user", lvo);  // session에 사용자의 정보 저장
                 String session_ID = lvo.getU_id(); 
+                String session_phone = lvo.getU_phone();
                 session.setAttribute("session_ID",session_ID);
-				// 세션 아이디 출력
-                System.out.println(lvo.getU_id());
-
+                session.setAttribute("session_phone",session_phone);
+				
                 return "redirect:/main_login";      // 메인페이지 이동
                 
                 

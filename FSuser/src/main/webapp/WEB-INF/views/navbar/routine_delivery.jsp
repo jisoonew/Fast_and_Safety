@@ -63,6 +63,11 @@
             </a>
         </ul>
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <c:if test="${ user != null }">
+    			<div class="login_success_area">
+        			<span style="color: black; font-size: 20px;">${name} 님</span>
+    			</div>
+			</c:if>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="mypage_today_delivery" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -77,7 +82,7 @@
         </ul>
     </nav>
 
-    <form name="table" role="form" method="post" action="/routine_delivery"><br>
+    <form name="table" role="form" method="post" action="/navbar/routine_delivery"><br>
         <div class="row">
             <div class="col-1"></div>
             <div class="col-3">
@@ -90,12 +95,12 @@
             <div class="col-1">
                 <h4>수령인</h4>
             </div>
-            <div class="col-2"><input type="text" name="rd_name"></div>
+            <div class="col-2"><input type="text" name="rd_name" value="${name}"></div>
             <div class="col-1"></div>
             <div class="col-1">
                 <h4>연락처</h4>
             </div>
-            <div class="col-2"> <input type="text" oninput="hypenTel(this)" maxlength="13" name="rd_phone"></div>
+            <div class="col-2"> <input type="text" oninput="hypenTel(this)" maxlength="13" name="rd_phone" value="${session_phone}"></div>
         </div><br><br><br>
 
         <div class="row">
@@ -134,23 +139,26 @@
                 <h4>배송 주기</h4>
             </div>
             <div class="col-2">
-                <input type="number" class="rd_num" name="rd_cycle1">
-                <select name="rd_cycle2" id="rd_cycle">
+                <select name="rd_cycle" id="rd_cycle">
                     <option value="">선택</option>
-                    <option value="day">일</option>
-                    <option value="week">주</option>
-                    <option value="month">개월</option>
+                    <option value="everyday">매일</option>
+                    <option value="everyweek">매주</option>
+                    <option value="2weeks">2주</option>
+                    <option value="3weeks">3주</option>
+                    <option value="4weeks">4주</option>
+                    <option value="everymonth">매월</option>
+                    <option value="everymonth">2개월</option>
+                    <option value="everymonth">3개월</option>
+                    <option value="everymonth">4개월</option>
+                    <option value="everymonth">5개월</option>
+                    <option value="everymonth">6개월</option>
+                    <option value="everymonth">1년</option>
                 </select>
             </div>
         </div><br><br>
 
         <div class="row">
             <div class="col-2"></div>
-            <div class="col-1" for="postcode">
-                <h4>우편번호 </h4>
-            </div>
-            <div class="col-2"><input type="text" id="rd_postcode" name="rd_postcode" class="rd_address_input_1"
-                    readonly></div>
             <div class="col-2"><button type="button" onclick="execution_daum_address()">우편번호 검색</button><br></div>
         </div>
 
@@ -161,7 +169,7 @@
             <div class="col-1" for="postcode">
                 <h5>주소 </h5>
             </div>
-            <div class="col-3"><input type="text" id="rd_address" name="rd_address" class="rd_address_input_2"
+            <div class="col-3"><input type="text" id="rd_address" name="rd_address" class="rd_address_input_2" value="${address}"
                     readonly><br></div>
         </div>
 
@@ -171,7 +179,7 @@
             <div class="col-1" for="postcode">
                 <h5>상세주소 </h5>
             </div>
-            <div class="col-3"><input type="text" id="rd_detail_address" name="rd_detail_address"
+            <div class="col-3"><input type="text" id="rd_detail_address" name="rd_detail_address" value="${u_detail_address}"
                     class="rd_address_input_3"><br></div>
         </div><br><br>
 
@@ -249,24 +257,34 @@
                         if (extraAddr !== '') {
                             extraAddr = ' (' + extraAddr + ')';
                         }
+                        // 조합된 참고항목을 해당 필드에 넣는다.
+                        /* document.getElementById("sample6_extraAddress").value = extraAddr; */
+
                         // 주소변수 문자열과 참고항목 문자열 합치기
                         addr += extraAddr;
 
                     } else {
+                        /* document.getElementById("sample6_extraAddress").value = ''; */
                         addr += ' ';
                     }
 
                     // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                    $(".rd_address_input_1").val(data.zonecode);
+                    /*      document.getElementById('sample6_postcode').value = data.zonecode;
+                         document.getElementById("sample6_address").value = addr; */
+
+                    //$(".address_input_1").val(data.zonecode);
                     //$("[name=memberAddr1]").val(data.zonecode);    // 대체가능
                     $(".rd_address_input_2").val(addr);
                     //$("[name=memberAddr2]").val(addr);            // 대체가능
+
                     // 커서를 상세주소 필드로 이동한다.
+                    /* document.getElementById("sample6_detailAddress").focus(); */
                     // 상세주소 입력란 disabled 속성 변경 및 커서를 상세주소 필드로 이동한다.
-                    $(".rd_address_input_3").attr("readonly", false);
-                    $(".rd_address_input_3").focus();
+                    //$(".address_input_2").attr("readonly",false);
+                    $(".address_input_2").focus();
                 }
             }).open();
+        });
     </script>
     
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>

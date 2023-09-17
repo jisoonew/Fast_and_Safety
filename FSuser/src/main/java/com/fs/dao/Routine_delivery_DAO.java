@@ -2,6 +2,7 @@ package com.fs.dao;
 
 import java.util.List;
 
+import com.fs.vo.Login_home_VO;
 import com.fs.vo.Routine_delivery_VO;
 import com.fs.vo.kind_release_VO;
 
@@ -16,4 +17,6 @@ public interface Routine_delivery_DAO {
 	// 정기 배송 출력
 	public List<Routine_delivery_VO> routine_delivery_print() throws Exception;
 	
+	// 당일 배송 수령인 이름 출력
+	public List<Login_home_VO> user() throws Exception;
 }

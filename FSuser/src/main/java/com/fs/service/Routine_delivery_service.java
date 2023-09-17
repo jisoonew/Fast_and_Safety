@@ -17,4 +17,7 @@ public interface Routine_delivery_service {
 	
 	// 
 	List<Routine_delivery_VO> routine_delivery_print() throws Exception;
+	
+	List<Login_home_VO> user() throws Exception;
+
 }

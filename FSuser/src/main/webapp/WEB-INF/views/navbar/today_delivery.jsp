@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="java.util.Date" %>
+
+<%@page import="java.text.SimpleDateFormat" %>
 <!doctype html>
 <html>
 
@@ -62,6 +65,11 @@
             </a>
         </ul>
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        			<c:if test="${ user != null }">
+    			<div class="login_success_area">
+        			<span style="color: black; font-size: 20px;">${name} 님</span>
+    			</div>
+			</c:if>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="mypage_today_delivery" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -76,7 +84,7 @@
         </ul>
     </nav>
 
-    <form name="table" class="pt-5" role="form" method="post" action="/today_delivery"><br>
+    <form name="table" class="pt-5" role="form" method="post" action="/navbar/today_delivery"><br>
         <div class="row pt-5">
             <div class="col-1"></div>
             <div class="col-3">
@@ -91,8 +99,8 @@
             </div>
             
             <!-- session 사용자 이름 출력 -->
-            <c:forEach items="${session_ID}" var="session_ID">
-                <div class="col-2"><input type="text" name="td_name" value="${session_ID}"></div>
+            <c:forEach items="${name}" var="name">
+                <div class="col-2"><input type="text" name="td_name" value="${name}"></div>
             </c:forEach>
 
             <div class="col-1"></div>
@@ -111,17 +119,15 @@
                 <h4>출고 물품</h4>
             </div>
             <div class="col-2">
-                <select name="kind_release" id="d_product">
-
+<select name="kind_release" id="d_product">
+                    
                     <option>물품선택</option>
-
+                    
                     <c:forEach items="${kind_release}" var="kind_release">
-                        <option>
-                            <c:out value="${kind_release.kind}" />
-                        </option>
+                    <option><c:out value="${kind_release.kind}"/></option>
                     </c:forEach>
-
-                </select>
+                    
+                    </select>
             </div>
             <div class="col-1"></div>
             <div class="col-1">
@@ -129,37 +135,6 @@
             </div>
             <div class="col-2"><input type="text" name="td_volume" id='td_volume' onKeyUp=calculation();> PLT</div>
         </div><br><br><br>
-
-        <c:forEach items="${user}" var="user">
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1">
-                    <h4>우편번호 </h4>
-                </div>
-                <div class="col-2"><input type="text" id="postcode" class="address_input_1" name="postcode"
-                        value="${user.postcode}"></div>
-                <div class="col-2"><button type="button" onclick="execution_daum_address()">우편번호 검색</button><br></div>
-
-            </div>
-
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1">
-                    <h5>주소 </h5>
-                </div>
-                <div class="col-6"><input type="text" id="address" class="address_input_2" name="td_address"
-                        value="${user.u_company_address}"><br></div>
-            </div>
-
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-1">
-                    <h5>상세주소 </h5>
-                </div>
-                <div class="col-5"><input type="text" id="detailAddress" class="address_input_3" name="u_detail_address"
-                        value="${user.u_detail_address}"><br></div>
-            </div><br><br><br>
-        </c:forEach>
 
         <div class="row">
             <div class="col-4"></div>
@@ -172,6 +147,20 @@
                         readonly><label>원</label></h5>
             </div>
         </div><br><br>
+        
+        <%
+        Date now = new Date();
+        SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
+
+        String today = sf.format(now);
+
+sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+today = sf.format(now);
+
+%>
+
+<input type='hidden' name='td_date' value = "<%=today %>"><br>
 
         <div class="row">
             <div class="col-2"></div>

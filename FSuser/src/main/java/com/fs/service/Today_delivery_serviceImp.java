@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fs.dao.Today_delivery_DAO;
+import com.fs.mapper.memberMapper;
 import com.fs.vo.Login_home_VO;
 import com.fs.vo.Today_delivery_VO;
 import com.fs.vo.kind_release_VO;
@@ -31,10 +32,10 @@ public class Today_delivery_serviceImp implements Today_delivery_service {
 		dao.write(vo);
 	}
 	
-	// 게시글 출력
+	// 마이페이지 당일 배송 목록 출력
 	@Override
-	public List<Today_delivery_VO> list() throws Exception {
-		return dao.list();
+	public List<Today_delivery_VO> list(String session_ID) {
+		return dao.list(session_ID);
 	}
 
 	@Override
@@ -45,8 +46,8 @@ public class Today_delivery_serviceImp implements Today_delivery_service {
 	
 	// 당일 배송의 출고 물품 출력
 	@Override
-	public List<kind_release_VO> kind_release() throws Exception {
-		return dao.kind_release();
+	public List<kind_release_VO> kind_release(String session_ID) throws Exception {
+		return dao.kind_release(session_ID);
 	}
 	
 	// 당일 배송의 총 배송비 출력

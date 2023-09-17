@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fs.mapper.memberMapper;
 import com.fs.service.Login_home_service;
 import com.fs.service.Routine_delivery_service;
 import com.fs.service.Today_delivery_service;
@@ -34,30 +37,25 @@ public class MypageController {
 	@Inject
     private Today_delivery_service TDservice;
 	
-	//마이페이지 - 당일 배송
-	/*
-	@RequestMapping(value = "/today_delivery",  method = RequestMethod.GET)
-	public void MPtoday_deliveryGET() {
-		
-		//logger.info("메인 페이지 진입 (NOT LOGIN)");
-		
-	}
-	*/
+	@Inject
+    private memberMapper mapper;
 	
-	// DB 내용 출력
-    @RequestMapping(value = "today_delivery", method = RequestMethod.GET)
-    public void TDlist(Model model) throws Exception{
-    	List<Today_delivery_VO> list = null;
-    	list = TDservice.list();
+	
+	// 마이페이지 당일 배송 목록 출력
+    @RequestMapping(value = "/today_delivery", method = RequestMethod.GET)
+    public String TDlist(Model model, Today_delivery_VO vo, HttpServletRequest request) throws Exception{
+    	HttpSession session = request.getSession();
+    	String sessionID = (String) session.getAttribute("session_ID");
+    	List<Today_delivery_VO> list = TDservice.list(sessionID);
     	model.addAttribute("list", list);
     	
-    	List<Today_delivery_VO> delivery_sum = null;
-    	delivery_sum = TDservice.delivery_sum();
+    	List<Today_delivery_VO> delivery_sum = TDservice.delivery_sum();
     	model.addAttribute("delivery_sum", delivery_sum);
+		return "/mypage/today_delivery";
     }
     
     // today_delivery DB 삽입
-    @RequestMapping(value = "today_delivery", method = RequestMethod.POST)
+    @RequestMapping(value = "/today_delivery", method = RequestMethod.POST)
     public String selectsearch(review_VO vo, HttpServletRequest request) throws Exception{
 
     	TDservice.selectsearch(vo);

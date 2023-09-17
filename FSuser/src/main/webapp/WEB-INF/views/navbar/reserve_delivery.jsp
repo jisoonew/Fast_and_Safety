@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
 <html>
 
@@ -61,6 +63,11 @@
             </a>
         </ul>
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <c:if test="${ user != null }">
+    			<div class="login_success_area">
+        			<span style="color: black; font-size: 20px;">${name} 님</span>
+    			</div>
+			</c:if>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="mypage_today_delivery" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -75,7 +82,7 @@
         </ul>
     </nav>
 
-    <form><br>
+    <form name="table" role="form" method="post" action="/navbar/reserve_delivery"><br>
         <div class="row">
             <div class="col-1"></div>
             <div class="col-3">
@@ -88,12 +95,12 @@
             <div class="col-1">
                 <h4>수령인</h4>
             </div>
-            <div class="col-2"><input type="text"></div>
+            <div class="col-2"><input type="text" name="red_name" value="${name}"></div>
             <div class="col-1"></div>
             <div class="col-1">
                 <h4>연락처</h4>
             </div>
-            <div class="col-2"> <input type="text" oninput="hypenTel(this)" maxlength="13"></div>
+            <div class="col-2"> <input type="text" oninput="hypenTel(this)" maxlength="13" name="red_phone" value="${session_phone}"></div>
         </div><br><br><br>
 
         <div class="row">
@@ -102,18 +109,20 @@
                 <h4>출고 물품</h4>
             </div>
             <div class="col-2">
-                <select name="d_product" id="d_product">
-                    <option value="">물품선택</option>
-                    <option value="학생">아이스크림</option>
-                    <option value="회사원">우유</option>
-                    <option value="기타">두유</option>
+                <select name="red_kind_release" id="d_product">
+                    <option>물품선택</option>
+					<c:forEach items="${kind_release}" var="kind_release">
+                        <option>
+                            <c:out value="${kind_release.kind}" />
+                        </option>
+                    </c:forEach>
                 </select>
             </div>
             <div class="col-1"></div>
             <div class="col-1">
                 <h4>출고 물량</h4>
             </div>
-            <div class="col-2"><input type="text"> PLT</div>
+            <div class="col-2"><input type="text" name="red_volume" id="red_volume" > PLT</div>
         </div><br><br>
 
         <div class="row">
@@ -121,15 +130,11 @@
             <div class="col-1" for="postcode">
                 <h5>배송 날짜 </h5>
             </div>
-            <div class="col-5"> <input type="text" id="datepicker" placeholder="날짜 선택"></div>
+            <div class="col-5"><input type="date" id="date" max="2033-06-01" min="2023-06-01" name="red_delivery_date" placeholder="날짜 선택"></div>
         </div><br><br>
 
         <div class="row">
             <div class="col-2"></div>
-            <div class="col-1" for="postcode">
-                <h4>우편번호 </h4>
-            </div>
-            <div class="col-2"><input type="text" id="postcode" name="postcode" readonly></div>
             <div class="col-2"><button type="button" onclick="execution_daum_address()">우편번호 검색</button><br></div>
         </div>
 
@@ -138,7 +143,7 @@
             <div class="col-1" for="postcode">
                 <h5>주소 </h5>
             </div>
-            <div class="col-4"><input type="text" id="address" name="address" readonly><br></div>
+            <div class="col-4"><input type="text" id="address" name="red_address" class="red_address_input" value="${address}" readonly><br></div>
         </div>
 
         <div class="row">
@@ -146,7 +151,7 @@
             <div class="col-1" for="postcode">
                 <h5>상세주소 </h5>
             </div>
-            <div class="col-4"><input type="text" id="detailAddress" name="detailAddress"><br></div>
+            <div class="col-4"><input type="text" id="detailAddress" name="red_deta" value="${u_detail_address}"><br></div>
         </div><br><br>
 
         <div class="row">
@@ -156,7 +161,7 @@
             </div>
             <div class="col-1"></div>
             <div class="col-4">
-                <h5><label>-----원</label></h5>
+                <h5><input type='text' name="red_delivery_fee" size='20'><label>원</label></h5>
             </div>
         </div><br><br>
 
@@ -174,7 +179,17 @@
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     
     <script>
-    /* 다음 주소 연동 */
+    /* 배송비 계산 */
+        $('#red_volume').keyup(function () {
+            first = parseInt(table.red_volume.value);
+            second = 1000;
+            table.red_delivery_fee.value = first * second;
+            if (isNaN(table.red_delivery_fee.value)) { // 값이 없어서 NaN값이 나올 경우
+                table.red_delivery_fee.value = 0;
+            }
+        });
+
+    
     function execution_daum_address() {
         new daum.Postcode({
             oncomplete: function (data) {
@@ -207,24 +222,39 @@
                     if (extraAddr !== '') {
                         extraAddr = ' (' + extraAddr + ')';
                     }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    /* document.getElementById("sample6_extraAddress").value = extraAddr; */
+
                     // 주소변수 문자열과 참고항목 문자열 합치기
                     addr += extraAddr;
 
                 } else {
+                    /* document.getElementById("sample6_extraAddress").value = ''; */
                     addr += ' ';
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                $(".rd_address_input_1").val(data.zonecode);
+                /*      document.getElementById('sample6_postcode').value = data.zonecode;
+                     document.getElementById("sample6_address").value = addr; */
+
+                //$(".address_input_1").val(data.zonecode);
                 //$("[name=memberAddr1]").val(data.zonecode);    // 대체가능
                 $(".rd_address_input_2").val(addr);
                 //$("[name=memberAddr2]").val(addr);            // 대체가능
+
                 // 커서를 상세주소 필드로 이동한다.
+                /* document.getElementById("sample6_detailAddress").focus(); */
                 // 상세주소 입력란 disabled 속성 변경 및 커서를 상세주소 필드로 이동한다.
-                $(".rd_address_input_3").attr("readonly", false);
-                $(".rd_address_input_3").focus();
+                //$(".address_input_2").attr("readonly",false);
+                $(".address_input_2").focus();
             }
         }).open();
+    };
+
+    
+ // '우편번호 검색' 버튼에 클릭 이벤트 리스너 추가
+    var daumButton = document.querySelector('.rd_address_input_2');
+    daumButton.addEventListener('click', execution_daum_address);
     </script>
     
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>

@@ -14,6 +14,7 @@ public class Today_delivery_VO {
 	private String u_detail_address;
 	private String kind_release;
 	private int delivery_fee;
+	private String td_date;
 	
 	private String kind;
 	private String container_type;
@@ -97,6 +98,13 @@ public class Today_delivery_VO {
 	
 	
 	
+	
+	public String getTd_date() {
+		return td_date;
+	}
+	public void setTd_date(String td_date) {
+		this.td_date = td_date;
+	}
 	public String getKind() {
 		return kind;
 	}

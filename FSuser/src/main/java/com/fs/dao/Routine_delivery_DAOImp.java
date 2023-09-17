@@ -1,12 +1,15 @@
 package com.fs.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.fs.vo.Login_home_VO;
 import com.fs.vo.Routine_delivery_VO;
 import com.fs.vo.Today_delivery_VO;
 import com.fs.vo.kind_release_VO;
@@ -37,5 +40,11 @@ public class Routine_delivery_DAOImp implements Routine_delivery_DAO {
     @Override
     public List<Routine_delivery_VO> routine_delivery_print() throws Exception {
         return sqlSession.selectList(namespace + ".list_routine_delivery");
+    }
+    
+    // 당일 배송 수령인 이름 출력
+    @Override
+    public List<Login_home_VO> user() throws Exception {
+        return sqlSession.selectList(namespace + ".user");
     }
 }

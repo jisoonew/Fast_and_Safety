@@ -37,4 +37,10 @@ public class Routine_delivery_serviceImp implements Routine_delivery_service {
 	public List<Routine_delivery_VO> routine_delivery_print() throws Exception {
 		return dao.routine_delivery_print();
 	}
+	
+	
+	@Override
+	public List<Login_home_VO> user() throws Exception {
+		return dao.user();
+	}
 }

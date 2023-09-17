@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -89,7 +91,7 @@ public class UserController {
 	
     /* 로그인 */
     @RequestMapping(value="login", method=RequestMethod.POST)
-    public String loginPOST(HttpServletRequest request,UserVO user, RedirectAttributes rttr) throws Exception{
+    public String loginPOST(HttpServletRequest request,UserVO user, RedirectAttributes rttr,Model model) throws Exception{
         
 		/*
 		 * System.out.println("login 메서드 진입"); System.out.println("전달된 데이터 : " + user);
@@ -132,8 +134,15 @@ public class UserController {
                 session.setAttribute("user", lvo);  // session에 사용자의 정보 저장
                 String session_ID = lvo.getU_id(); 
                 String session_phone = lvo.getU_phone();
+                String session_name = lvo.getU_name();
+                String session_company_address = lvo.getU_company_address();
+                String u_detail_address = lvo.getU_detail_address();
+
                 session.setAttribute("session_ID",session_ID);
                 session.setAttribute("session_phone",session_phone);
+                session.setAttribute("name",session_name);
+                session.setAttribute("address",session_company_address);
+                session.setAttribute("u_detail_address",u_detail_address);
 				
                 return "redirect:/main_login";      // 메인페이지 이동
                 

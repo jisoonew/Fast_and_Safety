@@ -1,5 +1,6 @@
 package com.fs.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,10 +30,10 @@ public class Today_delivery_DAOImp implements Today_delivery_DAO {
         sqlSession.insert(namespace+".insert_today_delivery", vo);
     }
     
-    // 출력
+    // 마이페이지 당일 배송 출력
     @Override
-    public List<Today_delivery_VO> list() throws Exception {
-        return sqlSession.selectList(namespace + ".list_today_delivery");
+    public List<Today_delivery_VO> list(String session_ID) {
+        return sqlSession.selectList(namespace + ".list_today_delivery", session_ID);
     }
     
  // 당일 배송 수령인 이름 출력
@@ -43,8 +44,10 @@ public class Today_delivery_DAOImp implements Today_delivery_DAO {
     
     // 당일 배송 출고 물품 출력
     @Override
-    public List<kind_release_VO> kind_release() throws Exception {
-        return sqlSession.selectList(namespace + ".kind_release");
+    public List<kind_release_VO> kind_release(String session_ID) throws Exception {
+    	Map<String, String> paramMap = new HashMap<>();
+        paramMap.put("session_ID", session_ID);
+        return sqlSession.selectList(namespace + ".kind_release", paramMap);
     }
     
     // 당일 배송 총 배송비 출력

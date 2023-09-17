@@ -8,10 +8,8 @@ public class Routine_delivery_VO {
 	String rd_kind_release;
 	int rd_volume;
 	String rd_start;
-	int rd_cycle1;
-	String rd_cycle2;
+	String rd_cycle;
 	int rd_delivery_fee;
-	String rd_postcode;
 	String rd_address;
 	String rd_detail_address;
 	
@@ -65,37 +63,13 @@ public class Routine_delivery_VO {
 	public void setRd_start(String rd_start) {
 		this.rd_start = rd_start;
 	}
-	
-	
-	public int getRd_cycle1() {
-		return rd_cycle1;
-	}
-	public void setRd_cycle1(int rd_cycle1) {
-		this.rd_cycle1 = rd_cycle1;
-	}
-	
-	
-	public String getRd_cycle2() {
-		return rd_cycle2;
-	}
-	public void setRd_cycle2(String rd_cycle2) {
-		this.rd_cycle2 = rd_cycle2;
-	}
-	
+
 	
 	public int getRd_delivery_fee() {
 		return rd_delivery_fee;
 	}
 	public void setRd_delivery_fee(int rd_delivery_fee) {
 		this.rd_delivery_fee = rd_delivery_fee;
-	}
-	
-	
-	public String getRd_postcode() {
-		return rd_postcode;
-	}
-	public void setRd_postcode(String rd_postcode) {
-		this.rd_postcode = rd_postcode;
 	}
 	
 	
@@ -115,6 +89,12 @@ public class Routine_delivery_VO {
 	}
 	
 	
+	public String getRd_cycle() {
+		return rd_cycle;
+	}
+	public void setRd_cycle(String rd_cycle) {
+		this.rd_cycle = rd_cycle;
+	}
 	public String getKind() {
 		return kind;
 	}

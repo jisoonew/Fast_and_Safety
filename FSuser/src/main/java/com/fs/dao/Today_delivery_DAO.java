@@ -11,19 +11,20 @@ public interface Today_delivery_DAO {
 	
 public void write(Today_delivery_VO vo);
 	
-	public List<Today_delivery_VO> list() throws Exception;
-	
+	// 마이페이지 당일 배송 목록 출력
+	public List<Today_delivery_VO> list(String session_ID);
 	
 	// 당일 배송 수령인 이름 출력
 	public List<Login_home_VO> user() throws Exception;
 
 	// 당일 배송의 출고 물품 출력
-	public List<kind_release_VO> kind_release() throws Exception;
+	public List<kind_release_VO> kind_release(String session_ID) throws Exception;
 	
 	// 당일 배송의 총 배송비 출력
 	public List<Today_delivery_VO> delivery_sum() throws Exception;
 	
 	// 게시글 검색하기
 	public List<review_VO> selectsearch(review_VO reviewvo) throws Exception;
+
 	
 }

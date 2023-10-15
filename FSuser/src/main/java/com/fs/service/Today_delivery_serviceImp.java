@@ -52,8 +52,14 @@ public class Today_delivery_serviceImp implements Today_delivery_service {
 	
 	// 당일 배송의 총 배송비 출력
 	@Override
-	public List<Today_delivery_VO> delivery_sum() throws Exception {
-		return dao.delivery_sum();
+	public List<Today_delivery_VO> deliverySum(String session_ID) throws Exception {
+		return dao.deliverySum(session_ID);
+	}
+	
+	// 날짜 별 검색
+	@Override
+	public List<Today_delivery_VO> delivery_date(String session_ID, String year, String month, String date) throws Exception {
+		return dao.delivery_date(session_ID, year, month, date);
 	}
 	
 	// 게시글 제목 또는 작성자로 검색하기

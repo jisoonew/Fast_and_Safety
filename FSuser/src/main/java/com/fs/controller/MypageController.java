@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fs.mapper.memberMapper;
 import com.fs.service.Login_home_service;
@@ -43,34 +44,53 @@ public class MypageController {
 	
 	// 마이페이지 당일 배송 목록 출력
     @RequestMapping(value = "/today_delivery", method = RequestMethod.GET)
-    public String TDlist(Model model, Today_delivery_VO vo, HttpServletRequest request) throws Exception{
+    public String TDlist(Model model, Today_delivery_VO vo, HttpServletRequest request, 
+    		@RequestParam(value = "year", required = false) String year, 
+    		@RequestParam(value = "month", required = false) String month, 
+    		@RequestParam(value = "date", required = false) String date) throws Exception{
     	HttpSession session = request.getSession();
     	String sessionID = (String) session.getAttribute("session_ID");
+    	
     	List<Today_delivery_VO> list = TDservice.list(sessionID);
     	model.addAttribute("list", list);
     	
-    	List<Today_delivery_VO> delivery_sum = TDservice.delivery_sum();
-    	model.addAttribute("delivery_sum", delivery_sum);
+    	List<Today_delivery_VO> deliverySum = TDservice.deliverySum(sessionID);
+    	model.addAttribute("deliverySum", deliverySum);
+
 		return "/mypage/today_delivery";
     }
     
     // today_delivery DB 삽입
     @RequestMapping(value = "/today_delivery", method = RequestMethod.POST)
-    public String selectsearch(review_VO vo, HttpServletRequest request) throws Exception{
+    public String selectsearch(Model model, review_VO vo, HttpServletRequest request,
+    		Today_delivery_VO TDvo,
+    		@RequestParam(value = "year", required = false) String year, 
+    		@RequestParam(value = "month", required = false) String month, 
+    		@RequestParam(value = "date", required = false) String date) throws Exception{
+		/* TDservice.selectsearch(vo); */
 
-    	TDservice.selectsearch(vo);
     	return "/mypage/today_delivery";
     }
+    
+    
+    // today_delivery DB 삽입
+    @RequestMapping(value = "/today_delivery_ymd", method = RequestMethod.POST)
+    public String selectsearch_ymd(Model model, review_VO vo, HttpServletRequest request,
+    		Today_delivery_VO TDvo,
+    		@RequestParam(value = "year", required = false) String year, 
+    		@RequestParam(value = "month", required = false) String month, 
+    		@RequestParam(value = "date", required = false) String date) throws Exception{
+		/* TDservice.selectsearch(vo); */
+    	HttpSession session = request.getSession();
+    	String sessionID = (String) session.getAttribute("session_ID");
+    	
+    	
+    	List<Today_delivery_VO> delivery_date = TDservice.delivery_date(sessionID, year, month, date);
+    	model.addAttribute("list", delivery_date);
+    	
+    	return "/mypage/today_delivery_ymd";
+    }
 	
-	//마이페이지 - 정기 배송
-	/*
-	@RequestMapping(value = "/regular_delivery",  method = RequestMethod.GET)
-	public void MPregular_deliveryGET() {
-		
-		//logger.info("메인 페이지 진입 (NOT LOGIN)");
-		
-	}
-	*/
 	
 	// DB 내용 출력
     @RequestMapping(value = "/mypage/regular_delivery", method = RequestMethod.GET)

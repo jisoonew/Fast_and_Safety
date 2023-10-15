@@ -52,8 +52,22 @@ public class Today_delivery_DAOImp implements Today_delivery_DAO {
     
     // 당일 배송 총 배송비 출력
     @Override
-    public List<Today_delivery_VO> delivery_sum() throws Exception {
-        return sqlSession.selectList(namespace + ".delivery_sum");
+    public List<Today_delivery_VO> deliverySum(String session_ID) throws Exception {
+        return sqlSession.selectList(namespace + ".deliverySum", session_ID);
+    }
+    
+    public List<Today_delivery_VO> delivery_date(String session_ID, String year, String month, String date) throws Exception {
+        if (session_ID == null || year == null || month == null || date == null) {
+            // Handle the case where one or more parameters are null, log an error, or return an appropriate result.
+        }
+
+        Map<String, String> paramMap = new HashMap<>();
+        paramMap.put("session_ID", session_ID);
+        paramMap.put("year", year);
+        paramMap.put("month", month);
+        paramMap.put("date", date);
+
+        return sqlSession.selectList(namespace + ".delivery_date", paramMap);
     }
 
 	@Override

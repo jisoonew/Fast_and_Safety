@@ -15,11 +15,17 @@ public class Today_delivery_VO {
 	private String kind_release;
 	private int delivery_fee;
 	private String td_date;
+	private String td_status;
+	private String td_tracking;
 	
 	private String kind;
 	private String container_type;
 	private String container_num;
-	private String delivery_sum;
+	private int deliverySum;
+	
+	private String year;
+	private String month;
+	private String date;
 	
 	// 검색 키워드
 	private String keyword;
@@ -94,11 +100,14 @@ public class Today_delivery_VO {
 	public void setDelivery_fee(int delivery_fee) {
 		this.delivery_fee = delivery_fee;
 	}
+		
 	
-	
-	
-	
-	
+	public String getTd_status() {
+		return td_status;
+	}
+	public void setTd_status(String td_status) {
+		this.td_status = td_status;
+	}
 	public String getTd_date() {
 		return td_date;
 	}
@@ -113,6 +122,14 @@ public class Today_delivery_VO {
 	}
 	
 	
+	
+	
+	public String getTd_tracking() {
+		return td_tracking;
+	}
+	public void setTd_tracking(String td_tracking) {
+		this.td_tracking = td_tracking;
+	}
 	public String getContainer_type() {
 		return container_type;
 	}
@@ -129,15 +146,32 @@ public class Today_delivery_VO {
 	}
 	
 
-	public String getDelivery_sum() {
-		return delivery_sum;
+	public int getDeliverySum() {
+		return deliverySum;
 	}
-	public void setDelivery_sum(String delivery_sum) {
-		this.delivery_sum = delivery_sum;
+	public void setDeliverySum(int deliverySum) {
+		this.deliverySum = deliverySum;
 	}
 	
 	
-	
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	public String getKeyword() {
 		return keyword;
 	}

@@ -21,7 +21,10 @@ public interface Today_delivery_service {
 	List<kind_release_VO> kind_release(String session_ID) throws Exception;
 	
 	// 당일 배송의 총 배송비 출력
-	List<Today_delivery_VO> delivery_sum() throws Exception;
+	List<Today_delivery_VO> deliverySum(String session_ID) throws Exception;
+	
+	// 날짜 별 검색
+		List<Today_delivery_VO> delivery_date(String session_ID, String year, String month, String date) throws Exception;
 
 	List<review_VO> selectsearch(review_VO reviewvo) throws Exception;
 

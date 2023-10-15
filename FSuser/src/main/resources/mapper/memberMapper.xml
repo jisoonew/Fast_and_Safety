@@ -4,7 +4,13 @@
 
 
 <mapper namespace="memberMapper">
-
+    <resultMap type="com.fs.vo.Today_delivery_VO" id="deliverySum">
+        <result property="deliverySum" column="deliverySum" />
+    </resultMap>
+    
+        <resultMap type="com.fs.vo.Today_delivery_VO" id="delivery_date">
+        <result property="delivery_date" column="delivery_date" />
+    </resultMap>
 
 <!-- 당일 배송 입력 -->
     <insert id="insert_today_delivery">
@@ -51,17 +57,27 @@
     </select>
 
     <!-- 당일 배송 검색 기능 -->
-    <select id="selectsearch" resultType="com.fs.vo.review_VO">
+<!--     <select id="selectsearch" resultType="com.fs.vo.review_VO">
         select * from today_delivery a join kind_release b
         on a.u_id=b.u_id and a.u_id=#{u_id} and a.kind_release=b.kind where ${searchName} like
         concat('%',#{searchValue},'%')
-        <!-- #은 데이터값 -->
-    </select>
+        #은 데이터값
+    </select> -->
 
-    <select id="delivery_sum" resultType="com.fs.vo.Today_delivery_VO">
-        select sum(delivery_fee) as 'delivery_sum' from today_delivery a join kind_release b
-        on a.u_id=b.u_id and a.u_id=#{u_id} and a.kind_release=b.kind
+    <select id="deliverySum" resultType="com.fs.vo.Today_delivery_VO">
+        select sum(delivery_fee) as 'deliverySum' from today_delivery a join kind_release b
+        on a.u_id=b.u_id and a.u_id=#{session_ID} and a.kind_release=b.kind
     </select>
+    
+<!-- 당일 배송 날짜 검색 -->
+<select id="delivery_date" resultType="com.fs.vo.Today_delivery_VO">
+    SELECT * 
+    FROM fs.today_delivery a 
+    JOIN kind_release b ON a.u_id = b.u_id 
+    WHERE a.u_id = #{session_ID} 
+    AND a.kind_release = b.kind 
+    AND DATE(a.td_date) = CONCAT(#{year}, '-', #{month}, '-', #{date});
+</select>
 
 
     <select id="user" resultType="com.fs.vo.Login_home_VO">

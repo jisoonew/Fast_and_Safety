@@ -84,8 +84,6 @@
         </ul>
     </nav>
     <!--여기까지 네비게이션 바-->
-
-        <!-- 여기서부터 사이드 바 -->
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">

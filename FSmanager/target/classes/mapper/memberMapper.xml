@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="memberMapper">
+    <resultMap type="com.fs.vo.Today_delivery_VO" id="deliverySum">
+        <result property="deliverySum" column="deliverySum" />
+    </resultMap>
+    
+        <resultMap type="com.fs.vo.Today_delivery_VO" id="delivery_date">
+        <result property="delivery_date" column="delivery_date" />
+    </resultMap>
+
+<!-- 당일 배송 입력 -->
+    <insert id="insert_today_delivery">
+        insert into today_delivery (u_id, td_name, td_phone, td_volume, td_address, u_detail_address,
+        kind_release, delivery_fee, td_date) values
+        (#{u_id}, #{td_name}, #{td_phone}, #{td_volume}, #{td_address}, #{u_detail_address}, #{kind_release},
+        #{delivery_fee}, #{td_date})
+    </insert>
+
+<!-- 정기 배송 입력 -->
+    <insert id="insert_routine_delivery">
+        insert into routine_delivery
+        (u_id, rd_name, rd_phone, rd_kind_release, rd_volume, rd_start, rd_cycle,
+        rd_delivery_fee, rd_address, rd_detail_address) values
+        (#{u_id}, #{rd_name}, #{rd_phone}, #{rd_kind_release}, #{rd_volume}, #{rd_start},
+        #{rd_cycle}, #{rd_delivery_fee}, #{rd_address}, #{rd_detail_address})
+    </insert>
+    
+<!-- 예약 배송 입력 -->
+    <insert id="reserve_routine_delivery">
+        insert into reserve_delivery
+        (u_id, red_name, red_phone, red_kind_release, red_volume,
+        red_delivery_date, red_address, red_detail_address, red_delivery_fee) values
+        (#{u_id}, #{red_name}, #{red_phone}, #{red_kind_release}, #{red_volume},
+        #{red_delivery_date}, #{red_address}, #{red_detail_address}, #{red_delivery_fee})
+    </insert>
+    
+    <!-- 창고 예약 입력 -->
+    <insert id="storage_reserve">
+        insert into storage_reserve
+        (u_id, sr_name, sr_phone, sr_category, sr_volume,
+        sr_period1, sr_period2, sr_fee, sr_start) values
+        (#{u_id}, #{sr_name}, #{sr_phone}, #{sr_category}, #{sr_volume}, #{sr_period1}, #{sr_period2}, #{sr_fee}, #{sr_start})
+    </insert>
+
+    <select id="list_routine_delivery" resultType="com.fs.vo.Routine_delivery_VO">
+        select * from routine_delivery a join kind_release b
+        on a.u_id=b.u_id and a.u_id='session.getAttribute("session_ID")' and a.rd_kind_release=b.kind
+    </select>
+
+    <select id="list_today_delivery" resultType="com.fs.vo.Today_delivery_VO">
+        select * from today_delivery a join kind_release b
+        on a.u_id=b.u_id and a.u_id=#{u_id} and a.kind_release=b.kind
+    </select>
+
+    <!-- 당일 배송 검색 기능 -->
+<!--     <select id="selectsearch" resultType="com.fs.vo.review_VO">
+        select * from today_delivery a join kind_release b
+        on a.u_id=b.u_id and a.u_id=#{u_id} and a.kind_release=b.kind where ${searchName} like
+        concat('%',#{searchValue},'%')
+        #은 데이터값
+    </select> -->
+
+    <select id="deliverySum" resultType="com.fs.vo.Today_delivery_VO">
+        select sum(delivery_fee) as 'deliverySum' from today_delivery a join kind_release b
+        on a.u_id=b.u_id and a.u_id=#{session_ID} and a.kind_release=b.kind
+    </select>
+    
+<!-- 당일 배송 날짜 검색 -->
+<select id="delivery_date" resultType="com.fs.vo.Today_delivery_VO">
+    SELECT * 
+    FROM fs.today_delivery a 
+    JOIN kind_release b ON a.u_id = b.u_id 
+    WHERE a.u_id = #{session_ID} 
+    AND a.kind_release = b.kind 
+    AND DATE(a.td_date) = CONCAT(#{year}, '-', #{month}, '-', #{date});
+</select>
+
+
+    <select id="user" resultType="com.fs.vo.Login_home_VO">
+        select * from user where u_id = #{session_ID}
+    </select>
+
+    <select id="kind_release" resultType="com.fs.vo.kind_release_VO">
+        select * from kind_release where u_id = #{session_ID}
+    </select>
+
+</mapper>

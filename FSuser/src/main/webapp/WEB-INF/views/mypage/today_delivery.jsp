@@ -192,7 +192,7 @@
 
 
         <div id="container_table">
-			<table class="table table-bordered">
+			<table class="table table-bordered" id="no_search_table">
 				<thead>
 					<tr>
 						<th scope="col" style="width: 5%">NO</th>
@@ -251,6 +251,12 @@
 								<!-- 배송비 --> <c:out value="${list.delivery_fee}" />원
 							</td>
 						</tr>
+					</c:forEach>
+					
+					<c:forEach items="${delivery_date}" var="delivery_date" varStatus="status">
+					<tr>
+					<td><c:out value="${delivery_date.td_date}" /></td>
+					</tr>
 					</c:forEach>
 				</tbody>
 			</table>

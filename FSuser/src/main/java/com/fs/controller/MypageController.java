@@ -1,6 +1,8 @@
 package com.fs.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -9,9 +11,11 @@ import javax.servlet.http.HttpSession;
 import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fs.mapper.memberMapper;
 import com.fs.service.Login_home_service;
@@ -62,35 +66,24 @@ public class MypageController {
     
     // today_delivery DB 삽입
     @RequestMapping(value = "/today_delivery", method = RequestMethod.POST)
-    public String selectsearch(Model model, review_VO vo, HttpServletRequest request,
-    		Today_delivery_VO TDvo,
-    		@RequestParam(value = "year", required = false) String year, 
-    		@RequestParam(value = "month", required = false) String month, 
-    		@RequestParam(value = "date", required = false) String date) throws Exception{
-		/* TDservice.selectsearch(vo); */
+    public Map<String, Object> selectSearch(HttpServletRequest request,
+            @RequestParam(value = "year", required = false) String year,
+            @RequestParam(value = "month", required = false) String month,
+            @RequestParam(value = "date", required = false) String date) throws Exception {
+        HttpSession session = request.getSession();
+        String sessionID = (String) session.getAttribute("session_ID");
+        List<Today_delivery_VO> delivery_date = TDservice.delivery_date(sessionID, year, month, date);
+        
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("delivery_date", delivery_date);
+        
+        System.out.println("검색 완료: " + resultMap);
 
-    	return "/mypage/today_delivery";
+        return resultMap;
     }
+
     
-    
-    // today_delivery DB 삽입
-    @RequestMapping(value = "/today_delivery_ymd", method = RequestMethod.POST)
-    public String selectsearch_ymd(Model model, review_VO vo, HttpServletRequest request,
-    		Today_delivery_VO TDvo,
-    		@RequestParam(value = "year", required = false) String year, 
-    		@RequestParam(value = "month", required = false) String month, 
-    		@RequestParam(value = "date", required = false) String date) throws Exception{
-		/* TDservice.selectsearch(vo); */
-    	HttpSession session = request.getSession();
-    	String sessionID = (String) session.getAttribute("session_ID");
-    	
-    	
-    	List<Today_delivery_VO> delivery_date = TDservice.delivery_date(sessionID, year, month, date);
-    	model.addAttribute("list", delivery_date);
-    	
-    	return "/mypage/today_delivery_ymd";
-    }
-	
+   
 	
 	// DB 내용 출력
     @RequestMapping(value = "/mypage/regular_delivery", method = RequestMethod.GET)

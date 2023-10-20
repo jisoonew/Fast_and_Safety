@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fs.mapper.UserMapper">
+
+    <!-- resultType은 MyBatis 매퍼 XML에서 사용되는 속성으로, SQL 쿼리의 실행 결과를 어떤 자바 객체 타입으로 변환하여 반환할지를 지정하는 역할을 합니다. resultType 속성은 SQL 쿼리 결과를 매핑할 자바 객체의 클래스 타입을 지정 -->
+
+    <insert id="userJoin">
+        <!-- insert into user values('userID_1', 'userPW_2', 'Name', 'Email', '010-1234-5678', '경민컴퍼니', '경민컴퍼니주소', '비회원', '경민은행', '박지수', '계좌번호'); -->
+        <!-- insert into user (u_id, u_pw, u_name, u_email,u_phone, u_company_name, u_company_address) values('userID', 'userPW_2','Name', 'Email', '010-1234-5678', '경민컴퍼니', '경민컴퍼니주소'); -->
+        insert into user (u_id, u_pw, u_name, u_email,u_phone, u_company_name, u_company_address, u_detail_address,
+        u_member) values (#{u_id}, #{u_pw}, #{u_name}, #{u_email}, #{u_phone}, #{u_company_name}, #{u_company_address},
+        #{u_detail_address}, '회원')
+    </insert>
+
+    <!-- 아이디 중복검사 -->
+    <select id="idCheck" resultType="int">
+        select count(*) from user where u_id = #{u_id};
+    </select>
+
+    <!-- 로그인 -->
+    <select id="userLogin" resultType="com.fs.vo.UserVO">
+        select u_id, u_pw, u_name, u_email, u_phone, u_company_name, u_company_address, u_detail_address, u_member,
+        u_bank, u_moneytaker, u_acct from user where u_id = #{u_id}
+        <!-- select u_id, u_pw, u_name, u_email, u_phone, u_company_name, u_company_address, u_detail_address, u_member, u_bank, u_moneytaker, u_acct from user where u_id = #{u_id} and u_pw = #{u_pw} -->
+    </select>
+
+</mapper>

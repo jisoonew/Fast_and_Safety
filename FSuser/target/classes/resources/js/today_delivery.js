@@ -71,43 +71,48 @@ document.getElementById("date").innerHTML = selectDateOptions;
 
 
 //검색 버튼 클릭 이벤트 핸들러
-var searchButton = document.getElementById("y_m_d_dtn");
-searchButton.addEventListener("click", function() {
-	// 선택된 값 가져오기
-	var yearSelect = document.getElementById("year");
-	var selectedYear = yearSelect.options[yearSelect.selectedIndex].text;
-	console.log("Selected year name:", selectedYear);
+$(document).on('click', "#y_m_d_dtn",function () {
+    var yearSelect = document.getElementById("year");
+    var selectedYear = yearSelect.options[yearSelect.selectedIndex].text;
+    console.log("Selected year name:", selectedYear);
 
-	var monthSelect = document.getElementById("month");
-	var selectedMonth = monthSelect.options[monthSelect.selectedIndex].text;
-	console.log("Selected month name:", selectedMonth);
+    var monthSelect = document.getElementById("month");
+    var selectedMonth = monthSelect.options[monthSelect.selectedIndex].text;
+    console.log("Selected month name:", selectedMonth);
 
-	var dateSelect = document.getElementById("date");
-	var selectedDate = dateSelect.options[dateSelect.selectedIndex].text;
-	console.log("Selected date name:", selectedDate);
-	
-	var selectedYear = selectedYear.replace("년", "");
-	var selectedMonth = selectedMonth.replace("월", "");
-	var selectedDate = selectedDate.replace("일", "");
+    var dateSelect = document.getElementById("date");
+    var selectedDate = dateSelect.options[dateSelect.selectedIndex].text;
+    console.log("Selected date name:", selectedDate);
 
-    // 서버로 요청 보내기
-    window.location.href = "/mypage/today_delivery?year=" + selectedYear + "&month=" + selectedMonth + "&date=" + selectedDate;
+    var selectedYear = selectedYear.replace("년", "");
+    var selectedMonth = selectedMonth.replace("월", "");
+    var selectedDate = selectedDate.replace("일", "");
+
+    
+    $.ajax({
+        type: 'POST',
+        url: '/mypage/today_delivery',
+        data: {
+            year: selectedYear,
+            month: selectedMonth,
+            date: selectedDate
+        },
+        dataType: 'json',
+        success: function(response) {
+            console.log("response " + response);
+            $('#no_search_table > tbody').empty();
+            response.delivery_date.forEach(function(item) {
+                var str = '<tr>';
+                str += "<td>" + item.td_name + "</td>";
+                str += "<td>" + item.td_phone + "</td>";
+                str += "<td>" + item.kind_release + "</td>";
+                str += "</tr>";
+                $('#no_search_table').append(str);
+            });
+        },
+        error: function(error) {
+            console.error(error);
+        }
+    });
 });
 
-
-/*//당일 배송 테이블
-var tableStart = 1;
-var tableEnd = 10;
-var table_tbody_content = "";
-
-for (var content0 = 1; content0<=1; content0++){
-	table_tbody_content += "<tr>";
-for (var content1 = tableStart; content1<=tableEnd; content1++){
-	table_tbody_content += "<th>"+ content1+"</th>";
-for (var content2 = 0; content2<=5; content2++){
-	table_tbody_content += "<td>"+ content2+"</td>";
-}
-table_tbody_content += "</tr>";
-}
-}
-document.getElementById("table_tbody").innerHTML = table_tbody_content;*/

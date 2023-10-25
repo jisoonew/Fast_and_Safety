@@ -19,7 +19,7 @@ import com.fs.vo.UserVO;
 import lombok.extern.log4j.Log4j;
 
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/manager")
 @Log4j
 public class UserController {
 	

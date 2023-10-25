@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html lang>
 
@@ -17,7 +18,7 @@
 <script src="./datepicker/js/datepicker.js"></script>
 <!-- Air datepicker js -->
 <script src="./datepicker/js/datepicker.ko.js"></script>
-<!-- ´Þ·Â ÇÑ±Û Ãß°¡¸¦ À§ÇØ Ä¿½ºÅÒ -->
+<!-- ë‹¬ë ¥ í•œê¸€ ì¶”ê°€ë¥¼ ìœ„í•´ ì»¤ìŠ¤í…€ -->
 
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
@@ -33,77 +34,77 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<!-- ¿ÞÂÊ °íÁ¤ »çÀÌµå¹Ù -->
+			<!-- ì™¼ìª½ ê³ ì • ì‚¬ì´ë“œë°” -->
 			<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark">
 				<div class="position-sticky">
 					<ul class="nav flex-column">
 						<li class="nav-item"><a id="pagename">FS</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">´ë½Ãº¸µå</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">È¸¿ø</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">ëŒ€ì‹œë³´ë“œ</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">íšŒì›</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="deliveryDropdown"
 							role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> »óÇ° </a>
+							aria-expanded="false"> ìƒí’ˆ </a>
 							<div class="dropdown-menu" aria-labelledby="deliveryDropdown">
-								<a class="dropdown-item" href="#">»óÇ° °ü¸®</a>
+								<a class="dropdown-item" href="#">ìƒí’ˆ ê´€ë¦¬</a>
 								<hr class="dropdown-divider">
-								<a class="dropdown-item" href="#">Àç°í ÇöÈ²</a>
+								<a class="dropdown-item" href="#">ìž¬ê³  í˜„í™©</a>
 
 							</div></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="deliveryDropdown"
 							role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> ¹è¼Û </a>
+							aria-expanded="false"> ë°°ì†¡ </a>
 							<div class="dropdown-menu" aria-labelledby="deliveryDropdown">
-								<a class="dropdown-item" href="#">´çÀÏ¹è¼Û</a>
+								<a class="dropdown-item" href="#">ë‹¹ì¼ë°°ì†¡</a>
 								<hr class="dropdown-divider">
-								<a class="dropdown-item" href="#">Á¤±â¹è¼Û</a>
+								<a class="dropdown-item" href="#">ì •ê¸°ë°°ì†¡</a>
 								<hr class="dropdown-divider">
-								<a class="dropdown-item" href="#">¿¹¾à¹è¼Û</a>
-								<!--¹è¼Û ¹× ¿î¼Û ÇöÈ²ÀÌ ÀÖ´Âµ¥ ÀÌ°É ¾È³ÖÀº ÀÌÀ¯°¡ ÀÌ°Ô ±¸Çö °¡´ÉÇÑ ±â´ÉÀÎÁö ¸ð¸£°Ú¾î¼­-->
+								<a class="dropdown-item" href="#">ì˜ˆì•½ë°°ì†¡</a>
+								<!--ë°°ì†¡ ë° ìš´ì†¡ í˜„í™©ì´ ìžˆëŠ”ë° ì´ê±¸ ì•ˆë„£ì€ ì´ìœ ê°€ ì´ê²Œ êµ¬í˜„ ê°€ëŠ¥í•œ ê¸°ëŠ¥ì¸ì§€ ëª¨ë¥´ê² ì–´ì„œ-->
 							</div></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="deliveryDropdown"
 							role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> Ã¢°í </a>
+							aria-expanded="false"> ì°½ê³  </a>
 							<div class="dropdown-menu" aria-labelledby="deliveryDropdown">
-								<a class="dropdown-item" href="#">Ã¢°í °ü¸®</a>
+								<a class="dropdown-item" href="#">ì°½ê³  ê´€ë¦¬</a>
 								<hr class="dropdown-divider">
-								<a class="dropdown-item" href="#">Ã¢°í ÇöÈ²</a>
+								<a class="dropdown-item" href="#">ì°½ê³  í˜„í™©</a>
 							</div></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="deliveryDropdown"
 							role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> ¹®ÀÇ </a>
+							aria-expanded="false"> ë¬¸ì˜ </a>
 							<div class="dropdown-menu" aria-labelledby="deliveryDropdown">
-								<a class="dropdown-item" href="#">¹®ÀÇ</a>
+								<a class="dropdown-item" href="#">ë¬¸ì˜</a>
 								<hr class="dropdown-divider">
-								<a class="dropdown-item" href="#">»ó´ã</a>
+								<a class="dropdown-item" href="#">ìƒë‹´</a>
 								<hr class="dropdown-divider">
-								<a class="dropdown-item" href="#">È¯ºÒ ¹®ÀÇ</a>
+								<a class="dropdown-item" href="#">í™˜ë¶ˆ ë¬¸ì˜</a>
 							</div></li>
-						<!-- ¿ø·¡ ÀÓÁ÷¿øÀÎµ¥ È­¸é ³Ê¹« ¸¹Àº°Å °°¾Æ¼­ ±×³É °ü¸®ÀÚ·Î ¹Ù²Ù°í È­¸éµµ °ü¸®ÀÚµé¸¸ º¸¿©ÁÖ´Â°É·Î ¹Ù²ÙÀÚ-->
-						<li class="nav-item"><a class="nav-link" href="#">°ü¸®ÀÚ</a></li>
-						<li class="nav-item"><a class="nav-link" href="#" id="logout">·Î±×¾Æ¿ô</a>
+						<!-- ì›ëž˜ ìž„ì§ì›ì¸ë° í™”ë©´ ë„ˆë¬´ ë§Žì€ê±° ê°™ì•„ì„œ ê·¸ëƒ¥ ê´€ë¦¬ìžë¡œ ë°”ê¾¸ê³  í™”ë©´ë„ ê´€ë¦¬ìžë“¤ë§Œ ë³´ì—¬ì£¼ëŠ”ê±¸ë¡œ ë°”ê¾¸ìž-->
+						<li class="nav-item"><a class="nav-link" href="#">ê´€ë¦¬ìž</a></li>
+						<li class="nav-item"><a class="nav-link" href="#" id="logout">ë¡œê·¸ì•„ì›ƒ</a>
 						</li>
 					</ul>
 				</div>
 			</nav>
 
-			<!-- ¸ÞÀÎ ÄÜÅÙÃ÷ -->
+			<!-- ë©”ì¸ ì½˜í…ì¸  -->
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5">
-				<h1>°ü¸®ÀÚ</h1>
+				<h1>ê´€ë¦¬ìž</h1>
 				<div id="outer-div">
 					<table class="table table-bordered">
 						<!--   <caption>List of users</caption> -->
 						<tbody id="inquiry_table">
 							<tr>
-								<th scope="row" id="th1">±ÇÇÑ¼±ÅÃ</th>
+								<th scope="row" id="th1">ê¶Œí•œì„ íƒ</th>
 								<td id="td1">
 									<div id="select1">
 										<select class="form-select"
 											aria-label="Default select example">
-											<option selected>±ÇÇÑÀüÃ¼º¸±â</option>
+											<option selected>ê¶Œí•œì „ì²´ë³´ê¸°</option>
 											<option value="1">One</option>
 											<option value="2">Two</option>
 											<option value="3">Three</option>
@@ -111,12 +112,12 @@
 									</div>
 								</td>
 
-								<th scope="row" id="th1">ºÎ¼­¼±ÅÃ</th>
+								<th scope="row" id="th1">ë¶€ì„œì„ íƒ</th>
 								<td id="td1">
 									<div id="select1">
 										<select class="form-select"
 											aria-label="Default select example">
-											<option selected>ºÎ¼­ÀüÃ¼º¸±â</option>
+											<option selected>ë¶€ì„œì „ì²´ë³´ê¸°</option>
 											<option value="1">One</option>
 											<option value="2">Two</option>
 											<option value="3">Three</option>
@@ -124,12 +125,12 @@
 									</div>
 								</td>
 
-								<th scope="row" id="th1">´ëÇ¥À¯¹«</th>
+								<th scope="row" id="th1">ëŒ€í‘œìœ ë¬´</th>
 								<td id="td1">
 									<div id="select1">
 										<select class="form-select"
 											aria-label="Default select example">
-											<option selected>ÀüÃ¼</option>
+											<option selected>ì „ì²´</option>
 											<option value="1">One</option>
 											<option value="2">Two</option>
 											<option value="3">Three</option>
@@ -138,12 +139,12 @@
 								</td>
 							<tr>
 							<tr>
-								<th scope="row" id="th1">»ç¿ëÀ¯¹«</th>
+								<th scope="row" id="th1">ì‚¬ìš©ìœ ë¬´</th>
 								<td id="td1">
 									<div id="select1">
 										<select class="form-select"
 											aria-label="Default select example">
-											<option selected>»ç¿ë</option>
+											<option selected>ì‚¬ìš©</option>
 											<option value="1">One</option>
 											<option value="2">Two</option>
 											<option value="3">Three</option>
@@ -151,24 +152,24 @@
 									</div>
 								</td>
 
-								<th scope="row" id="th1">°Ë»ö</th>
+								<th scope="row" id="th1">ê²€ìƒ‰</th>
 								<td id="td1" colspan="4">
 
 									<div id="select1">
 										<select class="form-select"
 											aria-label="Default select example">
-											<option selected>¾ÆÀÌµð</option>
+											<option selected>ì•„ì´ë””</option>
 											<option value="1">One</option>
 											<option value="2">Two</option>
 											<option value="3">Three</option>
 										</select>
 									</div>
 									<div class="input-group" id="select2">
-										<input type="text" class="form-control" placeholder="°Ë»ö¾î ÀÔ·Â"
+										<input type="text" class="form-control" placeholder="ê²€ìƒ‰ì–´ ìž…ë ¥"
 											aria-label="Recipient's username"
 											aria-describedby="button-addon2">
 										<button class="btn btn-outline-secondary" type="button"
-											id="button-addon2">°Ë»ö</button>
+											id="button-addon2">ê²€ìƒ‰</button>
 									</div>
 								</td>
 							</tr>
@@ -178,8 +179,8 @@
 
 
 				<div id="search_btn_container">
-					<button type="button" class="btn btn-outline-dark dark_btn">ÃÊ±âÈ­</button>
-					<button type="button" class="btn btn-outline-primary dark_search">°Ë»ö</button>
+					<button type="button" class="btn btn-outline-dark dark_btn">ì´ˆê¸°í™”</button>
+					<button type="button" class="btn btn-outline-primary dark_search">ê²€ìƒ‰</button>
 				</div>
 
 
@@ -193,25 +194,25 @@
 								<tbody id="inquiry_table">
 									<tr>
 										<td>NO</td>
-										<td>µî±Þ</td>
-										<td>¾ÆÀÌµð</td>
-										<td>ºñ¹Ð¹øÈ£</td>
-										<td>°ú</td>
-										<td>ÀÌ¸§</td>
-										<td>ÀÌ¸ÞÀÏ</td>
-										<td>´ëÇ¥</td>
-										<td>»ç¿ë</td>
-										<td>¼öÁ¤/»èÁ¦</td>
-										<td>±ÇÇÑ</td>
+										<td>ë“±ê¸‰</td>
+										<td>ì•„ì´ë””</td>
+										<td>ë¹„ë°€ë²ˆí˜¸</td>
+										<td>ê³¼</td>
+										<td>ì´ë¦„</td>
+										<td>ì´ë©”ì¼</td>
+										<td>ëŒ€í‘œ</td>
+										<td>ì‚¬ìš©</td>
+										<td>ìˆ˜ì •/ì‚­ì œ</td>
+										<td>ê¶Œí•œ</td>
 									</tr>
 
 									<tr>
 										<td>1</td>
-										<td>ÃÖ°í°ü¸®ÀÚ</td>
+										<td>ìµœê³ ê´€ë¦¬ìž</td>
 										<td>ktungmin123</td>
 										<td>***********</td>
-										<td>°æ¿µ±âÈ¹½Ç</td>
-										<td>¹ÚÁö¼ö</td>
+										<td>ê²½ì˜ê¸°íšì‹¤</td>
+										<td>ë°•ì§€ìˆ˜</td>
 										<td>kyungmin123@naver.com</td>
 										<td><div class="form-check" id="checkbox">
 												<input class="form-check-input" type="checkbox" value=""
@@ -222,17 +223,17 @@
 													id="flexCheckDefault">
 											</div></td>
 										<td><button type="button" class="btn btn-dark btn-sm"
-												style="-bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem;">¼öÁ¤</button>
+												style="-bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem;">ìˆ˜ì •</button>
 											<button type="button"
 												class="btn btn-outline-secondary btn-sm"
 												style="-bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem;"
 												data-bs-backdrop="static" data-bs-keyboard="false"
-												id="memo_btn1">»èÁ¦</button></td>
+												id="memo_btn1">ì‚­ì œ</button></td>
 										<td><div>
 												<select class="form-select form-select-sm"
 													aria-label="Default select example">
-													<option selected>±ÇÇÑ ¼±ÅÃ</option>
-													<option value="1">¸ðµç ±ÇÇÑ</option>
+													<option selected>ê¶Œí•œ ì„ íƒ</option>
+													<option value="1">ëª¨ë“  ê¶Œí•œ</option>
 													<option value="2">Two</option>
 													<option value="3">Three</option>
 												</select>
@@ -242,11 +243,11 @@
 
 									<tr>
 										<td>2</td>
-										<td>°ü¸®ÀÚ</td>
+										<td>ê´€ë¦¬ìž</td>
 										<td>ktungmin123</td>
 										<td>***********</td>
-										<td>°Ë»ç¿ª½Ç</td>
-										<td>¹ÚÁö¼ö</td>
+										<td>ê²€ì‚¬ì—­ì‹¤</td>
+										<td>ë°•ì§€ìˆ˜</td>
 										<td>kyungmin00@naver.com</td>
 										<td><div class="form-check" id="checkbox">
 												<input class="form-check-input" type="checkbox" value=""
@@ -257,13 +258,13 @@
 													id="flexCheckDefault">
 											</div></td>
 										<td><button type="button" class="btn btn-dark btn-sm"
-												style="-bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem;">¼öÁ¤</button>
+												style="-bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem;">ìˆ˜ì •</button>
 											<button type="button"
 												class="btn btn-outline-secondary btn-sm"
 												style="-bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem;"
 												data-bs-backdrop="static" data-bs-keyboard="false"
-												id="memo_btn1">»èÁ¦</button></td>
-										<td><div id="select1">¸ðµç ±ÇÇÑ</div></td>
+												id="memo_btn1">ì‚­ì œ</button></td>
+										<td><div id="select1">ëª¨ë“  ê¶Œí•œ</div></td>
 									</tr>
 
 									<tr>
@@ -271,7 +272,7 @@
 												type="button" class="btn btn-outline-dark btn-sm"
 												style="-bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem;"
 												data-bs-backdrop="static" data-bs-keyboard="false"
-												id="Refund_completed_btn1">°ü¸®ÀÚ µî·Ï</button></td>
+												id="Refund_completed_btn1">ê´€ë¦¬ìž ë“±ë¡</button></td>
 									</tr>
 								</tbody>
 							</table>
@@ -293,23 +294,23 @@
 						<table class="table table-bordered manager_container">
 							<tbody>
 								<tr>
-									<th scope="row">¾ÆÀÌµð</th>
+									<th scope="row">ì•„ì´ë””</th>
 									<th id="manager_content"><div
 											class="input-group form-control-sm manager_id_text">
 											<input type="text" class="form-control form-control-sm"
-												placeholder="¾ÆÀÌµð" aria-label="Recipient's username"
+												placeholder="ì•„ì´ë””" aria-label="Recipient's username"
 												aria-describedby="button-addon2">
 											<button class="btn btn-outline-secondary" type="button"
-												>Áßº¹ °Ë»ç</button>
+												>ì¤‘ë³µ ê²€ì‚¬</button>
 										</div></th>
 										
-										<th scope="row">±ÇÇÑ¼±ÅÃ</th>
+										<th scope="row">ê¶Œí•œì„ íƒ</th>
 									<th>
 										<div> 
 											<select class="form-select form-select-sm select_manager"
 												aria-label="Default select example">
-												<option selected>±ÇÇÑÀ» ¼±ÅÃÇÏ¼¼¿ä</option>
-												<option value="1">¸ðµç ±ÇÇÑ</option>
+												<option selected>ê¶Œí•œì„ ì„ íƒí•˜ì„¸ìš”</option>
+												<option value="1">ëª¨ë“  ê¶Œí•œ</option>
 												<option value="2">Two</option>
 												<option value="3">Three</option>
 											</select>
@@ -318,7 +319,7 @@
 								</tr>
 
 								<tr>
-									<th scope="row">ºñ¹Ð¹øÈ£</th>
+									<th scope="row">ë¹„ë°€ë²ˆí˜¸</th>
 									<th>
 										<div class="col-sm-6">
 											<input type="password" class="form-control form-control-sm"
@@ -326,13 +327,13 @@
 										</div>
 									</th>
 									
-									<th scope="row">ºÎ¼­¼±ÅÃ</th>
+									<th scope="row">ë¶€ì„œì„ íƒ</th>
 									<th>
 										<div>
 											<select class="form-select form-select-sm select_manager"
 												aria-label="Default select example">
-												<option selected>ºÎ¼­ÀüÃ¼º¸±â</option>
-												<option value="1">¸ðµç ±ÇÇÑ</option>
+												<option selected>ë¶€ì„œì „ì²´ë³´ê¸°</option>
+												<option value="1">ëª¨ë“  ê¶Œí•œ</option>
 												<option value="2">Two</option>
 												<option value="3">Three</option>
 											</select>
@@ -341,50 +342,50 @@
 								</tr>
 								
 								<tr>
-									<th scope="row">ºñ¹Ð¹øÈ£ È®ÀÎ</th>
+									<th scope="row">ë¹„ë°€ë²ˆí˜¸ í™•ì¸</th>
 									<th>
 										<div class="col-sm-6">
 											<input type="password" class="form-control">
 										</div>
 									</th>
 									
-									<th scope="row">´ëÇ¥À¯¹«</th>
+									<th scope="row">ëŒ€í‘œìœ ë¬´</th>
 									<th>
 										<div>
 											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="radio"
 													name="inlineRadioOptions" id="inlineRadio1" value="option1">
-												<label class="form-check-label" for="inlineRadio1">»ç¿ë</label>
+												<label class="form-check-label" for="inlineRadio1">ì‚¬ìš©</label>
 											</div>
 											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="radio"
 													name="inlineRadioOptions" id="inlineRadio2" value="option2">
-												<label class="form-check-label" for="inlineRadio2">¹Ì»ç¿ë</label>
+												<label class="form-check-label" for="inlineRadio2">ë¯¸ì‚¬ìš©</label>
 											</div>
 										</div>
 									</th>
 								</tr>
 
 								<tr>
-									<th scope="row">ÀÌ¸§</th>
+									<th scope="row">ì´ë¦„</th>
 									<th>
 										<div class="col-sm-6">
 											<input class="form-control form-control-sm">
 										</div>
 									</th>
 									
-									<th scope="row">»ç¿ëÀ¯¹«</th>
+									<th scope="row">ì‚¬ìš©ìœ ë¬´</th>
 									<th>
 										<div>
 											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="radio"
 													name="inlineRadioOptions" id="inlineRadio1" value="option1">
-												<label class="form-check-label" for="inlineRadio1">»ç¿ë</label>
+												<label class="form-check-label" for="inlineRadio1">ì‚¬ìš©</label>
 											</div>
 											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="radio"
 													name="inlineRadioOptions" id="inlineRadio2" value="option2">
-												<label class="form-check-label" for="inlineRadio2">¹Ì»ç¿ë</label>
+												<label class="form-check-label" for="inlineRadio2">ë¯¸ì‚¬ìš©</label>
 											</div>
 										</div>
 									</th>
@@ -395,7 +396,7 @@
 											class="btn btn-outline-dark btn-sm"
 											style="-bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem;"
 											data-bs-backdrop="static" data-bs-keyboard="false"
-											id="Refund_completed_btn2">°ü¸®ÀÚ µî·Ï</button></td>
+											id="Refund_completed_btn2">ê´€ë¦¬ìž ë“±ë¡</button></td>
 								</tr>
 
 							</tbody>
@@ -403,78 +404,78 @@
 					</div>
 				</div>
 
-<h1>¹°·ùÀÎ·Â</h1>
+<h1>ë¬¼ë¥˜ì¸ë ¥</h1>
 
 				<div id="select_container">
 					<div id="select3">
 						<select class="form-select" aria-label="Default select example">
-							<option selected>Á¤·Ä</option>
-							<option value="1">»ó´ãÀÎ·Â</option>
-							<option value="2">¹®ÀÇÀÎ·Â</option>
-							<option value="1">¹è¼ÛÀÎ·Â</option>
-							<option value="2">Ã¢°íÀÎ·Â</option>
+							<option selected>ì •ë ¬</option>
+							<option value="1">ìƒë‹´ì¸ë ¥</option>
+							<option value="2">ë¬¸ì˜ì¸ë ¥</option>
+							<option value="1">ë°°ì†¡ì¸ë ¥</option>
+							<option value="2">ì°½ê³ ì¸ë ¥</option>
 						</select>
 					</div>
 					<div class="input-group" id="select4">
-						<input type="text" class="form-control" placeholder="°Ë»ö¾î ÀÔ·Â"
+						<input type="text" class="form-control" placeholder="ê²€ìƒ‰ì–´ ìž…ë ¥"
 							aria-label="Recipient's username"
 							aria-describedby="button-addon2">
 					</div>
-					<button type="button" class="btn btn-outline-primary dark_search">°Ë»ö</button>
+					<button type="button" class="btn btn-outline-primary dark_search">ê²€ìƒ‰</button>
 				</div>
 
 				<div>
 					<table class="table caption-top inquiry_table2_head">
 						<thead>
 							<tr>
-								<th scope="col" style="width: 10%;">¹øÈ£</th>
-								<th scope="col" style="width: 10%;">ÀÌ¸§</th>
-								<th scope="col" style="width: 20%;">ÀÌ¸ÞÀÏ</th>
-								<th scope="col" style="width: 30%;">ÀüÈ­¹øÈ£</th>
-								<th scope="col" style="width: 30%;">ºÎ¼­</th>
+								<th scope="col" style="width: 10%;">ë²ˆí˜¸</th>
+								<th scope="col" style="width: 10%;">ì´ë¦„</th>
+								<th scope="col" style="width: 20%;">ì´ë©”ì¼</th>
+								<th scope="col" style="width: 30%;">ì „í™”ë²ˆí˜¸</th>
+								<th scope="col" style="width: 30%;">ë¶€ì„œ</th>
 							</tr>
 						</thead>
 						<tbody id="inquiry_table2">
 							<tr>
 								<th scope="row">1</th>
-								<td>¹ÚÁö¼ö</td>
+								<td>ë°•ì§€ìˆ˜</td>
 								<td>pjsu200@naver.com</td>
 								<td>010-9296-8620</td>
-								<td>È¿Çà°ü 401</td>
+								<td>íš¨í–‰ê´€ 401</td>
 							</tr>
 
 							<tr>
 								<th scope="row">2</th>
-								<td>¹Ú°æ¹Î</td>
+								<td>ë°•ê²½ë¯¼</td>
 								<td>pjsu123230@naver.com</td>
 								<td>010-1233-23440</td>
-								<td>È¿Çà°ü 402</td>
+								<td>íš¨í–‰ê´€ 402</td>
 							</tr>
 
 							<tr>
 																<th scope="row">3</th>
-								<td>¹Ú°æ¹Î</td>
+								<td>ë°•ê²½ë¯¼</td>
 								<td>pjsu123230@naver.com</td>
 								<td>010-1233-23440</td>
-								<td>È¿Çà°ü 402</td>
+								<td>íš¨í–‰ê´€ 402</td>
 							</tr>
 
 
 							<tr>
 																<th scope="row">4</th>
-								<td>¹Ú°æ¹Î</td>
+								<td>ë°•ê²½ë¯¼</td>
 								<td>pjsu123230@naver.com</td>
 								<td>010-1233-23440</td>
-								<td>È¿Çà°ü 402</td>
+								<td>íš¨í–‰ê´€ 402</td>
 							</tr>
 
 
 							<tr>
 																<th scope="row">5</th>
-								<td>¹Ú°æ¹Î</td>
+								<td>ë°•ê²½ë¯¼</td>
 								<td>pjsu123230@naver.com</td>
 								<td>010-1233-23440</td>
-								<td>È¿Çà°ü 402</td>
+								<td>íš¨í–‰ê´€ 402</td>
 							</tr>
 
 						</tbody>

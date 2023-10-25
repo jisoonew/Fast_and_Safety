@@ -1,2 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/i_phoneask.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/login.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/p_management.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/s_management.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/sidebar.jsp=UTF-8
 encoding/<project>=UTF-8

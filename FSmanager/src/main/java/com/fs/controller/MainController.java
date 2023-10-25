@@ -24,11 +24,12 @@ public class MainController {
 	private UserService userservice;
 	
 	//메인 페이지 이동
-	@RequestMapping(value = "/main_logino",  method = RequestMethod.GET)
-	public void mainLoginoGET() {
+	@RequestMapping(value = "/user",  method = RequestMethod.GET)
+	public String mainLoginoGET() {
 		
 		logger.info("메인 페이지 진입 (NOT LOGIN)");
 		
+		return "user";
 	}
 	
 	//메인 페이지 이동

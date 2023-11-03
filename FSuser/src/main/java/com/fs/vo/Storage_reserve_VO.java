@@ -2,6 +2,7 @@ package com.fs.vo;
 
 public class Storage_reserve_VO {
 private String u_id;
+private String sr_id;
 private String sr_name;
 private String sr_phone;
 private String sr_category;
@@ -17,6 +18,13 @@ public String getU_id() {
 }
 public void setU_id(String u_id) {
 	this.u_id = u_id;
+}
+
+public String getSr_id() {
+	return sr_id;
+}
+public void setSr_id(String sr_id) {
+	this.sr_id = sr_id;
 }
 public String getSr_name() {
 	return sr_name;

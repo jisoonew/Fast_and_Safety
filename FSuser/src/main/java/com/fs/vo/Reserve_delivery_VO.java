@@ -2,6 +2,7 @@ package com.fs.vo;
 
 public class Reserve_delivery_VO {
 	private String u_id;
+	private String red_id;
 	private String red_name;
 	private String red_phone;
 	private String red_kind_release;
@@ -17,6 +18,14 @@ public class Reserve_delivery_VO {
 
 	public void setU_id(String u_id) {
 		this.u_id = u_id;
+	}
+
+	public String getRed_id() {
+		return red_id;
+	}
+
+	public void setRed_id(String red_id) {
+		this.red_id = red_id;
 	}
 
 	public String getRed_name() {

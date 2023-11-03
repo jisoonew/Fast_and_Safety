@@ -133,10 +133,6 @@
             <div class="col-5"><input type="date" id="date" max="2033-06-01" min="2023-06-01" name="red_delivery_date" placeholder="날짜 선택"></div>
         </div><br><br>
 
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col-2"><button type="button" onclick="execution_daum_address()">우편번호 검색</button><br></div>
-        </div>
 
         <div class="row">
             <div class="col-2"></div>
@@ -151,7 +147,7 @@
             <div class="col-1" for="postcode">
                 <h5>상세주소 </h5>
             </div>
-            <div class="col-4"><input type="text" id="detailAddress" name="red_deta" value="${u_detail_address}"><br></div>
+            <div class="col-4"><input type="text" id="detailAddress" name="red_detail_address" value="${u_detail_address}"><br></div>
         </div><br><br>
 
         <div class="row">
@@ -173,6 +169,9 @@
             <div class="col-1"></div>
             <div class="col-2"><button class="d_btn">취소</button></div>
         </div>
+        
+        		<!-- 일정표 UUID : 일정표의 범용 고유 식별자가 필요함 -->
+		<input class="form-control" id="red_id" name="red_id" type="hidden">
     </form>
     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -188,6 +187,14 @@
                 table.red_delivery_fee.value = 0;
             }
         });
+    
+        function uuidv4() {
+      	  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+      	    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+      	  );
+      	}
+      	document.getElementById("red_id").value = uuidv4();
+      	console.log("rd 범용고유식별자 : " + $("#red_id").val());
 
     
     function execution_daum_address() {

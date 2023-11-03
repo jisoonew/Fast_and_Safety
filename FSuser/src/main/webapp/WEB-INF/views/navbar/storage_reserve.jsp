@@ -157,6 +157,9 @@
             <div class="col-1"></div>
             <div class="col-2"><button class="d_btn">취소</button></div>
         </div>
+        
+        		<!-- 일정표 UUID : 일정표의 범용 고유 식별자가 필요함 -->
+		<input class="form-control" id="sr_id" name="sr_id" type="hidden">
     </form>
     
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -176,6 +179,15 @@ function calculation() {
     }
     document.getElementById("sr_fee").value = result;
 }
+
+//UUID 범용고유식별자 생성
+function uuidv4() {
+	  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+	    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+	  );
+	}
+	document.getElementById("sr_id").value = uuidv4();
+	console.log("rd 범용고유식별자 : " + $("#sr_id").val());
     </script>
 
 </html>

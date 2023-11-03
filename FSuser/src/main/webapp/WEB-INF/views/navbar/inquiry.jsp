@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html>
 
@@ -84,6 +86,7 @@
         </ul>
     </nav>
 
+<form class="pt-5" role="form" method="GET" action="/navbar/inquiry">
     <div class="container text-center align-items-center p-5 mt-5">
         <h2>문의</h2>
 
@@ -113,10 +116,9 @@
                 </div>
             </div>
             <div class="col-4 ">
-                <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+
             </div>
         </div>
 
@@ -131,42 +133,47 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>배송</td>
-                    <td><a href="#">첫 번째 게시글입니다</a></td>
-                    <td>홍길동</td>
-                    <td>2022-05-01</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>재고</td>
-                    <td><a href="#">두 번째 게시글입니다</a></td>
-                    <td>김철수</td>
-                    <td>2022-05-02</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>배송</td>
-                    <td><a href="#">세 번째 게시글입니다</a></td>
-                    <td>이영희</td>
-                    <td>2022-05-03</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>회원</td>
-                    <td><a href="#">네 번째 게시글입니다</a></td>
-                    <td>김땡땡</td>
-                    <td>2022-05-04</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>회원</td>
-                    <td><a href="#">다섯 번째 게시글입니다</a></td>
-                    <td>김띵띵</td>
-                    <td>2022-05-05</td>
-                </tr>
+            
+           
+
+<%@ page import="java.text.SimpleDateFormat" %>
+<c:forEach items="${user_qa_print}" var="user_qa_print" varStatus="status">
+    <tr>
+        <td>
+            <!-- 테이블 순서 -->
+            <c:out value="${user_qa_print.num}" /> 
+        </td>
+        <td>
+            <!-- 유형 출력 -->
+            <c:out value="${user_qa_print.q_variety}" />
+        </td>
+        <td>
+            <!-- 제목 출력 -->
+            <a href="/navbar/view?num=${user_qa_print.num}">
+                <c:out value="${user_qa_print.q_title}" />
+            </a>
+        </td>
+        <td>
+            <!-- 작성자 출력 -->
+            <c:out value="${user_qa_print.u_name}" />
+        </td>
+        <td>
+            <!-- 작성일 출력 -->
+            <c:set var="inputDate" value="${user_qa_print.q_ymd}" />
+            <%
+                SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date date = inputFormat.parse((String) pageContext.getAttribute("inputDate"));
+                String outputDate = outputFormat.format(date);
+                out.print(outputDate);
+            %>
+        </td>
+    </tr>
+</c:forEach>
             </tbody>
+            
+            
+
         </table>
 
     	<div class="row justify-content-end text-end align-content-end align-items-end">
@@ -174,20 +181,28 @@
             	<a href="/navbar/write_inquiry" class="btn btn-primary mt-3 justify-content-end text-end align-content-end align-items-end">문의하기</a>
         	</div>
     	</div>
-
-        <ul class="pagination justify-content-center p-3">
-            <li class="disabled"><a href="#">«</a></li>
-            <li class="disabled"><a href="#">‹</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">›</a></li>
-            <li><a href="#">»</a></li>
-        </ul>
+    	
+    	            <ul class="pagination justify-content-center p-3">
+    <c:if test="${currentPage != 1}">
+        <li><a href="/navbar/inquiry?page=${currentPage - 1}">«</a></li>
+    </c:if>
+    <c:forEach var="i" begin="1" end="${totalPages}">
+        <c:choose>
+            <c:when test="${currentPage eq i}">
+                <li class="active"><a href="/navbar/inquiry?page=${i}">${i}</a></li>
+            </c:when>
+            <c:otherwise>
+                <li><a href="/navbar/inquiry?page=${i}">${i}</a></li>
+            </c:otherwise>
+        </c:choose>
+    </c:forEach>
+    <c:if test="${currentPage lt totalPages}">
+        <li><a href="/navbar/inquiry?num=${currentPage + 1}">»</a></li>
+    </c:if>
+</ul>
     </div>
-    
+    </form>
+
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">

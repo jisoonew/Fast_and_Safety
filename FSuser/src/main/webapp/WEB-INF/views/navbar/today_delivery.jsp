@@ -146,7 +146,10 @@
                 <h5> <input type='text' name='delivery_fee' size='7' style="border:none; outline:none; color:black;"
                         readonly><label>원</label></h5>
             </div>
-        </div><br><br>
+        </div>
+        
+                    <!-- 일정표 UUID : 일정표의 범용 고유 식별자가 필요함 -->
+<input class="form-control" id="td_id" name="td_id" type="hidden">
         
         <%
         Date now = new Date();
@@ -177,6 +180,16 @@ today = sf.format(now);
 
     <!-- 도로명 주소 api를 위한 스크립트 -->
     <script>
+    
+  //UUID 범용고유식별자 생성
+    function uuidv4() {
+    	  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    	    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    	  );
+    	}
+    	document.getElementById('td_id').value = uuidv4();
+    	console.log("범용고유식별자 : " + $('#td_id').val());
+
     
         /* 배송비 계산 */
         function calculation() {

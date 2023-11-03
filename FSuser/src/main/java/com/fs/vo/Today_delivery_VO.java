@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 public class Today_delivery_VO {
 	
 	private String u_id;
+	private String td_id;
 	private String td_name;
 	private String td_phone;
 	private int td_volume;
@@ -17,6 +18,7 @@ public class Today_delivery_VO {
 	private String td_date;
 	private String td_status;
 	private String td_tracking;
+
 	
 	private String kind;
 	private String container_type;
@@ -38,6 +40,12 @@ public class Today_delivery_VO {
 	}
 	
 	
+	public String getTd_id() {
+		return td_id;
+	}
+	public void setTd_id(String td_id) {
+		this.td_id = td_id;
+	}
 	public String getTd_name() {
 		return td_name;
 	}

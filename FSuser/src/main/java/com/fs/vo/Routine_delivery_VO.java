@@ -3,6 +3,7 @@ package com.fs.vo;
 public class Routine_delivery_VO {
 	
 	String u_id;
+	String rd_id;
 	String rd_name;
 	String rd_phone;
 	String rd_kind_release;
@@ -24,7 +25,12 @@ public class Routine_delivery_VO {
 		this.u_id = u_id;
 	}
 	
-	
+	public String getRd_id() {
+		return rd_id;
+	}
+	public void setRd_id(String rd_id) {
+		this.rd_id = rd_id;
+	}
 	public String getRd_name() {
 		return rd_name;
 	}

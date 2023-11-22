@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+/*주문 상세 텍스트 가운데 정렬, 내용 수정*/
+.center-text {
+    text-align: center;
+}
+.editable {
+    border: none;
+    background: transparent;
+}
+
+td {
+    font-size: 18px; /* 텍스트 크기 설정 */
+    
+}
+
+.btn-danger {
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: darkred;
+}

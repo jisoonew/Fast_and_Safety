@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+/* 왼쪽 고정 사이드바의 스타일 */
+#sidebar {
+    height: 100vh;
+    /* 화면 세로 길이에 맞추기 */
+    width: 250px;
+    background-color: #333;
+    padding: 40px;
+    color: #fff;
+}
+
+#pagename {
+    font-size: 36px;
+    /* 페이지 제목 크기를 더 크게 설정 */
+    font-weight: bold;
+    /* 페이지 제목 글꼴 두껍게 설정 */
+    margin-bottom: 20px;
+    /* 페이지 제목과 메뉴 사이의 간격 조정 */
+}
+
+/* 왼쪽 사이드바 메뉴 항목 스타일 */
+.nav-item {
+    margin-bottom: 10px;
+    /* 메뉴 항목 간격 조정 */
+}
+
+.nav-link {
+    font-size: 18px;
+    /* 메뉴 항목 글꼴 크기를 증가시킵니다 */
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    /* 링크 호버 효과 추가 */
+}
+
+.nav-link:hover {
+    color: #ff4500;
+    /* 호버 시 링크 색상 변경 */
+}
+
+#logout {
+    margin-bottom: 15px;
+    margin-left: 40px;
+}

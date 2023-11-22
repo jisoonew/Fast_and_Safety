@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctype html>
 <html>
 
@@ -89,38 +90,21 @@
 <form class="pt-5" role="form" method="GET" action="/navbar/inquiry">
     <div class="container text-center align-items-center p-5 mt-5">
         <h2>문의</h2>
-
-        <div class="row justify-content-between p-3 mb-5">
-            <div class="col-1">
-                <div class="dropdown">
-                    <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        유형 선택
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">배송</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">재고</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">회원</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">기타</a></li>
-                    </ul>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-4 ">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    
+            <select id="inquiry_select" class="form-select" aria-label="Default select example">
+  <option selected>유형</option>
+  <option>배송</option>
+  <option>재고</option>
+  <option>회원</option>
+  <option>기타</option>
+</select>
+            
+            <div>
+                    <input class="form-control me-2" id="keyword" name="keyword" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" id="select_btn" type="submit">Search</button>
 
             </div>
-        </div>
+
 
         <table class="table table-striped table-hover">
             <thead>
@@ -141,7 +125,7 @@
     <tr>
         <td>
             <!-- 테이블 순서 -->
-            <c:out value="${user_qa_print.num}" /> 
+            ${total - status.count + 1}
         </td>
         <td>
             <!-- 유형 출력 -->
@@ -149,7 +133,7 @@
         </td>
         <td>
             <!-- 제목 출력 -->
-            <a href="/navbar/view?num=${user_qa_print.num}">
+            <a href="/navbar/view?Q_id=${user_qa_print.q_id}">
                 <c:out value="${user_qa_print.q_title}" />
             </a>
         </td>

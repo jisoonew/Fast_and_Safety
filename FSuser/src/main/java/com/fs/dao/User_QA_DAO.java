@@ -1,8 +1,10 @@
 package com.fs.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.fs.vo.Login_home_VO;
+import com.fs.vo.Reserve_delivery_VO;
 import com.fs.vo.Today_delivery_VO;
 import com.fs.vo.User_QA_VO;
 
@@ -23,10 +25,14 @@ public interface User_QA_DAO {
     List<User_QA_VO> getUserQAByPage(int offset, int limit) throws Exception;
     
     // 문의글 조회
-    public User_QA_VO view(int num) throws Exception;
+    public User_QA_VO view(String Q_id) throws Exception;
     
     List<User_QA_VO> getAllUserQAs() throws Exception;
 
     void updateUserQA(User_QA_VO userQA) throws Exception;
+    
+ // DB 저장
+ 	public void inquiry_change(User_QA_VO vo);
+
 }
  

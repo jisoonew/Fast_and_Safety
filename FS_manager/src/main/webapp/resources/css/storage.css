@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+/* Style the container for checkboxes */
+.checkform {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style individual checkbox containers */
+  .form-check1, .form-check2, .form-check3 {
+    margin-right: 20px;
+  }
+  
+  /* Style the checkbox input */
+  .form-check-input {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+  }
+  
+  /* Style the checkbox label */
+  .form-check-label {
+    font-size: 16px;
+  }
+  
+  /* Style the search form container */
+  .searchform {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style the select dropdown */
+  .form-select {
+    width: 150px;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  
+  /* Style the search input */
+  .searchinput {
+    flex: 1;
+    font-size: 16px;
+  }
+  
+  /* Style the search button */
+  .btn-outline-primary {
+    font-size: 16px;
+  }

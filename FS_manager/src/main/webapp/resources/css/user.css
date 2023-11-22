@@ -1,0 +1,368 @@
+@charset "UTF-8";
+
+#datepicker1 {
+	height: 35px;
+    	float: left;
+    	width: 150px;
+}
+
+#datepicker2 {
+	height: 35px;
+    	float: left;
+    	    	width: 150px;
+}
+
+
+#tilde {
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	magin-top: 28px;
+}
+
+#th1, #td2 {
+	width: 150px;
+}
+
+#td1 {
+	width: 500px;
+	padding: 5px 0 5px 5px;
+}
+
+#select1 {
+	color: red;
+	width: 200px;
+	float: left;
+	padding: 5px 0 5px 10px;
+}
+
+#select2 {
+	padding: 5px 0 5px 5px;
+	width: 430px;
+	float: left;
+}
+
+#Select_Permissions {
+	margin-left:5px;
+	width: 150px;
+	text-align: center;
+}
+
+#td4 {
+	width: 160px;
+	padding: 5px 0 5px 10px;
+	float: left;
+}
+
+#td6 {
+	width: 200px;
+	padding: 5px 0 5px 20px;
+}
+
+.dark_btn {
+	width: 80px;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+
+.table {
+        font-size: 14px;
+    }
+
+    .table td,
+    .table th {
+        padding: 0.5rem;
+    }
+
+    #Account_Inform {
+        text-align: center;
+    }
+
+    #Account_Inform button {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    #Select_Permissions select {
+        width: 100%;
+    }
+
+.dark_search {
+	width: 80px;
+	margin-top: 5px;
+}
+
+#search_btn_container {
+	    display: flex;
+    justify-content: center; /* 수평 정렬 */
+    align-items: center; /* 수직 정렬 */
+    margin-top: 20px; /* 필요한 경우 적절한 여백을 추가하세요 */
+}
+
+#select3 {
+	width: 150px;
+	float: left;
+	margin-right: 15px;
+}
+
+#select4 {
+	width: 400px;
+	float: left;
+	margin-right: 15px;
+}
+
+#inquiry_table {
+	margin-right: 0 10px 0 0;
+}
+
+#select_container {
+		    display: flex;
+    justify-content: right; /* 수평 정렬 */
+    align-items: center; /* 수직 정렬 */
+    margin-top: 20px; /* 필요한 경우 적절한 여백을 추가하세요 */
+}
+
+#inquiry_table2 {
+	font-size: 13px; /* 테이블 전체의 폰트 크기 조정 */
+}
+
+.table2_blue_btn, .table2_dark_btn {
+	font-size: 13px; /* 테이블 전체의 폰트 크기 조정 */
+}
+
+.inquiry_table2_head {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.inquiry_table2_head thead{
+	text-align: center;
+}
+
+#table2_left {
+	text-align: left;
+}
+
+#inquiry_table3 {
+	width: 300px;
+}
+
+#text-bold {
+	font-weight: 900; 
+	float: left;
+}
+
+#text-content {
+	float: left;
+	margin-left: 30px;
+	margin-right: 200px;
+}
+
+.inquiry_table3 {
+	width: 600px;
+	float: left;
+}
+
+#navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #navigation_content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+    }
+
+    #distribution_btn {
+        margin-left: auto;
+        margin-top: -30px;
+    }
+
+.inquiry_table3 tbody {
+	height: 300px;
+}
+
+.inquiry_table4 {
+	width: 600px;
+	float: left;
+}
+
+#inquiry_table3_container {
+			    display: flex;
+    justify-content: center; /* 수평 정렬 */
+    align-items: center; /* 수직 정렬 */
+    margin-top: 20px; /* 필요한 경우 적절한 여백을 추가하세요 */
+    float: left;
+}
+
+#inquiry_table4_btn {
+	float: right;
+}
+
+#inquiry_all_container {
+				    display: flex;
+    justify-content: center; /* 수평 정렬 */
+    align-items: center; /* 수직 정렬 */
+    margin-top: 30px;
+}
+
+#outer-div {
+	margin-top: 20px;
+	text-align: center;
+}
+
+th, td {
+  vertical-align : middle;
+}
+
+.select_table {
+	float: left;
+}
+
+#radio_table {
+	margin-left: 10px;
+	float: left;
+	display: flex;
+	padding: 5px 0 5px 0px;
+	align-items: center; /* 수직 정렬 */
+}
+
+.period_btn {
+	margin-left: 10px;
+	margin-top: 5px;
+	padding: 5px 0 5px 0px;
+	width: 100px;
+}
+
+#check_box {
+	margin-left: 10px;
+}
+
+#th2 {
+	width: 150px;
+}
+
+#inquiry_table th {
+	font-size: 14px;
+}
+
+#tab_container {
+	font-size: 12px;
+	text-align: center;
+	vertical-align:middle; 
+}
+
+#checkbox {
+	margin-top: 10px;
+	  display: flex;
+  justify-content: center;
+}
+
+#Account_Inform {
+	text-align: left;
+	color: blue;
+}
+
+#home-tab, #profile-tab, #contact-tab, #contact-tab, #contact-tab {
+            color: black !important; /* 기본 글자색을 검은색으로 설정합니다. */
+        }
+
+        #home-tab:hover, #profile-tab:hover, #contact-tab:hover, #contact-tab:hover, #contact-tab:hover {
+            color: black !important; /* 마우스를 올렸을 때 글자색을 검은색으로 설정합니다. */
+        }
+        
+        #tab_container {
+        margin-top: 50px;
+        }
+
+
+#modal_title {
+	margin-top: 30px;
+}
+
+#memo_table {
+	font-size: 13px;
+}
+
+
+#Page_btn {
+	  display: flex;
+  justify-content: center;
+}
+
+.manager_id_text {
+	width: 300px;
+}
+
+#Refund_completed_btn1, #Refund_completed_btn2 {
+	float: right;
+	margin-left: 5px;
+}
+
+.select_manager {
+	width: 380px;
+}
+
+#myTabContent {
+	margin-bottom: 50px;
+}
+
+#registration_btn {
+	float: left;
+}
+
+.modal-dialog {
+        max-width: 800px;
+        margin: 1.75rem auto;
+    }
+
+    .manager_container {
+        width: 100%;
+    }
+
+    .manager_id_text {
+        display: flex;
+        align-items: center;
+    }
+
+    .manager_id_text input {
+        flex: 1;
+    }
+
+    .select_manager {
+        width: 100%;
+    }
+
+    #Account_Inform {
+        text-align: center;
+    }
+
+    #Account_Inform button {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    
+    #inputPassword1, #inputPassword2 {
+    width: 240px;
+    }
+    
+    #inputName {
+    width: 240px;
+    }
+    
+    .nav-tabs .nav-link {
+        color: #333;
+        background-color: #f2f2f2;
+        border-color: #e6e6e6 #e6e6e6 #fff;
+    }
+
+    .nav-tabs .nav-link.active,
+    .nav-tabs .nav-item.show .nav-link {
+        color: #fff;
+        background-color: #333;
+        border-color: #333 #333 #fff;
+    }

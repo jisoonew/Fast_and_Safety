@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/*날짜 설정하는 부분의 css */
+.form-group {
+    margin: 10px 0;
+}
+
+label {
+    font-weight: bold;
+    display: inline-block;
+}
+
+input[type="date"] {
+    width: 150px;
+    /* 수정된 부분: 필드의 폭을 조정하세요. */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    display: inline-block;
+}
+
+
+.searchinput {
+    width: 300px;
+}

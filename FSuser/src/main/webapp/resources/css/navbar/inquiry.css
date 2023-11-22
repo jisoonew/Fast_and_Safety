@@ -177,3 +177,12 @@ body {
   pointer-events: none;
   opacity: 0.5;
 }
+
+#inquiry_select {
+	width: 180px;
+	float: left;
+}
+
+#select_btn,#keyword {
+	float: left;
+}

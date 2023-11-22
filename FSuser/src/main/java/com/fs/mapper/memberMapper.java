@@ -17,6 +17,4 @@ public interface memberMapper {
 	public List<Today_delivery_VO> list_today_delivery();
 	
 	public List<User_QA_VO> user_QA_print();
-	
-	
 }

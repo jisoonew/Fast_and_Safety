@@ -1,6 +1,7 @@
 package com.fs.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.fs.dao.User_QA_DAO;
 import com.fs.mapper.memberMapper;
+import com.fs.vo.Reserve_delivery_VO;
 import com.fs.vo.Today_delivery_VO;
 import com.fs.vo.User_QA_VO;
+
 
 @Service
 public class User_QA_serviceImp implements User_QA_service{
@@ -55,9 +58,9 @@ public class User_QA_serviceImp implements User_QA_service{
     
  // 게시물 조회
     @Override
-    public User_QA_VO view(int num) throws Exception {
+    public User_QA_VO view(String Q_id) throws Exception {
 
-     return dao.view(num);
+     return dao.view(Q_id);
     }
     
 
@@ -70,4 +73,10 @@ public class User_QA_serviceImp implements User_QA_service{
     public void updateUserQA(User_QA_VO userQA) throws Exception {
         userQA_DAO.updateUserQA(userQA);
     }
+    
+    @Override
+	public void inquiry_change(User_QA_VO vo) throws Exception {
+    	userQA_DAO.inquiry_change(vo);
+	}
+    
 }

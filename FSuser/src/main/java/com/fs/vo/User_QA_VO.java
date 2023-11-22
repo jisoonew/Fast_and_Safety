@@ -3,7 +3,6 @@ package com.fs.vo;
 
 public class User_QA_VO {
 	String u_name;
-	int num;
 	String Q_id;
 	String u_id;
 	String Q_variety;
@@ -11,14 +10,10 @@ public class User_QA_VO {
 	String Q_content;
 	String Q_ymd;
 	
+	private String keyword; // 검색 키워드
+	private String type; // 검색 타입
+	
 
-	public int getNum() {
-        return num;
-    }
-
-    public void setNum(int num) {
-        this.num = num;
-    }
 	public String getU_name() {
 		return u_name;
 	}
@@ -63,5 +58,24 @@ public class User_QA_VO {
 	}
 	
 	
+	
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	@Override
+    public String toString() {
+        return "User_QA_VO [u_name=" + u_name + ", Q_id=" + Q_id + ", u_id=" + u_id + ", Q_variety=" + Q_variety + " , Q_title=" + Q_title +  " , Q_content" + Q_content
+        		+ ", Q_ymd=" + Q_ymd + "]";
+    }
 	
 }

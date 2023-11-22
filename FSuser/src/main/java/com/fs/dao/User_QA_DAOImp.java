@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.fs.vo.Reserve_delivery_VO;
 import com.fs.vo.Today_delivery_VO;
 import com.fs.vo.User_QA_VO;
 
@@ -65,9 +66,9 @@ public class User_QA_DAOImp implements User_QA_DAO{
     }
     
  // 게시물 조회
-    public User_QA_VO view(int num) throws Exception {
+    public User_QA_VO view(String Q_id) throws Exception {
      
-     return sqlSession.selectOne(namespace + ".view", num);
+     return sqlSession.selectOne(namespace + ".view", Q_id);
     }
 
     public void setSqlSession(SqlSession sqlSession) {
@@ -84,4 +85,11 @@ public class User_QA_DAOImp implements User_QA_DAO{
     public void updateUserQA(User_QA_VO userQA) throws Exception {
         sqlSession.update(namespace + ".updateUserQA", userQA);
     }
+    
+    // 데이터 삽입
+    @Override
+    public void inquiry_change(User_QA_VO vo) {
+        sqlSession.update(namespace+".inquiry_change", vo);
+    }
+    
 }

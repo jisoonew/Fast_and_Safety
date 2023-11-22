@@ -3,8 +3,11 @@ package com.fs.controller;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fs.dao.User_QA_DAO;
 import com.fs.mapper.memberMapper;
 import com.fs.service.Login_home_service;
 import com.fs.service.Reserve_delivery_service;
@@ -53,7 +57,8 @@ public class NavController {
 	private Storage_reserve_service SRservice;
 	@Inject
 	private User_QA_service U_QAservice;
-	
+	@Autowired
+	private User_QA_DAO User_QA_DAO;
 	@Autowired
 	private UserService userservice;
 	@Autowired
@@ -87,27 +92,27 @@ public class NavController {
 	
 	// 게시물 조회
 	@RequestMapping(value = "view", method = RequestMethod.GET)
-	public String viewGET(Model model, HttpServletRequest request, User_QA_VO vo, @RequestParam("num") int num) throws Exception {
-		User_QA_VO user_qa_vo = U_QAservice.view(num);
+	public String viewGET(Model model, HttpServletRequest request, User_QA_VO vo, @RequestParam("Q_id") String q_id, @RequestParam(defaultValue = "1") int page) throws Exception {
+		User_QA_VO user_qa_vo = U_QAservice.view(q_id);
 		model.addAttribute("view", user_qa_vo);
-		
 		return "/navbar/view";
 	}
 
 	// 문의글 목록 출력
 	@RequestMapping(value = "inquiry", method = RequestMethod.GET)
-	public String inquiryGET(Model model, HttpServletRequest request, User_QA_VO vo, @RequestParam(defaultValue = "1") int page) throws Exception {
+	public String inquiryGET(Model model, HttpServletRequest request, User_QA_VO vo, @RequestParam(defaultValue = "1") int page,
+			@RequestParam(value="type", required=false) String type,@RequestParam(value="keyword", required=false) String keyword) throws Exception {
 	    int total = U_QAservice.getTotalCount();
 	    int recordsPerPage = 10;
 	    int totalPages = (int) Math.ceil(total * 1.0 / recordsPerPage);
 
 	    int offset = (page - 1) * recordsPerPage;
 	    List<User_QA_VO> user_qa_print = U_QAservice.getUserQAByPage(offset, recordsPerPage);
-        
+	    
+	 // user_qa_print 리스트를 역순으로 정렬
+	    Collections.reverse(user_qa_print);
+	    
 	    for (User_QA_VO userQA : user_qa_print) {
-	        System.out.println("Num: " + userQA.getNum());
-	        System.out.println("Id: " + userQA.getQ_id());
-	        
 	        U_QAservice.updateUserQA(userQA);
 	    }
 	     
@@ -115,22 +120,41 @@ public class NavController {
 	    model.addAttribute("totalPages", totalPages);
 	    model.addAttribute("currentPage", page);
 	    model.addAttribute("total", total);
+	    
+	    
+
 		return "/navbar/inquiry";
 	}
 
 	// 문의하기 - 로그인 페이지 이동
 	@RequestMapping(value = "write_inquiry", method = RequestMethod.GET)
-	public void write_inquiryGET() {
+	public String write_inquiryGET(Model model, HttpServletRequest request, User_QA_VO vo, @RequestParam(defaultValue = "1") int page) throws Exception {
+		int total = U_QAservice.getTotalCount();
+	    int recordsPerPage = 10;
+	    int totalPages = (int) Math.ceil(total * 1.0 / recordsPerPage);
+	    
+	    int offset = (page - 1) * recordsPerPage;
+	    List<User_QA_VO> user_qa_print = U_QAservice.getUserQAByPage(offset, recordsPerPage);
+        
+	    for (User_QA_VO userQA : user_qa_print) {
+	        U_QAservice.updateUserQA(userQA);
+	    }
+	    
+	    model.addAttribute("totalPages", totalPages);
+	    model.addAttribute("currentPage", page);
+	    model.addAttribute("total", total);
 
+		return "/navbar/write_inquiry";
 	}
 	
-	// 문의하기 - 로그인 페이지 이동
+	// 문의글 작성
 	@RequestMapping(value = "write_inquiry", method = RequestMethod.POST)
 	public String write_inquiryPOST(Model model, HttpServletRequest request, User_QA_VO vo,
 			@RequestParam(value = "Q_id", required = false) String Q_id,
 			@RequestParam(value = "Q_variety", required = false) String Q_variety,
 			@RequestParam(value = "Q_title", required = false) String Q_title,
-			@RequestParam(value = "Q_content", required = false) String Q_content) throws Exception {
+			@RequestParam(value = "Q_content", required = false) String Q_content,
+			@RequestParam(defaultValue = "1") int page) throws Exception {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date now = new Date();
         String nowTime = sdf.format(now);
@@ -147,7 +171,90 @@ public class NavController {
 		vo.setQ_ymd(nowTime);
 		
 		U_QAservice.user_qa(vo);
-		return "/navbar/write_inquiry";
+		
+		int total = U_QAservice.getTotalCount();
+	    int recordsPerPage = 10;
+	    int totalPages = (int) Math.ceil(total * 1.0 / recordsPerPage);
+
+	    int offset = (page - 1) * recordsPerPage;
+	    List<User_QA_VO> user_qa_print = U_QAservice.getUserQAByPage(offset, recordsPerPage);
+	    
+	 // user_qa_print 리스트를 역순으로 정렬
+	    Collections.reverse(user_qa_print);
+		
+		for (User_QA_VO userQA : user_qa_print) {
+	        U_QAservice.updateUserQA(userQA);
+	    }
+	     
+	    model.addAttribute("user_qa_print", user_qa_print);
+	    model.addAttribute("totalPages", totalPages);
+	    model.addAttribute("currentPage", page);
+	    model.addAttribute("total", total);
+	    
+		return "/navbar/inquiry";
+	}
+	
+	// 문의글 수정 GET
+	@RequestMapping(value = "inquiry_change", method = RequestMethod.GET)
+	public String inquiry_changeGET(Model model, HttpServletRequest request, User_QA_VO vo,@RequestParam("Q_id") String q_id) throws Exception {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date now = new Date();
+        String nowTime = sdf.format(now);
+        
+		// 문의 글 내용 출력
+		  User_QA_VO user_qa_vo = U_QAservice.view(q_id); 
+		  model.addAttribute("view",user_qa_vo);
+		 
+		return "/navbar/inquiry_change";
+	}
+	
+	// 문의글 수정 POST
+	@RequestMapping(value = "inquiry_change", method = RequestMethod.POST)
+	public String inquiry_changePOST(Model model, HttpServletRequest request, User_QA_VO vo, @RequestParam(defaultValue = "1") int page,
+			@RequestParam("Q_id") String Q_id,
+			@RequestParam(value = "Q_variety") String Q_variety,
+			@RequestParam(value = "Q_title") String Q_title,
+			@RequestParam(value = "Q_content") String Q_content) throws Exception {
+		try {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date now = new Date();
+        String nowTime = sdf.format(now);
+		
+        vo.setQ_id(Q_id);
+		vo.setQ_variety(Q_variety);
+		vo.setQ_title(Q_title);
+		vo.setQ_content(Q_content);
+		vo.setQ_ymd(nowTime);
+		
+		// 문의 글 수정
+		U_QAservice.inquiry_change(vo);
+		
+		int total = U_QAservice.getTotalCount();
+	    int recordsPerPage = 10;
+	    int totalPages = (int) Math.ceil(total * 1.0 / recordsPerPage);
+
+	    int offset = (page - 1) * recordsPerPage;
+	    List<User_QA_VO> user_qa_print = U_QAservice.getUserQAByPage(offset, recordsPerPage);
+        
+	    for (User_QA_VO userQA : user_qa_print) {
+	        U_QAservice.updateUserQA(userQA);
+	    }
+	     
+	    model.addAttribute("user_qa_print", user_qa_print);
+	    model.addAttribute("totalPages", totalPages);
+	    model.addAttribute("currentPage", page);
+	    model.addAttribute("total", total);
+	    return "/navbar/inquiry_change";
+	    } catch (Exception e) {
+	        // Log the exception for debugging
+	        e.printStackTrace();
+
+	        // Add an error message to the model
+	        model.addAttribute("error", "문의글 수정 중 오류가 발생했습니다.");
+
+	        // You might want to redirect to an error page or handle this differently based on your requirements
+	        return "/navbar/error"; // Adjust the error page accordingly
+	    }
 	}
 
 	// 예약 배송 - 로그인 페이지 이동

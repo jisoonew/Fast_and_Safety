@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+/* 로그인 페이지 스타일링 */
+body {
+    background-color: #222;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 750px;
+    /* 최대 너비를 늘림 */
+    width: 100%;
+    /* 너비를 100%로 설정 */
+}
+
+h2 {
+    color: #ffffff;
+    margin-bottom: 40px;
+    /* 마진을 조금 줄임 */
+}
+
+.form-group {
+    margin-bottom: 10px;
+    /* 마진을 조금 줄임 */
+}
+
+.form-control {
+    background-color: #444;
+    border: none;
+    color: #fff;
+    max-width: 600px;
+    /* 최대 가로 길이를 늘림 */
+    width: 100%;
+    /* 너비를 100%로 설정 */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    width: 100%;
+    /* 너비를 100%로 설정 */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}

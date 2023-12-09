@@ -2,21 +2,41 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.fs.mapper.ManagerMapper">
-  
-      <!-- 로그인 -->
-      <select id="managerLogin" resultType="com.fs.model.ManagerVO">
-         select m_id, m_pw from manager where m_id = #{m_id} and m_pw = #{m_pw}
-      </select>
-      
-      <!-- 관리자 데이터 삽입 -->
-      <insert id="mng_insert" parameterType="com.fs.model.ManagerVO">
-         insert into manager (m_id, m_pw, m_name, m_email, m_phone, m_rep, m_use, m_power) values 
-         (#{m_id}, #{m_pw}, #{m_name}, #{m_email}, #{m_phone}, #{m_rep}, #{m_use}, #{m_power})
-      </insert>
-      
-      
-      <select id="mng_print" resultType="com.fs.model.ManagerVO">
-      select * from manager;
-      </select>
+<mapper namespace="com.fs.mapper.ManagerMapper">
+
+	<!-- 로그인 -->
+	<select id="managerLogin" resultType="com.fs.model.ManagerVO">
+		select m_id, m_pw from
+		manager where m_id = #{m_id} and m_pw = #{m_pw}
+	</select>
+
+	<!-- 관리자 데이터 삽입 -->
+	<insert id="mng_insert" parameterType="com.fs.model.ManagerVO">
+		insert into manager (m_id,
+		m_pw, m_name, m_email, m_phone, m_power) values
+		(#{m_id}, #{m_pw},
+		#{m_name}, #{m_email}, #{m_phone}, #{m_power})
+	</insert>
+
+	<!-- 관리자 데이터 수정 -->
+	<update id="mng_update" parameterType="com.fs.model.ManagerVO">
+		UPDATE manager set m_power
+		= #{m_power} WHERE m_id = #{m_id};
+	</update>
+
+	<!-- 관리자 데이터 검색 -->
+<select id="mng_search" resultType="com.fs.model.ManagerVO">
+    SELECT * FROM manager
+    WHERE ${type} LIKE concat('%', ${keyword}, '%')
+</select>
+
+	<select id="mng_print" resultType="com.fs.model.ManagerVO">
+		select * from manager;
+	</select>
+
+	<select id="mng_overlap" resultType="int" parameterType="String">
+		SELECT
+		COUNT(*) FROM manager WHERE m_id = #{m_id}
+	</select>
+
 </mapper>

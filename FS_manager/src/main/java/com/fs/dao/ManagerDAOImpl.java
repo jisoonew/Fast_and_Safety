@@ -25,4 +25,8 @@ public class ManagerDAOImpl implements ManagerDAO {
         return sqlSession.selectList(namespace + ".mng_print");
     }
 	
+    @Override
+    public int mng_overlap(String m_id) throws Exception {
+        return sqlSession.selectOne(namespace + ".mng_overlap", m_id);
+    }
 }

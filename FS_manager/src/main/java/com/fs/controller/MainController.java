@@ -9,9 +9,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.fs.mapper.ManagerMapper;
 import com.fs.model.ManagerVO;
 import com.fs.service.ManagerService;
 
@@ -22,6 +27,9 @@ public class MainController {
 	
 	@Autowired
 	private ManagerService managerservice;
+	
+	@Autowired
+	ManagerMapper managerMapper;
 	
 	//로그인 페이지 이동
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -54,8 +62,6 @@ public class MainController {
         
         List<ManagerVO> mng = managerservice.mng_print();
         
-        System.out.println("mng " + mng);
-        
         try {
             model.addAttribute("mngList", mng);
         } catch (Exception e) {
@@ -64,35 +70,120 @@ public class MainController {
 
         return "user";
     }
+	
 	// 관리자 데이터 중복 확인
+	@ResponseBody
 	@RequestMapping(value = "/mng_overlap", method = RequestMethod.POST)
-	public void mng_overlapPOST() {
+	public int mng_overlapPOST(@RequestParam(value = "m_id", required = false) String m_id) throws Exception {
 			
-		logger.info("mng_overlap 페이지 진입");
-		
-		
+		logger.info("mng_overlap POST 페이지 진입");
+        
+		int mngCount = managerservice.mng_overlap(m_id);
+
+	    if (mngCount > 0) {
+	        System.out.println("중복된 아이디입니다.");
+	    } 
+	    else if (m_id == null || m_id.trim().isEmpty()) {
+	    	System.out.println("아이디가 공백입니다.");
+	    } 
+	    else {
+	        System.out.println("사용 가능한 아이디입니다.");
+	    }
+	    
+	    return mngCount;
+	}
+	
+	// 관리자 목록 삭제
+	@RequestMapping(value = "/delete/{m_id}", method = RequestMethod.GET)
+	public String delete(@PathVariable String m_id) {
+
+		managerMapper.delete(m_id);
+	    return "redirect:/user";
+	}
+	
+	// 관리자 목록 수정
+	@RequestMapping(value = "/mng_update", method = RequestMethod.POST)
+	public String update(ManagerVO manager, HttpServletRequest request, 
+			@RequestParam(value = "m_power", required = false) String m_power,
+			@RequestParam(value = "m_id", required = false) String m_id) throws Exception {
+
+		System.out.println("updatePower : " + m_power);
+		manager.setM_id(m_id);
+        manager.setM_power(m_power);
+
+        managerservice.mng_update(manager);
+	    return "redirect:/user";
 	}
 
+	// 관리자 검색 기능
+	@RequestMapping(value = "/mng_search", method = RequestMethod.POST)
+	public @ResponseBody List<ManagerVO> mng_search(ManagerVO manager, Model model,
+	        @RequestParam(value = "type", required = false) String type,
+	        @RequestParam(value = "keyword", required = false) String keyword) throws Exception {
+
+	    manager.setType(type);
+	    manager.setKeyword(keyword);
+
+	    List<ManagerVO> searchResult = managerservice.mng_search(manager);
+	    
+	    model.addAttribute("mngList", searchResult);
+
+	    return searchResult;
+	}
+
+
 	
-	// 관리자 데이터 삽입
+	// 관리자 등록
 	@RequestMapping(value = "/mng_insert", method = RequestMethod.POST)
-	public String mng_insertPOST(HttpServletRequest request, ManagerVO manager) throws Exception {
-	        
+	public String mng_insertPOST(HttpServletRequest request, ManagerVO manager,
+	        @RequestParam(value = "m_id", required = false) String m_id, Model model,
+	        @RequestParam(value = "m_pw", required = false) String m_pw) throws Exception {
+		
 	    logger.info("mng_insert 페이지 진입");
 	    
-	    manager.setM_id(request.getParameter("m_id"));
-	    manager.setM_pw(request.getParameter("password"));
-	    manager.setM_name(request.getParameter("m_name"));
-	    manager.setM_email(request.getParameter("m_email"));
-	    manager.setM_phone(request.getParameter("m_phone"));
-	    manager.setM_rep(request.getParameter("m_rep"));
-	    manager.setM_use(request.getParameter("m_use"));
-	    manager.setM_power(request.getParameter("power"));
-	    
-	    managerservice.mng_insert(manager);
-	    
-	    return "user";
+    	List<ManagerVO> mng = managerservice.mng_print();
+        
+        try {
+            model.addAttribute("mngList", mng);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+	    // 아이디가 비어있는 경우에는 삽입을 수행하지 않음
+	    if (m_id == null || m_id.trim().isEmpty()) {
+	        try {
+	            model.addAttribute("mngList", mng);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return "user";
+	    }
+
+	    int mngCount = managerservice.mng_overlap(m_id);
+
+	    if (mngCount > 0) {
+	        System.out.println("mng_insert 중복된 아이디입니다.");
+	        return "user";
+	    } else {
+	        manager.setM_id(m_id);
+	        manager.setM_pw(request.getParameter("password"));
+	        manager.setM_name(request.getParameter("m_name"));
+	        manager.setM_email(request.getParameter("m_email"));
+	        manager.setM_phone(request.getParameter("m_phone"));
+	        manager.setM_power(request.getParameter("power"));
+
+	        managerservice.mng_insert(manager);
+	        
+	        try {
+	            model.addAttribute("mngList", mng);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        
+	        return "user";
+	    }
 	}
+
 	
 	//member 이동 
 	@RequestMapping(value = "/member", method = RequestMethod.GET)

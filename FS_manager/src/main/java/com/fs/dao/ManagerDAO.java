@@ -12,4 +12,5 @@ public interface ManagerDAO {
 	
 	public List<ManagerVO> mng_print() throws Exception;
 	
+	int mng_overlap(String m_id) throws Exception;
 }

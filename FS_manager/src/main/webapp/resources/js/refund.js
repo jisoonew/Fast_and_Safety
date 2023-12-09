@@ -58,7 +58,7 @@ $(document).ready(function () {
 
 // 모달을 클릭한 곳이 아닌 다른 곳을 클릭할 경우 모달을 숨기는 스크립트
 $(document).on('click', function (event) {
-    if ($(event.target).closest('.modal-content').length === 0) {
+    if ($(event.target).closest('.modal-content').length == 0) {
         if ($(event.target).is('.modal')) {
             $('#memoModal').modal('hide');
         }

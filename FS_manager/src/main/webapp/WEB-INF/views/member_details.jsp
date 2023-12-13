@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
 
 <!doctype html>
 <html>
@@ -11,6 +13,7 @@
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/css/sidebar.css">
     <link rel="stylesheet" href="/resources/css/chanmi.css">
+    
 </head>
 
 <body>
@@ -61,16 +64,20 @@
             
             <!-- 메인 콘텐츠 -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5">
-                <h1>회원 상세 정보</h1>
+                <h3>회원 상세 정보</h3>
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"></div>
                 <!-- <h5>기본 정보</h5> -->
+                <form method="get" action="/member_details">
+                
                 <div class="col-md-9 ms-sm-auto text-center">
+                
+				<c:forEach items="${userDate}" var="userDate" varStatus="loop">
                     <div class="row mt-2 py-1"> <!-- 여기에 py-3 클래스 추가 -->
                         <div class="col-md-2">
                             <strong>아이디 :</strong>
                         </div>
-                        <div class="col-md-2">
-                            hh
+                        <div class="col-md-2" id="u_id">
+                            <span class="u_id"><c:out value="${userDate.u_id}" /></span>
                         </div>
                         <div class="col-md-2">
                             <strong>등급 :</strong>
@@ -84,13 +91,13 @@
                             <strong>대표자명 :</strong>
                         </div>
                         <div class="col-md-2">
-                            <span class="editable" contenteditable="true">홍길동</span>
+                            <span class="u_name" contenteditable="true"><c:out value="${userDate.u_name}" /></span>
                         </div>
                         <div class="col-md-2">
                             <strong>회사명 :</strong>
                         </div>
                         <div class="col-md-2">
-                            <span class="editable" contenteditable="true">삼성</span>
+                            <span class="u_company_name" contenteditable="true"><c:out value="${userDate.u_company_name}" /></span>
                         </div>
                     </div>
                     <div class="row mt-2 py-3"> <!-- 여기에 py-3 클래스 추가 -->
@@ -98,13 +105,13 @@
                             <strong>전화번호 :</strong>
                         </div>
                         <div class="col-md-2">
-                            <span class="editable" contenteditable="true">010-0101-0101</span>
+                            <span class="u_phone" contenteditable="true"><c:out value="${userDate.u_phone}" /></span>
                         </div>
                         <div class="col-md-2">
                             <strong>이메일 :</strong>
                         </div>
                         <div class="col-md-2">
-                            <span class="editable" contenteditable="true">hh@gmail.com</span>
+                            <span class="u_email" contenteditable="true"><c:out value="${userDate.u_email}" /></span>
                         </div>
                     </div>
                     <div class="row mt-2 py-3"> <!-- 여기에 py-3 클래스 추가 -->
@@ -112,23 +119,37 @@
                             <strong>주소 :</strong>
                         </div>
                         <div class="col-md-2">
-                            <span class="editable" contenteditable="true">서울시 강북구</span>
+                            <span class="u_company_address" contenteditable="true"><c:out value="${userDate.u_company_address}" /></span><br>
+                            <span class="u_detail_address" contenteditable="true"><c:out value="${userDate.u_detail_address}" /></span>
                         </div>
                         <div class="col-md-2">
                             <strong>가입일 :</strong>
                         </div>
                         <div class="col-md-2">
-                            <span class="editable" contenteditable="true">2023-10-28</span>
+                            <c:out value="${userDate.u_join_date}" />
                         </div>
                     </div>
+                    </c:forEach>
+                    
                     <div class="row mt-2 py-3"> <!-- 여기에 py-3 클래스 추가 -->
                         <div class="col-md-8 text-end">
                             <button class="btn btn-primary" id="editButton">수정</button>
-                            <button class="btn btn-secondary" id="cancelButton">취소</button>
+                            <button class="btn btn-secondary" id="deleteButton">삭제</button>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"></div>
+                
+                <jsp:include page="/WEB-INF/views/product_status.jsp" />
+                
+                                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"></div>
+                
+                <jsp:include page="/WEB-INF/views/delivery_status.jsp" />
+                
+                                                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"></div>
+                
+                <jsp:include page="/WEB-INF/views/storage_status.jsp" />
+                </form>
             </main>
         </div>
     </div>
@@ -139,5 +160,5 @@
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
 </body>
-
+<script src="/resources/js/member.js"></script>
 </html>

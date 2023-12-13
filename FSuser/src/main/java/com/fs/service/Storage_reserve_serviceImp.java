@@ -1,5 +1,7 @@
 package com.fs.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -19,5 +21,11 @@ public class Storage_reserve_serviceImp implements Storage_reserve_service{
 	@Override
 	public void storage_reserve(Storage_reserve_VO vo) throws Exception {
 		dao.storage_reserve(vo);
+	}
+	
+	@Override
+	public List<Storage_reserve_VO> SR_print(Storage_reserve_VO storageVO) throws Exception {
+		
+		return dao.SR_print(storageVO);
 	}
 }

@@ -1,17 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>∏∂¿Ã ∆‰¿Ã¡ˆ - √¢∞Ì</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    <title>ÎßàÏù¥ ÌéòÏù¥ÏßÄ - Ï∞ΩÍ≥†</title>
+    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link href="/resources/navbar/navbar.css" rel="stylesheet" />
-    <link href="/resources/mypage/sidebar.css" rel="stylesheet" />
-    <link href="/resources/mypage/storage.css" rel="stylesheet" />
+    <link href="/resources/css/mypage/sidebar.css" rel="stylesheet" />
+    <link href="/resources/css/navbar/navbar.css" rel="stylesheet" />
+    <link href="/resources/css/mypage/storage.css" rel="stylesheet" />
 </head>
 
 <body class="sb-nav-fixed">
@@ -26,43 +28,43 @@
         <!-- Company Introduction Dropdown -->
         <ul class="navbar-nav me-auto ">
             <a class="navbar-brand ps-3" href="/navbar/introduce">
-                »∏ªÁ º“∞≥
+                ÌöåÏÇ¨ ÏÜåÍ∞ú
             </a>
 
             <!-- Services Dropdown -->
             <div class="dropdown">
                 <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    º≠∫ÒΩ∫
+                    ÏÑúÎπÑÏä§
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/navbar/product_storage">∫∏∞¸«∞∏Ò π◊ ¿Ø¿«ªÁ«◊</a></li>
+                    <li><a class="dropdown-item" href="/navbar/product_storage">Î≥¥Í¥ÄÌíàÎ™© Î∞è Ïú†ÏùòÏÇ¨Ìï≠</a></li>
                     <hr class="dropdown-divider" />
-                    <li><a class="dropdown-item" href="/navbar/service_step">¿‘√‚∞Ì ¿˝¬˜</a></li>
+                    <li><a class="dropdown-item" href="/navbar/service_step">ÏûÖÏ∂úÍ≥† Ï†àÏ∞®</a></li>
                 </ul>
             </div>
 
             <!-- Warehouses Dropdown -->
             <a class="navbar-brand ps-3" href="/navbar/storage_reserve">
-                <!-- ∏¥ﬁ ∏ﬁΩ√¡ˆ -->
-                √¢∞Ì
+                <!-- Î™®Îã¨ Î©îÏãúÏßÄ -->
+                Ï∞ΩÍ≥†
             </a>
 
             <div class="dropdown">
                 <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    πËº€
+                    Î∞∞ÏÜ°
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/navbar/today_delivery">¥Á¿œ πËº€</a></li>
+                    <li><a class="dropdown-item" href="/navbar/today_delivery">ÎãπÏùº Î∞∞ÏÜ°</a></li>
                     <hr class="dropdown-divider" />
-                    <li><a class="dropdown-item" href="/navbar/routine_delivery">¡§±‚ πËº€</a></li>
+                    <li><a class="dropdown-item" href="/navbar/routine_delivery">Ï†ïÍ∏∞ Î∞∞ÏÜ°</a></li>
                     <hr class="dropdown-divider" />
-                    <li><a class="dropdown-item" href="/navbar/reserve_delivery">øπæ‡ πËº€</a></li>
+                    <li><a class="dropdown-item" href="/navbar/reserve_delivery">ÏòàÏïΩ Î∞∞ÏÜ°</a></li>
                 </ul>
             </div>
 
             <!-- ask Dropdown -->
             <a class="navbar-brand ps-3" href="/navbar/inquiry">
-                πÆ¿«
+                Î¨∏Ïùò
             </a>
         </ul>
 
@@ -80,9 +82,9 @@
             </li>
         </ul>
     </nav>
-    <!--ø©±‚±Ó¡ˆ ≥◊∫Ò∞‘¿Ãº« πŸ-->
+    <!--Ïó¨Í∏∞ÍπåÏßÄ ÎÑ§ÎπÑÍ≤åÏù¥ÏÖò Î∞î-->
 
-        <!-- ø©±‚º≠∫Œ≈Õ ªÁ¿ÃµÂ πŸ -->
+        <!-- Ïó¨Í∏∞ÏÑúÎ∂ÄÌÑ∞ ÏÇ¨Ïù¥Îìú Î∞î -->
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -94,34 +96,34 @@
                         <a class="nav-link collapsed" href="/mypage/today_delivery" data-bs-toggle="collapse"
                             data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
                             <div class="sb-nav-link-icon"></div>
-                            ¿ÃøÎ≥ªø™
+                            Ïù¥Ïö©ÎÇ¥Ïó≠
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapse1" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/mypage/today_delivery">¥Á¿œ πËº€</a>
-                                <a class="nav-link" href="/mypage/regular_delivery">¡§±‚ πËº€</a>
-                                <a class="nav-link" href="/mypage/reserve_delivery">øπæ‡ πËº€</a>
+                                <a class="nav-link" href="/mypage/today_delivery">ÎãπÏùº Î∞∞ÏÜ°</a>
+                                <a class="nav-link" href="/mypage/regular_delivery">Ï†ïÍ∏∞ Î∞∞ÏÜ°</a>
+                                <a class="nav-link" href="/mypage/reserve_delivery">ÏòàÏïΩ Î∞∞ÏÜ°</a>
                             </nav>
                         </div>
 
                         <a class="nav-link" href="/mypage/storage">
                             <div class="sb-nav-link-icon"></div>
-                            MY √¢∞Ì
+                            MY Ï∞ΩÍ≥†
                         </a>
 
                         <a class="nav-link collapsed" href="/mypage/information_details" data-bs-toggle="collapse"
                             data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
                             <div class="sb-nav-link-icon"></div>
-                            »∏ø¯ ¡§∫∏
+                            ÌöåÏõê Ï†ïÎ≥¥
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapse2" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/mypage/information_details">»∏ø¯ ¡§∫∏ ªÛºº</a>
-                                <a class="nav-link" href="/mypage/pay">∞·¡¶ πÊπ˝</a>
+                                <a class="nav-link" href="/mypage/information_details">ÌöåÏõê Ï†ïÎ≥¥ ÏÉÅÏÑ∏</a>
+                                <a class="nav-link" href="/mypage/pay">Í≤∞Ï†ú Î∞©Î≤ï</a>
 
                             </nav>
                         </div>
@@ -135,26 +137,26 @@
                         <div class="collapse" id="collapse3" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/mypage/ask">1:1 πÆ¿« «œ±‚</a>
-                                <a class="nav-link" href="/mypage/ask_answer">πÆ¿« ≥ªø™</a>
+                                <a class="nav-link" href="/mypage/ask">1:1 Î¨∏Ïùò ÌïòÍ∏∞</a>
+                                <a class="nav-link" href="/mypage/ask_answer">Î¨∏Ïùò ÎÇ¥Ïó≠</a>
                             </nav>
                         </div>
 
                         <a class="nav-link" href="/mypage/delete">
                             <div class="sb-nav-link-icon"></div>
-                            »∏ø¯ ≈ª≈
+                            ÌöåÏõê ÌÉàÌá¥
                         </a>
                     </div>
                 </div>
             </nav>
         </div>
     </div>
-    <!-- ø©±‚±Ó¡ˆ ªÁ¿ÃµÂπŸ -->
+    <!-- Ïó¨Í∏∞ÍπåÏßÄ ÏÇ¨Ïù¥ÎìúÎ∞î -->
 
-    <form id="form">
+
         <div id="container_content">
 
-            <h1 class="mt-5" id="content_title">MY √¢∞Ì</h1>
+            <h1 class="mt-5" id="content_title">MY Ï∞ΩÍ≥†</h1>
 
             <div id="year_month_date">
                 <select class="form-select" aria-label="Default select example" id="year">
@@ -166,96 +168,65 @@
                 <select class="form-select" aria-label="Default select example" id="date">
                 </select>
                 <br>
-                <button type="button" id="y_m_d_dtn" class="btn btn-outline-dark">∞Àªˆ</button>
+                <button type="button" id="y_m_d_dtn" class="btn btn-outline-dark">Í≤ÄÏÉâ</button>
             </div>
 
             <div id="container_delivery_state">
                 <select class="form-select" aria-label="Default select example" id="delivery_state_select">
-                    <option value="πËº€ ªÛ≈¬" selected="selected">πËº€ ªÛ≈¬</option>
-                    <option value="º€¿Â π¯»£">º€¿Â π¯»£</option>
-                    <option value="π∞«∞∏Ì">π∞«∞∏Ì</option>
-                    <option value="π∞«∞ ¡æ∑˘">π∞«∞ ¡æ∑˘</option>
-                    <option value="πËº€ ªÛ≈¬">πËº€ ªÛ≈¬</option>
-                    <option value="πËº€ «’∞Ë">πËº€ «’∞Ë</option>
+                    <option value="Î∞∞ÏÜ° ÏÉÅÌÉú" selected="selected">Î∞∞ÏÜ° ÏÉÅÌÉú</option>
+                    <option value="ÏÜ°Ïû• Î≤àÌò∏">ÏÜ°Ïû• Î≤àÌò∏</option>
+                    <option value="Î¨ºÌíàÎ™Ö">Î¨ºÌíàÎ™Ö</option>
+                    <option value="Î¨ºÌíà Ï¢ÖÎ•ò">Î¨ºÌíà Ï¢ÖÎ•ò</option>
+                    <option value="Î∞∞ÏÜ° ÏÉÅÌÉú">Î∞∞ÏÜ° ÏÉÅÌÉú</option>
+                    <option value="Î∞∞ÏÜ° Ìï©Í≥Ñ">Î∞∞ÏÜ° Ìï©Í≥Ñ</option>
                 </select>
 
-                <input class="form-control" id="delivery_state_search" type="text" placeholder="∞Àªˆ" aria-label="∞Àªˆ√¢">
+                <input class="form-control" id="delivery_state_search" type="text" placeholder="Í≤ÄÏÉâ" aria-label="Í≤ÄÏÉâÏ∞Ω">
                 <a class="ps-2">
-                    <button type="button" id="search_dtn" class="btn btn-outline-dark">∞Àªˆ</button>
+                    <button type="button" id="search_dtn" class="btn btn-outline-dark">Í≤ÄÏÉâ</button>
                 </a>
             </div>
         </div>
 
-
-
-        <div id="container_table">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col" style="width: 10%">º€¿Â π¯»£</th>
-                        <th scope="col" style="width: 20%">ƒ¡≈◊¿Ã≥ </th>
-                        <th scope="col" style="width: 20%">π∞«∞∏Ì</th>
-                        <th scope="col" style="width: 10%">¡æ∑˘</th>
-                        <th scope="col" style="width: 10%">ø¬µµ</th>
-                        <th scope="col" style="width: 10%">Ω¿µµ</th>
-                        <th scope="col" style="width: 10%">π‡±‚</th>
-                    </tr>
-                </thead>
-                <tbody id="table_tbody">
-                </tbody>
-            </table>
-        </div>
-
-
-
+    <form id="form" method="GET" action="/mypage/storage">
         <div id="container_storage_state_table">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" style="width: 10%">º€¿Â π¯»£</th>
-                        <th scope="col" style="width: 20%">ƒ¡≈◊¿Ã≥ </th>
-                        <th scope="col" style="width: 20%">π∞«∞∏Ì</th>
-                        <th scope="col" style="width: 10%">¡æ∑˘</th>
-                        <th scope="col" style="width: 10%">ø¬µµ</th>
-                        <th scope="col" style="width: 10%">Ω¿µµ</th>
-                        <th scope="col" style="width: 10%">π‡±‚</th>
+                        <th scope="col">Î≤àÌò∏</th>
+                        <th scope="col">ÎåÄÌëúÏûê</th>
+                        <th scope="col">Ïó∞ÎùΩÏ≤ò</th>
+                        <th scope="col">Ïú†Ìòï</th>
+                        <th scope="col">ÏÉÅÌíàÎ™Ö</th>
+                        <th scope="col">Í∞úÏàò</th>
+                        <th scope="col">Í∏∞Í∞Ñ</th>
+                        <th scope="col">ÏöîÍ∏à</th>
                     </tr>
                 </thead>
+                <c:forEach items="${SR_data}" var="srData" varStatus="status">
                 <tbody>
                     <tr>
-                        <td colspan="1">1</td>
-                        <td>0</td>
-                        <td>1</td>
+                        <td colspan="1"><c:out value="${status.count}" /></td>
+                        <td><c:out value="${srData.sr_name}" /></td>
+                        <td><c:out value="${srData.sr_phone}" /></td>
                         <td> <select id="ex_select">
-                                <option selected>¡æ∑˘</option>
-                                <option>Ω«ø¬</option>
-                                <option>≥√¿Â</option>
-                                <option>≥√µø</option>
+                                <option selected>[<c:out value="${srData.sr_category}" />]</option>
+                                <option>Ïã§Ïò®</option>
+                                <option>ÎÉâÏû•</option>
+                                <option>ÎÉâÎèô</option>
                             </select></td>
-                        <td><select id="ex_select">
-                                <option selected>ø¬µµ</option>
-                                <option>«—±π</option>
-                                <option>¿œ∫ª</option>
-                                <option>¡ﬂ±π</option>
-                            </select></td>
-                        <td><select id="ex_select">
-                                <option selected>Ω¿µµ</option>
-                                <option>«—±π</option>
-                                <option>¿œ∫ª</option>
-                                <option>¡ﬂ±π</option>
-                            </select></td>
-                        <td><select id="ex_select">
-                                <option selected>π‡±‚</option>
-                                <option>«—±π</option>
-                                <option>¿œ∫ª</option>
-                                <option>¡ﬂ±π</option>
-                            </select></td>
+<td><c:out value="${srData.sr_pro_name}" /></td>
+<td><c:out value="${srData.sr_volume}" /></td>
+                            <td><c:out value="${srData.sr_endDate}" /></td>
+                            <td><c:out value="${srData.sr_fee}" /></td>
                     </tr>
                 </tbody>
+                </c:forEach>
             </table>
+            
         </div>
 
-        <div><button type="button" id="change_dtn" class="btn btn-outline-dark">ºˆ¡§</button></div>
+        <div><button type="button" id="change_dtn" class="btn btn-outline-dark">ÏàòÏ†ï</button></div>
     </form>
 
     <script src="/resources/js/sidebar.js"></script>

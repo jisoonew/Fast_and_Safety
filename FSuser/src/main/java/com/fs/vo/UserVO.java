@@ -1,5 +1,7 @@
 package com.fs.vo;
 
+import java.time.LocalDate;
+
 public class UserVO {
 
     // 아이디
@@ -43,6 +45,8 @@ public class UserVO {
 
     // 은행 계좌
     private String u_acct;
+    
+    private LocalDate u_join_date;
 
 
     public String getU_id() {
@@ -139,9 +143,15 @@ public class UserVO {
     public void setU_acct(String u_acct) {
         this.u_acct=u_acct;
     }
+    
 
-
-    @Override public String toString() {
+    public LocalDate getU_join_date() {
+		return u_join_date;
+	}
+	public void setU_join_date(LocalDate now) {
+		this.u_join_date = now;
+	}
+	@Override public String toString() {
         return "UserVO [u_id="+u_id+", u_pw="+u_pw+", u_name="+u_name+", u_email="+u_email+", u_phone="+u_phone+", u_company_name="+u_company_name+", u_company_address="+u_company_address+", u_detail_address="+u_detail_address+", u_member="+u_member+"]";
     }
 }

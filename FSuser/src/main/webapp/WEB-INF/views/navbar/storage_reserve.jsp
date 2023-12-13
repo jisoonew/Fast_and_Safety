@@ -101,16 +101,10 @@
 
         <div class="row">
             <div class="col-2"></div>
-            <div class="col-1">
-                <h4>상품 유형</h4>
+            <div class="col-1" for="postcode">
+                <h4>시작날짜</h4>
             </div>
-            <div class="col-2">
-                <select name="sr_category" id="d_product">
-                    <option>물품선택</option>
-                    <option>냉장</option>
-                    <option>냉동</option>
-                </select>
-            </div>
+            <div class="col-2"> <input type="date" id="date" max="2033-06-01" min="2023-06-01" name="sr_start" placeholder="날짜 선택"></div>
             <div class="col-1"></div>
             <div class="col-1">
                 <h4>입고 물량</h4>
@@ -120,10 +114,18 @@
 
         <div class="row">
             <div class="col-2"></div>
-            <div class="col-1" for="postcode">
-                <h4>시작날짜</h4>
+
+                        <div class="col-1">
+                <h4>상품 유형</h4>
             </div>
-            <div class="col-2"> <input type="date" id="date" max="2033-06-01" min="2023-06-01" name="sr_start" placeholder="날짜 선택"></div>
+            <div class="col-2">
+                <select name="sr_category" id="d_product">
+                    <option>물품선택</option>
+                    <option>실온</option>
+                    <option>냉장</option>
+                    <option>냉동</option>
+                </select>
+            </div>
             <div class="col-1"></div>
             <div class="col-1">
                 <h4>보관 기간</h4>
@@ -136,6 +138,18 @@
                     <option value="month">개월</option>
                 </select>
             </div>
+        </div><br><br><br>
+        
+                <div class="row">
+            <div class="col-2"></div>
+
+                        <div class="col-1">
+                <h4>상품명</h4>
+            </div>
+            <div class="col-2">
+                <input type="text" name="sr_pro_name">
+            </div>
+            <div class="col-1"></div>
         </div><br><br><br>
 
         <div class="row">

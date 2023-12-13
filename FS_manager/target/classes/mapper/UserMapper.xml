@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fs.mapper.UserMapper">
+
+	<!-- 로그인 -->
+	<select id="managerLogin" resultType="com.fs.model.ManagerVO">
+		select m_id, m_pw from
+		manager where m_id = #{m_id} and m_pw = #{m_pw}
+	</select>
+
+	<!-- 관리자 데이터 삽입 -->
+	<insert id="mng_insert" parameterType="com.fs.model.ManagerVO">
+		insert into manager (m_id,
+		m_pw, m_name, m_email, m_phone, m_power) values
+		(#{m_id}, #{m_pw},
+		#{m_name}, #{m_email}, #{m_phone}, #{m_power})
+	</insert>
+
+	<!-- 관리자 데이터 수정 -->
+	<update id="u_update" parameterType="com.fs.model.UserVO">
+		UPDATE user set u_name = #{u_name}, u_company_name = #{u_company_name}, u_email = #{u_email},
+		u_phone = #{u_phone}, u_company_address = #{u_company_address}, u_detail_address = #{u_detail_address} WHERE u_id = #{u_id};
+	</update>
+	
+		<!-- 관리자 데이터 수정 -->
+	<update id="u_delete" parameterType="com.fs.model.UserVO">
+		DELETE FROM user WHERE u_id = #{u_id}
+	</update>
+
+	<!-- 관리자 데이터 검색 -->
+<select id="mng_search" resultType="com.fs.model.ManagerVO">
+    SELECT * FROM manager
+    WHERE ${type} LIKE concat('%', ${keyword}, '%')
+</select>
+
+	<select id="u_print" resultType="com.fs.model.UserVO">
+		select * from user;
+	</select>
+	
+	<!-- 사용자 상세보기 -->
+		<select id="u_details" resultType="com.fs.model.UserVO">
+		select * from user where u_id = #{u_id};
+	</select>
+
+	<select id="mng_overlap" resultType="int" parameterType="String">
+		SELECT
+		COUNT(*) FROM manager WHERE m_id = #{m_id}
+	</select>
+	
+	<!-- 총 게시글 갯수 출력 -->
+<select id="countBoard" resultType="int">
+	SELECT COUNT(*) FROM user
+</select>
+
+<!-- 페이징 처리 후 게시글 조회 -->
+<select id="selectBoard" resultType="com.fs.model.UserVO">
+SELECT * 
+FROM (
+    SELECT *, ROW_NUMBER() OVER (ORDER BY u_name) AS RN
+    FROM user
+) AS A
+WHERE RN BETWEEN #{start} AND #{end};
+</select>
+
+</mapper>

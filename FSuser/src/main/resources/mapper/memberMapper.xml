@@ -61,14 +61,19 @@
 	<insert id="storage_reserve">
 		insert into storage_reserve
 		(u_id, sr_id, sr_name,
-		sr_phone, sr_category, sr_volume,
+		sr_phone, sr_category, sr_pro_name, sr_volume,
 		sr_period1, sr_period2, sr_fee,
 		sr_start) values
 		(#{u_id}, #{sr_id}, #{sr_name}, #{sr_phone},
-		#{sr_category}, #{sr_volume},
+		#{sr_category}, #{sr_pro_name}, #{sr_volume},
 		#{sr_period1}, #{sr_period2}, #{sr_fee},
 		#{sr_start})
 	</insert>
+	
+		<!-- 창고 예약 입력 -->
+	<select id="SR_print" resultType="com.fs.vo.Storage_reserve_VO">
+		select * from storage_reserve where u_id = #{u_id};
+	</select>
 
 	<!-- 문의글 작성 -->
 	<insert id="user_QA">

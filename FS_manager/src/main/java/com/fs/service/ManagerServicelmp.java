@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.fs.dao.ManagerDAO;
 import com.fs.mapper.ManagerMapper;
 import com.fs.model.ManagerVO;
+import com.fs.model.PagingVO;
 
 @Service
 public class ManagerServicelmp implements ManagerService {
@@ -52,4 +53,13 @@ public class ManagerServicelmp implements ManagerService {
         return dao.mng_overlap(m_id);
     }
 
+	@Override
+	public int countBoard() {
+		return managermapper.countBoard();
+	}
+
+	@Override
+	public List<ManagerVO> selectBoard(PagingVO vo) {
+		return managermapper.selectBoard(vo);
+	}
 }

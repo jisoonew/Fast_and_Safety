@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 
 import com.fs.model.ManagerVO;
+import com.fs.model.PagingVO;
 
 public interface ManagerMapper {
 	
@@ -24,4 +25,10 @@ public interface ManagerMapper {
 
 	@Delete("delete from manager where m_id = #{m_id}")
 	public boolean delete(String m_id);
+	
+	// 게시물 총 갯수
+	public int countBoard();
+
+	// 페이징 처리 게시글 조회
+	public List<ManagerVO> selectBoard(PagingVO vo);
 }

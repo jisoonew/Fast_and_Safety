@@ -25,7 +25,12 @@
 <script src="/resources/js/user.js"></script>
 
 </head>
-
+<script>
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href = "/user?nowPage=1&cntPerPage=" + sel;
+	}
+</script>
 <body>
 
 	<div class="container-fluid">
@@ -56,8 +61,8 @@
 								<hr class="dropdown-divider">
 								<a class="dropdown-item" href="/refund">환불 문의</a>
 							</div></li>
-						<li class="nav-item fixed-bottom"><a class="nav-link"
-							href="#" id="logout">로그아웃</a></li>
+						<li class="nav-item fixed-bottom" id="logout_li"><a
+							class="nav-link" href="#" id="logout">로그아웃</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -80,7 +85,94 @@
 				</nav>
 				<div class="tab-content" id="nav-tabContent">
 					<div class="tab-pane fade show active" id="nav-home"
-						role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">...</div>
+						role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0"><!-- 메인 콘텐츠 -->
+
+<div id="outer-div" style="width: 725px;">
+							<table class="table table-bordered">
+								<!--   <caption>List of users</caption> -->
+								<tbody id="inquiry_table">
+									<tr>
+										<th scope="row" id="th1">검색</th>
+										<td id="td1" style="width: 90%">
+
+											<div id="select1">
+												<select class="form-select form-select-sm" name="type"
+													id="type" aria-label="Default select example">
+													<option selected>선택</option>
+													<option value="m_rep">등급</option>
+													<option value="m_id">아이디</option>
+													<option value="m_name">이름</option>
+													<option value="m_email">이메일</option>
+													<option value="m_power">권한</option>
+												</select>
+											</div>
+											<div class="input-group" id="select2">
+												<input type="text" class="form-control form-control-sm"
+													name="keyword" id="keyword" placeholder="검색어 입력"
+													aria-label="Recipient's username"
+													aria-describedby="button-addon2">
+												<button class="btn btn-outline-secondary btn-sm"
+													id="search_btn" type="submit">검색</button>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+                <br>
+				<form method="GET" action="/user">
+                <table class="table table-bordered table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th>대표자</th>
+                            <th>아이디</th>
+                            <th>누적 금액</th>
+                            <th>이메일</th>
+                            <th>전화번호</th>
+                            <th>가입일</th>
+                            <th>상세 보기</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <!-- 관리자 목록 -->
+					<c:forEach items="${userDATA}" var="userDate" varStatus="loop">
+                        <tr>
+                            <td><c:out value="${userDate.u_name}" /></td>
+                            <td><c:out value="${userDate.u_id}" /></td>
+                            <td>500,000</td>
+                            <td><c:out value="${userDate.u_email}" /></td>
+                            <td><c:out value="${userDate.u_phone}" /></td>
+                            <td>2023-10-28</td>
+                            <td><a href="/member_details?user=${userDate.u_id}" class="btn btn-primary" id="detailButton">상세 보기</a></td>
+                        </tr>
+                        </c:forEach>
+                        <!-- 이곳에 추가 -->
+                    </tbody>
+                </table>
+                </form>
+                
+                <nav aria-label="페이지 탐색" class="d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="이전">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="다음">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <!-- 여기서부터 관리자 -->
+            
 					<div class="tab-pane fade" id="nav-profile" role="tabpanel"
 						aria-labelledby="nav-profile-tab" tabindex="0">
 						<div id="outer-div" style="width: 725px;">
@@ -92,8 +184,8 @@
 										<td id="td1" style="width: 90%">
 
 											<div id="select1">
-												<select class="form-select form-select-sm" name="type" id="type"
-													aria-label="Default select example">
+												<select class="form-select form-select-sm" name="type"
+													id="type" aria-label="Default select example">
 													<option selected>선택</option>
 													<option value="m_rep">등급</option>
 													<option value="m_id">아이디</option>
@@ -103,11 +195,12 @@
 												</select>
 											</div>
 											<div class="input-group" id="select2">
-												<input type="text" class="form-control form-control-sm" name="keyword" id="keyword"
-													placeholder="검색어 입력" aria-label="Recipient's username"
+												<input type="text" class="form-control form-control-sm"
+													name="keyword" id="keyword" placeholder="검색어 입력"
+													aria-label="Recipient's username"
 													aria-describedby="button-addon2">
-												<button class="btn btn-outline-secondary btn-sm" id="search_btn"
-													type="submit">검색</button>
+												<button class="btn btn-outline-secondary btn-sm"
+													id="search_btn" type="submit">검색</button>
 											</div>
 										</td>
 									</tr>
@@ -116,10 +209,24 @@
 						</div>
 
 
-						<form method="get" action="/user">
+						<form method="get" action="/manager">
 							<div class="tab-content" id="myTabContent">
 								<div class="tab-pane fade show active" id="1-tab-pane"
 									role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+									<div style="float: right;">
+										<select id="cntPerPage" name="sel" onchange="selChange()">
+											<option value="10"
+												<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄
+												보기</option>
+											<option value="15"
+												<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄
+												보기</option>
+											<option value="20"
+												<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄
+												보기</option>
+										</select>
+									</div>
+									<!-- 옵션선택 끝 -->
 									<div id="outer-div">
 										<table class="table table-bordered">
 											<tbody id="inquiry_result_table">
@@ -135,13 +242,13 @@
 												</tr>
 
 												<!-- 관리자 목록 -->
-												<c:forEach items="${mngList}" var="manager" varStatus="loop">
+												<c:forEach items="${viewAll}" var="list" varStatus="loop">
 													<tr>
 														<!-- 리스트 출력 번호 -->
-														<td>${loop.index + 1}</td>
+														<td>${paging.calculatePostNumber(loop.index)}</td>
 														<!-- 등급 -->
 														<td><c:choose>
-																<c:when test="${manager.m_power eq '모든 권한'}">
+																<c:when test="${list.m_power eq '모든 권한'}">
                     												최고관리자
                													</c:when>
 																<c:otherwise>
@@ -149,21 +256,26 @@
                 												</c:otherwise>
 															</c:choose></td>
 														<!-- 아이디 -->
-														<td><c:out value="${manager.m_id}" /></td>
+														<td><c:out value="${list.m_id}" /></td>
 														<!-- 비밀번호[마스킹] -->
 														<td><script>
-															var password = "<c:out value="${manager.m_pw}" />";
-															var maskedPassword = password.replace(/./g,'*');
-															document.write(maskedPassword);
+															var password = "<c:out value="${list.m_pw}" />";
+															var maskedPassword = password
+																	.replace(
+																			/./g,
+																			'*');
+															document
+																	.write(maskedPassword);
 														</script></td>
 														<!-- 관리자 이름 -->
-														<td>${manager.m_name}</td>
+														<td>${list.m_name}</td>
 														<!-- 관리자 이메일 -->
-														<td>${manager.m_email}</td>
+														<td>${list.m_email}</td>
 														<td>
 															<button type="button"
-																class="btn btn-dark btn-sm update-btn" id="update_btn" onclick="showManagerId(this)"
-        														data-manager-id="<c:out value='${manager.m_id}' />"
+																class="btn btn-dark btn-sm update-btn" id="update_btn"
+																onclick="showManagerId(this)"
+																data-manager-id="<c:out value='${list.m_id}' />"
 																style="-bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem;"
 																data-bs-toggle="modal" data-bs-target="#updateModal">수정</button>
 															<button type="button"
@@ -172,7 +284,7 @@
 																data-bs-backdrop="static" data-bs-keyboard="false"
 																id="memo_btn1" data-bs-toggle="modal"
 																data-bs-target="#confirmModal"
-																data-delete-url="<c:url value='/delete/${manager.m_id}' />">삭제</button>
+																data-delete-url="<c:url value='/delete/${list.m_id}' />">삭제</button>
 
 														</td>
 														<td>
@@ -180,7 +292,7 @@
 																<select class="form-select form-select-sm update_power"
 																	id="update_select" aria-label="Default select example"
 																	name="update_power">
-																	<option selected>${manager.m_power}[저장]</option>
+																	<option selected>${list.m_power}[저장]</option>
 																	<option value="1">모든 권한</option>
 																	<option value="2">상품</option>
 																	<option value="3">배송</option>
@@ -194,7 +306,7 @@
 												<tr>
 													<td colspan="11" id="Account_Inform">
 
-														<button type="button" class="btn btn-outline-dark btn-sm" 
+														<button type="button" class="btn btn-outline-dark btn-sm"
 															style="-bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem;"
 															data-bs-backdrop="static" data-bs-keyboard="false"
 															id="Refund_completed_btn1">저장</button>
@@ -208,17 +320,30 @@
 											</tbody>
 										</table>
 									</div>
+
 									<nav aria-label="Page navigation example" id="Page_btn">
 										<ul class="pagination">
-											<li class="page-item"><a class="page-link" href="#"
-												aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+										<c:if test="${paging.startPage != 1 }">
+											<li class="page-item"><a class="page-link"
+												aria-label="Previous" href="/user?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;
 											</a></li>
-											<li class="page-item"><a class="page-link" href="#">1</a></li>
-											<li class="page-item"><a class="page-link" href="#">2</a></li>
-											<li class="page-item"><a class="page-link" href="#">3</a></li>
-											<li class="page-item"><a class="page-link" href="#"
-												aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+											</c:if>
+											<c:forEach begin="${paging.startPage }"
+											end="${paging.endPage }" var="p">
+											<c:choose>
+											<c:when test="${p == paging.nowPage }">
+											<li class="page-item"><a class="page-link">${p }</a></li>
+											</c:when>
+												<c:when test="${p != paging.nowPage }">
+											<li class="page-item"><a class="page-link" href="/user?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+											</c:when>
+											</c:choose>
+										</c:forEach>
+										<c:if test="${paging.endPage != paging.lastPage}">
+											<li class="page-item"><a class="page-link" href="/user?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}"
+												aria-label="Next">&gt;
 											</a></li>
+											</c:if>
 										</ul>
 									</nav>
 								</div>
@@ -600,29 +725,31 @@
 	</script>
 
 	<script>
-	document.querySelectorAll('.delete-btn').forEach(function(button) {
-	    button.addEventListener('click', function() {
-	        var deleteUrl = button.getAttribute('data-delete-url');
+		document.querySelectorAll('.delete-btn').forEach(
+				function(button) {
+					button.addEventListener('click', function() {
+						var deleteUrl = button.getAttribute('data-delete-url');
 
-	        // 삭제 버튼이면서 data-delete-url 속성이 있는 경우에만 삭제 로직을 수행
-	        if (deleteUrl) {
-	            // 모달창 열기
-	            var myModal = new bootstrap.Modal(document.getElementById('confirmModal'));
-	            myModal.show();
+						// 삭제 버튼이면서 data-delete-url 속성이 있는 경우에만 삭제 로직을 수행
+						if (deleteUrl) {
+							// 모달창 열기
+							var myModal = new bootstrap.Modal(document
+									.getElementById('confirmModal'));
+							myModal.show();
 
-	            // 모달 확인 버튼 클릭 시 삭제 로직 수행
-	            document.getElementById('confirmBtn').addEventListener('click', function() {
+							// 모달 확인 버튼 클릭 시 삭제 로직 수행
+							document.getElementById('confirmBtn')
+									.addEventListener('click', function() {
 
-	                // 아래는 페이지 이동하는 방식
-	                window.location.href = deleteUrl;
+										// 아래는 페이지 이동하는 방식
+										window.location.href = deleteUrl;
 
-	                // 모달 창 닫기
-	                myModal.hide();
-	            });
-	        }
-	    });
-	});
-	
+										// 모달 창 닫기
+										myModal.hide();
+									});
+						}
+					});
+				});
 	</script>
 </body>
 

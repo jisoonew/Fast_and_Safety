@@ -353,10 +353,14 @@ th, td {
     width: 240px;
     }
     
-    .nav-tabs .nav-link {
+    .nav-tabs .nav-link{
         color: #333;
         background-color: #f2f2f2;
         border-color: #e6e6e6 #e6e6e6 #fff;
+    }
+    
+    #logout {
+    width: 150px;
     }
 
     .nav-tabs .nav-link.active,

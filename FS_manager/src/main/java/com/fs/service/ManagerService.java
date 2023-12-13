@@ -3,6 +3,7 @@ package com.fs.service;
 import java.util.List;
 
 import com.fs.model.ManagerVO;
+import com.fs.model.PagingVO;
 
 public interface ManagerService {
 	
@@ -23,4 +24,11 @@ public interface ManagerService {
 
 	//관리자 아이디 중복 확인
 	int mng_overlap (String m_id) throws Exception;
+	
+	// 게시물 총 갯수
+	public int countBoard();
+	
+	// 페이징 처리 게시글 조회
+	public List<ManagerVO> selectBoard(PagingVO vo);
+	
 }

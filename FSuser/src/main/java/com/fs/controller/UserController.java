@@ -1,5 +1,7 @@
 package com.fs.controller;
 
+import java.time.LocalDate;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -72,6 +74,8 @@ public class UserController {
         rawPw = user.getU_pw();            // 비밀번호 데이터 얻음
         encodePw = pwEncoder.encode(rawPw);        // 비밀번호 인코딩
         user.setU_pw(encodePw);            // 인코딩된 비밀번호 member객체에 다시 저장
+        LocalDate now = LocalDate.now();
+        user.setU_join_date(now);
         
         /* 회원가입 쿼리 실행 */
 		userservice.userJoin(user);

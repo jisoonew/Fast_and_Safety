@@ -406,6 +406,7 @@ public class NavController {
 			@RequestParam(value = "sr_name", required = false) String sr_name,
 			@RequestParam(value = "sr_phone", required = false) String sr_phone,
 			@RequestParam(value = "sr_category", required = false) String sr_category,
+			@RequestParam(value = "sr_pro_name", required = false) String sr_pro_name,
 			@RequestParam(value = "sr_volume", required = false) int sr_volume,
 			@RequestParam(value = "sr_period1", required = false) int sr_period1,
 			@RequestParam(value = "sr_period2", required = false) String sr_period2,
@@ -420,6 +421,7 @@ public class NavController {
 		vo.setSr_name(sr_name);
 		vo.setSr_phone(sr_phone);
 		vo.setSr_category(sr_category);
+		vo.setSr_pro_name(sr_pro_name);
 		vo.setSr_volume(sr_volume);
 		vo.setSr_period1(sr_period1);
 		vo.setSr_period2(sr_period2);

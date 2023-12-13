@@ -1,5 +1,7 @@
 package com.fs.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,6 +23,12 @@ public class Storage_reserve_DAOImp implements Storage_reserve_DAO{
     @Override
     public void storage_reserve(Storage_reserve_VO vo) {
         sqlSession.insert(namespace+".storage_reserve", vo);
+    }
+    
+    @Override
+    public List<Storage_reserve_VO> SR_print(Storage_reserve_VO storageVO) {
+        
+		return sqlSession.selectList(namespace+".SR_print", storageVO);
     }
 
 }

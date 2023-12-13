@@ -1,5 +1,6 @@
 package com.fs.controller;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,9 +21,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fs.mapper.memberMapper;
 import com.fs.service.Login_home_service;
 import com.fs.service.Routine_delivery_service;
+import com.fs.service.Storage_reserve_service;
 import com.fs.service.Today_delivery_service;
 import com.fs.vo.Login_home_VO;
 import com.fs.vo.Routine_delivery_VO;
+import com.fs.vo.Storage_reserve_VO;
 import com.fs.vo.Today_delivery_VO;
 import com.fs.vo.review_VO;
 
@@ -38,6 +41,9 @@ public class MypageController {
 	
 	@Inject
     private Routine_delivery_service RDservice;
+	
+	@Inject
+    private Storage_reserve_service SRservice;
 	
 	@Inject
     private Today_delivery_service TDservice;
@@ -103,12 +109,38 @@ public class MypageController {
 	
 	//회원 정보
 	@RequestMapping(value = "/storage",  method = RequestMethod.GET)
-	public void MPstorageGET() {
+	public void MPstorageGET(Model model,HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		String sessionID = (String) session.getAttribute("session_ID");
+		Storage_reserve_VO storageVO = new Storage_reserve_VO();
+		storageVO.setU_id(sessionID);
+		List<Storage_reserve_VO> list = SRservice.SR_print(storageVO);
 		
-		//logger.info("메인 페이지 진입 (NOT LOGIN)");
+        for (Storage_reserve_VO srData : list) {
+            String sr_start = srData.getSr_start();
+            int sr_period1 = srData.getSr_period1();
+            String sr_period2 = srData.getSr_period2();
+
+            LocalDate startDate = LocalDate.parse(sr_start);
+            LocalDate endDate = calculateEndDate(startDate, sr_period1, sr_period2);
+
+            srData.setSr_endDate(endDate.toString()); // Set the calculated end date in your VO
+        }
 		
+    	model.addAttribute("SR_data", list);
 	}
 	
+    private LocalDate calculateEndDate(LocalDate startDate, int sr_period1, String sr_period2) {
+        if ("month".equals(sr_period2)) {
+            return startDate.plusMonths(sr_period1);
+        } else if ("week".equals(sr_period2)) {
+            return startDate.plusWeeks(sr_period1);
+        } else {
+            // Handle unsupported sr_period2 values
+            throw new IllegalArgumentException("Unsupported sr_period2: " + sr_period2);
+        }
+    }
+    
 	//회원 정보
 	
 	/*

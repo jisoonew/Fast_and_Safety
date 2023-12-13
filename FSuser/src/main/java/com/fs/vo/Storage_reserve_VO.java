@@ -7,10 +7,12 @@ private String sr_name;
 private String sr_phone;
 private String sr_category;
 private int sr_volume;
+private String sr_pro_name;
 private int sr_period1;
 private String sr_period2;
 private String sr_fee;
 private String sr_start;
+private String sr_endDate;
 
 
 public String getU_id() {
@@ -44,6 +46,13 @@ public String getSr_category() {
 public void setSr_category(String sr_category) {
 	this.sr_category = sr_category;
 }
+
+public String getSr_pro_name() {
+	return sr_pro_name;
+}
+public void setSr_pro_name(String sr_pro_name) {
+	this.sr_pro_name = sr_pro_name;
+}
 public int getSr_volume() {
 	return sr_volume;
 }
@@ -74,4 +83,11 @@ public String getSr_start() {
 public void setSr_start(String sr_start) {
 	this.sr_start = sr_start;
 }
+public String getSr_endDate() {
+	return sr_endDate;
+}
+public void setSr_endDate(String sr_endDate) {
+	this.sr_endDate = sr_endDate;
+}
+
 }

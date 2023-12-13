@@ -10,9 +10,7 @@
 
 #layoutSidenav {
     position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
+    width: width: 230px;
 }
 
 #layoutSidenav #layoutSidenav_nav {

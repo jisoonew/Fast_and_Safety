@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
 
 <!doctype html>
 <html>
@@ -14,58 +16,16 @@
 </head>
 
 <body>
-
+<br>
     <div class="container-fluid">
-        <div class="row">
-            <!-- 왼쪽 고정 사이드바 -->
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark">
-                <div class="position-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a id="pagename">FS</a>
-                        </li>
-                        <li class="nav-item mt-3">
-                            <a class="nav-link" href="/dashboard">대시보드</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/user">회원</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/product">상품</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/delivery">당일/정기/예약</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/storage">창고</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="deliveryDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                문의
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="inquiryDropdown">
-                                <a class="dropdown-item" href="/inquiry">문의</a>
-                                <hr class="dropdown-divider">
-                                <a class="dropdown-item" href="/inquiry_phone">상담</a>
-                                <hr class="dropdown-divider">
-                                <a class="dropdown-item" href="/refund">환불 문의</a>
-                            </div>
-                        </li>
-                        <li class="nav-item fixed-bottom">
-                            <a class="nav-link" href="#" id="logout">로그아웃</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            
+  
             <!-- 메인 콘텐츠 -->
-            <main class="col-md-6 ms-sm-auto col-lg-10 px-md-4 mt-5">
+
                 <div class="col-md-12">
                     <div class="text-center">
                         <div class="row">
                             <div class="col-md-2" style="text-align: left;">
-                                <h1>상품 현황</h1>
+                                <h3>상품 현황</h3>
                             </div>
                             <div class="col-md-2">
                                 <p class="text-primary fw-bold" style="margin-top: 7px;">실온 상품: 10</p>
@@ -106,7 +66,8 @@
                 </div>
 
                 <br>
-                
+                <form method="get" action="/member_details">
+				<c:forEach items="${userDate}" var="userDate" varStatus="loop">
                 <table class="table table-bordered table-hover text-center">
                     <thead>
                         <tr>
@@ -136,7 +97,8 @@
                         <!-- 이곳에 추가 -->
                     </tbody>
                 </table>
-
+</c:forEach>
+</form>
                 
                 <div class="row mt-12 py-3"> <!-- 여기에 py-3 클래스 추가 -->
                     <div class="col-md-12 text-end">
@@ -161,10 +123,8 @@
                         </li>
                     </ul>
                 </nav>
-            </main>
 
         </div>
-    </div>
 
      <!-- Bootstrap 및 jQuery 스크립트 로드 -->
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
